@@ -9,10 +9,35 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://Source/Gameplay/Game/Game.gd"
+}, {
 "base": "HBoxContainer",
 "class": "HMenu",
 "language": "GDScript",
 "path": "res://Source/Menu/HMenu.gd"
+}, {
+"base": "Control",
+"class": "Main",
+"language": "GDScript",
+"path": "res://Source/Main/Main.gd"
+}, {
+"base": "VMenu",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://Source/Main/Menu.gd"
+}, {
+"base": "Node2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Source/Gameplay/Player/Player.gd"
+}, {
+"base": "Node2D",
+"class": "PlayersQueue",
+"language": "GDScript",
+"path": "res://Source/Gameplay/PlayersQueue/PlayersQueue.gd"
 }, {
 "base": "Button",
 "class": "SmartButton",
@@ -25,7 +50,12 @@ _global_script_classes=[ {
 "path": "res://Source/Menu/VMenu.gd"
 } ]
 _global_script_class_icons={
+"Game": "",
 "HMenu": "",
+"Main": "",
+"MainMenu": "",
+"Player": "",
+"PlayersQueue": "",
 "SmartButton": "",
 "VMenu": ""
 }
@@ -35,6 +65,10 @@ _global_script_class_icons={
 config/name="Conquest"
 run/main_scene="res://Source/Main/Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GamePlay="*res://Source/Gameplay/game_play.gd"
 
 [display]
 
@@ -80,6 +114,11 @@ next={
 quit={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

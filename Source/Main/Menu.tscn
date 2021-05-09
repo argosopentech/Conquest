@@ -39,6 +39,7 @@ text = "Quit"
 
 [node name="QuitConfirm" type="Control" parent="Overlay" index="0"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -95,6 +96,7 @@ margin_right = 380.0
 margin_bottom = 229.0
 text = "No"
 
+[connection signal="pressed" from="Play" to="." method="play"]
 [connection signal="pressed" from="Quit" to="." method="quit"]
 [connection signal="pressed" from="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu/quit_confirm" to="." method="quit_confirm"]
 [connection signal="pressed" from="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu/quit_cancel" to="." method="quit_cancel"]

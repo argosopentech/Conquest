@@ -1,5 +1,7 @@
 extends VMenu
 
+class_name MainMenu
+
 onready var quit_confirm_menu = $Overlay/QuitConfirm
 onready var quit_confirm_vmenu = $Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu
 
@@ -11,7 +13,7 @@ func _unhandled_input(event):
 		quit()
 
 func play():
-	pass
+	get_tree().change_scene("res://Source/Gameplay/Game/Game.tscn")
 
 func options():
 	pass
