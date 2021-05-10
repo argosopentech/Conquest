@@ -33,4 +33,4 @@ func move():
 func set_active(value):
 	is_active = value
 	set_process_input(value)
-	
+
