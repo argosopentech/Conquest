@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Source/Gameplay/HUD/ActivePlayerHUD.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Source/Gameplay/PlayersQueue/PlayersQueue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Source/Gameplay/Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=7]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends CanvasLayer
@@ -54,6 +55,11 @@ text = "Back"
 [node name="5" parent="PlayersQueue" instance=ExtResource( 5 )]
 
 [node name="6" parent="PlayersQueue" instance=ExtResource( 5 )]
+
+[node name="MapLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Map" parent="MapLayer" instance=ExtResource( 7 )]
 
 [connection signal="pressed" from="HUD/Quit" to="." method="quit"]
 [connection signal="active_player_changed" from="PlayersQueue" to="." method="active_player_changed"]

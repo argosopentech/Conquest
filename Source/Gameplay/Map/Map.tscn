@@ -1,3 +1,22 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Map" type="Node2D"]
+[ext_resource path="res://Assets/Graphics/Map/full map.png" type="Texture" id=1]
+
+[node name="Map" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -576.0
+margin_right = 576.0
+margin_bottom = 648.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
