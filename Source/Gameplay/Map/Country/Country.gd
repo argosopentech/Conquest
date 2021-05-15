@@ -16,3 +16,12 @@ func space_pascal_case(string):
 				new_string += letter
 		index += 1
 	return new_string
+
+func _on_mouse_entered():
+	pass
+
+func _on_mouse_exited():
+	pass # Replace with function body.
+
+func _on_input_event(viewport, event, shape_idx):
+	pass # Replace with function body.
