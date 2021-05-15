@@ -9,11 +9,17 @@ var player_states = {
 	"fortify": load("res://Source/Gameplay/StateMachine/PlayerStates/FortifyState.gd"),
 }
 
-var country_states = {
-	"in_active": load("res://Source/Gameplay/StateMachine/CountryStates/InActiveState.gd"),
-	"active": load("res://Source/Gameplay/StateMachine/CountryStates/ActiveState.gd"),
-	"selected": load("res://Source/Gameplay/StateMachine/CountryStates/SelectedState.gd"),
-}
+var game = null
+
+func _ready():
+	setup_game()
+
+func setup_game():
+	game = get_tree().get_nodes_in_group("game")
+	if game.size() > 0:
+		game = game[0]
+	else:
+		game = null
 
 func enter(player):
 	pass

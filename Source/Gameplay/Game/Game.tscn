@@ -21,7 +21,9 @@ func update_display(index, player):
 	player_reinforcement.text = \"#\" + str(player.reinforcement)
 "
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=[
+"game",
+]]
 script = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 1 )]

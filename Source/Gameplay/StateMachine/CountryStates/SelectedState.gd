@@ -1,15 +1,19 @@
-extends StateMachine
+extends CountryState
 
 class_name SelectedState
 
-func enter(player):
-	pass
+func enter(country: Country):
+	color_multiplier = 1.1
+	.enter(country)
 
-func handle_input(player, input: InputEvent):
+func handle_input(country: Country, input: InputEvent):
 	return null
 
-func update(player):
+func update(country: Country):
 	pass
 
-func exit(player):
+func exit(country: Country):
 	pass
+
+func clicked(country: Country):
+	return country_states.active.new()

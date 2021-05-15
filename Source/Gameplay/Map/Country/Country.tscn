@@ -22,6 +22,7 @@ margin_left = -150.0
 margin_top = -150.0
 margin_right = 150.0
 margin_bottom = 150.0
+mouse_filter = 2
 color = Color( 0.733333, 0.733333, 0.733333, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -32,6 +33,7 @@ margin_left = -140.0
 margin_top = -140.0
 margin_right = 140.0
 margin_bottom = 140.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

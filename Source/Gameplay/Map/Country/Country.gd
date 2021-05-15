@@ -1,5 +1,38 @@
 extends Area2D
 
+class_name Country
+
+onready var sprite = $Country
+onready var border = $Border
+
+var occupier = null
+var hovering = false
+var selected = false
+var active = false
+
+onready var country_state = load("res://Source/Gameplay/StateMachine/CountryStates/ActiveState.gd").new()
+
+func _ready():
+	setup()
+
+func setup():
+	setup_state()
+
+func setup_state():
+	country_state.enter(self)
+
+func _process(delta):
+	var state = country_state.update(self)
+	if state:
+		change_state(state)
+
+func change_state(state):
+	var previous_state = country_state
+	previous_state.exit(self)
+	country_state = state
+	country_state.enter(self)
+	previous_state.queue_free()
+
 func get_name():
 	return space_pascal_case(name)
 
@@ -18,10 +51,15 @@ func space_pascal_case(string):
 	return new_string
 
 func _on_mouse_entered():
-	pass
+	hovering = true
 
 func _on_mouse_exited():
-	pass # Replace with function body.
+	hovering = false
 
 func _on_input_event(viewport, event, shape_idx):
-	pass # Replace with function body.
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT:
+			if event.is_pressed():
+				var state = country_state.clicked(self)
+				if state:
+					change_state(state)

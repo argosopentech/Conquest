@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "StateMachine",
+"base": "CountryState",
 "class": "ActiveState",
 "language": "GDScript",
 "path": "res://Source/Gameplay/StateMachine/CountryStates/ActiveState.gd"
@@ -18,6 +18,16 @@ _global_script_classes=[ {
 "class": "AttackState",
 "language": "GDScript",
 "path": "res://Source/Gameplay/StateMachine/PlayerStates/AttackState.gd"
+}, {
+"base": "Area2D",
+"class": "Country",
+"language": "GDScript",
+"path": "res://Source/Gameplay/Map/Country/Country.gd"
+}, {
+"base": "StateMachine",
+"class": "CountryState",
+"language": "GDScript",
+"path": "res://Source/Gameplay/StateMachine/CountryStates/CountryState.gd"
 }, {
 "base": "StateMachine",
 "class": "DraftState",
@@ -39,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Source/Menu/HMenu.gd"
 }, {
-"base": "StateMachine",
+"base": "CountryState",
 "class": "InActiveState",
 "language": "GDScript",
 "path": "res://Source/Gameplay/StateMachine/CountryStates/InActiveState.gd"
@@ -69,7 +79,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Source/Gameplay/PlayersQueue/PlayersQueue.gd"
 }, {
-"base": "StateMachine",
+"base": "CountryState",
 "class": "SelectedState",
 "language": "GDScript",
 "path": "res://Source/Gameplay/StateMachine/CountryStates/SelectedState.gd"
@@ -92,6 +102,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "ActiveState": "",
 "AttackState": "",
+"Country": "",
+"CountryState": "",
 "DraftState": "",
 "FortifyState": "",
 "Game": "",
@@ -177,4 +189,3 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 2d/snapping/use_gpu_pixel_snap=true
-environment/default_environment="res://default_env.tres"
