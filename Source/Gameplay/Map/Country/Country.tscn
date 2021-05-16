@@ -1,15 +1,16 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Countries/Test/TestCountry.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Countries/Test/TestBorder.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Countries/Afghanistan.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Borders/Afghanistan.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 150, 150 )
+extents = Vector2( 54.8251, 50.6346 )
 
 [node name="Country" type="Area2D" groups=[
 "Country",
 ]]
+scale = Vector2( 0.33, 0.29 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -22,13 +23,9 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PoolVector2Array( -230.948, -27.5164, -233.945, -96.4385, -175.511, -145.883, -142.548, -144.384, 17.7709, -301.707, 46.2387, -29.0146, 217.046, -27.5164, 238.022, 165.765, 253.005, 183.745, 254.503, 297.616, 193.073, 248.172, 163.107, 185.243, 112.164, 137.297, 68.7133, 117.819, 13.2759, 143.291, 11.7776, 179.25, -144.046, 231.691, -203.979, 183.745, -250.426, 17.4329 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
-disabled = true
 
 [node name="BorderRect" type="ColorRect" parent="."]
 visible = false
