@@ -6,6 +6,8 @@ onready var hud = find_node("HUD")
 
 var active_player = null
 var active_player_index = -1
+var occupied_countries = 0
+var total_countries = 1
 
 func active_player_changed(p_active_index, p_active_player):
 	if not hud:

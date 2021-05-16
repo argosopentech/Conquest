@@ -4,6 +4,9 @@ class_name Player
 
 var is_active = false
 var reinforcement = 10
+var initial_troops = 20
+
+onready var player_state = load("res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd").new()
 
 signal turn_completed
 
@@ -13,6 +16,17 @@ func _ready():
 func setup():
 	set_active(false)
 	setup_reinforcements()
+	setup_state()
+
+func setup_state():
+	player_state.enter(self)
+
+func change_state(state):
+	var previous_state = player_state
+	previous_state.exit(self)
+	player_state = state
+	player_state.enter(self)
+	previous_state.queue_free()
 
 func setup_reinforcements():
 	reinforcement = randi() % 10 + 3
@@ -34,3 +48,12 @@ func set_active(value):
 	is_active = value
 	set_process_input(value)
 
+func country_clicked(country: Country):
+	var state = player_state.country_clicked(self, country)
+	if state:
+		change_state(state)
+
+func _process(delta):
+	var state = player_state.update(self)
+	if state:
+		change_state(state)

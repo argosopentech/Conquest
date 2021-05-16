@@ -9,6 +9,7 @@ var occupier = null
 var hovering = false
 var selected = false
 var active = false
+var troops = 0
 
 onready var country_state = load("res://Source/Gameplay/StateMachine/CountryStates/ActiveState.gd").new()
 
@@ -22,6 +23,11 @@ func setup_state():
 	country_state.enter(self)
 
 func _process(delta):
+	var state = country_state.update(self)
+	if state:
+		change_state(state)
+
+func update():
 	var state = country_state.update(self)
 	if state:
 		change_state(state)
