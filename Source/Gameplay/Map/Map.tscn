@@ -15,6 +15,7 @@ anchor_right = 0.5
 margin_left = -576.0
 margin_right = 576.0
 margin_bottom = 648.0
+mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {

@@ -3,7 +3,7 @@ extends StateMachine
 class_name CountryState
 
 var colors = {
-	"unoccupied": Color.lightblue,
+	"unoccupied": Color.lightcoral,
 	"hover": Color.white,
 	"not_hover": Color.black
 }
@@ -15,6 +15,7 @@ var country_states = {
 }
 
 var color_multiplier = 1
+var hover_multiplier = 1.25
 
 func enter(country: Country):
 	set_country_color(country)
@@ -35,20 +36,26 @@ func clicked(country: Country):
 
 func set_country_color(country: Country):
 	if country.occupier:
-		country.sprite.color = GamePlay.colors[country.occupier.name]
+		country.sprite.modulate = GamePlay.colors[country.occupier.name]
 	else:
-		country.sprite.color = colors.unoccupied
+		country.sprite.modulate = colors.unoccupied
 
 func set_border_color(country: Country):
 	if not country.active:
-		country.border.color = colors.not_hover
+		country.border.modulate = colors.not_hover
 		return
 	if country.hovering or country.selected:
-		country.border.color = colors.hover
+		country.border.modulate = colors.hover
+		dim_border_color(country)
 	else:
-		country.border.color = colors.not_hover
+		country.border.modulate = colors.not_hover
+
+func dim_border_color(country: Country):
+	country.border.modulate.r *= hover_multiplier
+	country.border.modulate.g *= hover_multiplier
+	country.border.modulate.b *= hover_multiplier
 
 func dim_country_color(country: Country):
-	country.sprite.color.r *= color_multiplier
-	country.sprite.color.g *= color_multiplier
-	country.sprite.color.b *= color_multiplier
+	country.sprite.modulate.r *= color_multiplier
+	country.sprite.modulate.g *= color_multiplier
+	country.sprite.modulate.b *= color_multiplier
