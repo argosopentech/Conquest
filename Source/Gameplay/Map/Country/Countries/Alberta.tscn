@@ -13,3 +13,6 @@ texture = ExtResource( 3 )
 
 [node name="Border" parent="." index="1"]
 texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PoolVector2Array( -155.566, 15.5172, -132.684, 88.7489, 91.8436, 92.0036, 154.769, -91.8891, -121.243, -93.5165, -122.673, -30.0491, -129.824, -7.26592 )

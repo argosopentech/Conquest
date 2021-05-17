@@ -43,11 +43,14 @@ func set_country_color(country: Country):
 func set_border_color(country: Country):
 	if not country.active:
 		country.border.modulate = colors.not_hover
+		country.z_index = 0
 		return
 	if country.hovering or country.selected:
 		country.border.modulate = colors.hover
 		dim_border_color(country)
+		country.z_index = 2
 	else:
+		country.z_index = 0
 		country.border.modulate = colors.not_hover
 
 func dim_border_color(country: Country):

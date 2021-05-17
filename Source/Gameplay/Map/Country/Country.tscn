@@ -25,7 +25,9 @@ texture = ExtResource( 3 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [node name="Shape" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
+disabled = true
 
 [node name="BorderRect" type="ColorRect" parent="."]
 visible = false
