@@ -44,13 +44,19 @@ func set_border_color(country: Country):
 	if not country.active:
 		country.border.modulate = colors.not_hover
 		country.z_index = 0
+		country.name_label.visible = false
+		country.troops_label.visible = false
 		return
 	if country.hovering or country.selected:
 		country.border.modulate = colors.hover
 		dim_border_color(country)
+		country.name_label.visible = true
+		country.troops_label.visible = true
 		country.z_index = 2
 	else:
 		country.z_index = 0
+		country.name_label.visible = false
+		country.troops_label.visible = false
 		country.border.modulate = colors.not_hover
 
 func dim_border_color(country: Country):

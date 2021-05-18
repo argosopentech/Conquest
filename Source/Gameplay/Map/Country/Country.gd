@@ -12,11 +12,14 @@ var active = false
 var troops = 0
 
 onready var country_state = load("res://Source/Gameplay/StateMachine/CountryStates/ActiveState.gd").new()
+onready var name_label = $Name
+onready var troops_label = $Troops
 
 func _ready():
 	setup()
 
 func setup():
+	name_label.text = get_name()
 	setup_state()
 
 func setup_state():
@@ -69,3 +72,7 @@ func _on_input_event(viewport, event, shape_idx):
 				var state = country_state.clicked(self)
 				if state:
 					change_state(state)
+
+func _input(event):
+	if event.is_action_pressed("reveal_country_names"):
+		name_label.visible = !name_label.visible
