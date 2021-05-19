@@ -13,7 +13,20 @@ var total_countries = 42
 var number_of_players_placed_all_troops = 0
 
 func _ready():
+	setup()
+
+func setup():
 	GamePlay.game = self
+	set_initial_troops()
+
+func number_of_players():
+	return players.get_child_count()
+
+func set_initial_troops():
+	var subtraction = 5 * (number_of_players() - 1)
+	var initial_troops = 45 - subtraction
+	for player in players.get_children():
+		player.set_initial_troops(initial_troops)
 
 func active_player_changed(p_active_index, p_active_player):
 	if not hud:

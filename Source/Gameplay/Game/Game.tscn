@@ -102,8 +102,6 @@ text = "Back"
 
 [node name="5" parent="PlayersQueue" instance=ExtResource( 5 )]
 
-[node name="6" parent="PlayersQueue" instance=ExtResource( 5 )]
-
 [node name="MapLayer" type="CanvasLayer" parent="."]
 layer = -1
 

@@ -5,6 +5,7 @@
 [node name="Map" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -431.021, -239.49 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -18,6 +19,14 @@ margin_bottom = 648.0
 mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.156863 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

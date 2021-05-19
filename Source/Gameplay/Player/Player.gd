@@ -18,6 +18,10 @@ func setup():
 	setup_reinforcements()
 	setup_state()
 
+func set_initial_troops(amount):
+	initial_troops = amount
+	print("Player ", name, " troops: ", initial_troops)
+
 func setup_state():
 	player_state.enter(self)
 
