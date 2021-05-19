@@ -9,4 +9,4 @@ var colors = {
 	"6": Color.lightcoral
 }
 
-onready var game = get_node("/root/Game")
+var game

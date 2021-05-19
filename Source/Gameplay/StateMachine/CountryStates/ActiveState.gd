@@ -22,3 +22,8 @@ func exit(country: Country):
 func clicked(country: Country):
 	GamePlay.game.active_player.country_clicked(country)
 	return# country_states.selected.new()
+
+func active_player_changed(country: Country, new_player: Player):
+	if new_player.player_state is PlacementState:
+		if country.occupier and country.occupier != new_player:
+			return country_states.in_active.new()

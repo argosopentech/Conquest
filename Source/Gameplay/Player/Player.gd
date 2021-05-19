@@ -27,6 +27,8 @@ func change_state(state):
 	player_state = state
 	player_state.enter(self)
 	previous_state.queue_free()
+	print("Player: ", name, " state changed.")
+	print("New state: ", player_state.get_class())
 
 func setup_reinforcements():
 	reinforcement = randi() % 10 + 3

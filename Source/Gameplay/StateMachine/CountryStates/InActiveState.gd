@@ -16,3 +16,8 @@ func update(country: Country):
 
 func exit(country: Country):
 	set_border_color(country)
+
+func active_player_changed(country: Country, new_player: Player):
+	if new_player.player_state is PlacementState:
+		if country.occupier == new_player and GamePlay.game.all_countries_occupied():
+			return country_states.active.new()

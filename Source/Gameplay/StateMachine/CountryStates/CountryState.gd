@@ -68,3 +68,6 @@ func dim_country_color(country: Country):
 	country.sprite.modulate.r *= color_multiplier
 	country.sprite.modulate.g *= color_multiplier
 	country.sprite.modulate.b *= color_multiplier
+
+func active_player_changed(country: Country, new_player: Player):
+	pass

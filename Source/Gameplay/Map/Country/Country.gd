@@ -15,13 +15,22 @@ onready var country_state = load("res://Source/Gameplay/StateMachine/CountryStat
 onready var name_label = $Name
 onready var troops_label = $Troops
 
+signal troops_updated
+
 func _ready():
 	setup()
 
 func setup():
-	name_label.text = get_name()
+	setup_name()
 	setup_state()
+	setup_troops()
 
+func setup_troops():
+	troops = 0
+	connect("troops_updated", self, "update_troops_label")
+
+func setup_name():
+	name_label.text = get_name()
 func setup_state():
 	country_state.enter(self)
 
@@ -76,3 +85,36 @@ func _on_input_event(viewport, event, shape_idx):
 func _input(event):
 	if event.is_action_pressed("reveal_country_names"):
 		name_label.visible = !name_label.visible
+
+func increment_troops():
+	troops += 1
+	emit_signal("troops_updated")
+
+func decrement_troops():
+	troops -= 1
+	if troops < 0:
+		troops = 0
+	emit_signal("troops_updated")
+
+func add_troops(troops_amount):
+	troops += troops_amount
+	emit_signal("troops_updated")
+
+func subtract_troops(troops_amount):
+	troops -= troops_amount
+	emit_signal("troops_updated")
+
+func set_troops(troops_amount):
+	troops = troops_amount
+	emit_signal("troops_updated")
+
+func get_troops():
+	return troops
+
+func update_troops_label():
+	troops_label.text = str(troops)
+
+func active_player_changed(new_player):
+	var state = country_state.active_player_changed(self, new_player)
+	if state:
+		change_state(state)
