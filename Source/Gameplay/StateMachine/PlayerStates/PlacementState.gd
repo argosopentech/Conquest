@@ -20,8 +20,9 @@ func country_clicked(player: Player, country: Country):
 			country.occupier = player
 			GamePlay.game.occupied_countries += 1
 		country.increment_troops()
+		player.initial_troops -= 1
 		country.update()
-		if GamePlay.game.occupied_countries == GamePlay.game.total_countries:
+		if GamePlay.game.all_players_placed_all_troops():
 			return player_states.draft.new()
 		player.emit_signal("turn_completed")
 

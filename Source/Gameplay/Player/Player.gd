@@ -4,7 +4,7 @@ class_name Player
 
 var is_active = false
 var reinforcement = 10
-var initial_troops = 20
+var initial_troops = 9
 
 onready var player_state = load("res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd").new()
 
