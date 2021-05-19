@@ -78,9 +78,12 @@ func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
-				var state = country_state.clicked(self)
-				if state:
-					change_state(state)
+				country_clicked()
+
+func country_clicked():
+	var state = country_state.clicked(self)
+	if state:
+		change_state(state)
 
 func _input(event):
 	if event.is_action_pressed("reveal_country_names"):

@@ -25,6 +25,11 @@ func set_initial_troops(amount):
 func setup_state():
 	player_state.enter(self)
 
+func all_troops_placed():
+	var state = player_state.all_troops_placed()
+	if state:
+		change_state(state)
+
 func change_state(state):
 	var previous_state = player_state
 	previous_state.exit(self)

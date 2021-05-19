@@ -28,3 +28,6 @@ func country_clicked(player: Player, country: Country):
 
 func get_class():
 	return "Placement State"
+
+func all_troops_placed(player: Player):
+	return player_states.draft.new()

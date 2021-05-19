@@ -23,3 +23,6 @@ func exit(player: Player):
 
 func country_clicked(player: Player, country: Country):
 	pass
+
+func all_troops_placed(player: Player):
+	pass
