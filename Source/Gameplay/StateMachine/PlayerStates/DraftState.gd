@@ -14,6 +14,7 @@ var bonus_troops = {
 func enter(player: Player):
 	.enter(player)
 	add_reinforcement_amount(player)
+	player.hud.set_player_state(get_class())
 
 func add_reinforcement_amount(player: Player):
 	var default = int(player.countries_occupied / 3)

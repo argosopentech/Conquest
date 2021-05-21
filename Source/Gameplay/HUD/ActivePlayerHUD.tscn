@@ -1,19 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Graphics/Icons/Draft.png" type="Texture" id=3]
+[ext_resource path="res://Source/Gameplay/HUD/ActivePlayerHUD.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=2]
-size = 28
-outline_size = 1
+size = 32
+outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 36
-outline_size = 1
+outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
@@ -42,6 +44,7 @@ margin_top = -100.0
 margin_right = 240.0
 rect_min_size = Vector2( 320, 0 )
 custom_constants/separation = 10
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -73,12 +76,13 @@ rect_min_size = Vector2( 240, 60 )
 size_flags_vertical = 4
 text = "Player 1"
 
-[node name="InfoBorder" type="ColorRect" parent="."]
+[node name="InfoBorder" type="TextureRect" parent="."]
 margin_left = 110.0
 margin_right = 370.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
-color = Color( 0.117647, 0.117647, 0.117647, 1 )
+texture = ExtResource( 5 )
+expand = true
 
 [node name="Info" type="VBoxContainer" parent="InfoBorder"]
 anchor_right = 1.0
@@ -96,7 +100,7 @@ color = Color( 1, 1, 1, 0 )
 [node name="Name" type="Label" parent="InfoBorder/Info"]
 margin_top = 9.0
 margin_right = 260.0
-margin_bottom = 38.0
+margin_bottom = 42.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 text = "Player 1"
@@ -107,18 +111,19 @@ __meta__ = {
 }
 
 [node name="MarginMid" type="ColorRect" parent="InfoBorder/Info"]
-margin_top = 42.0
+margin_top = 46.0
 margin_right = 260.0
-margin_bottom = 47.0
+margin_bottom = 51.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 1, 1, 1, 0 )
 
 [node name="State" type="Label" parent="InfoBorder/Info"]
-margin_top = 51.0
+margin_top = 55.0
 margin_right = 260.0
-margin_bottom = 88.0
+margin_bottom = 92.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 5 )
+text = "ATTACK"
 align = 1
 valign = 1
 uppercase = true

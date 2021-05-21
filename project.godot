@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "ActivePlayerHUD",
+"language": "GDScript",
+"path": "res://Source/Gameplay/HUD/ActivePlayerHUD.gd"
+}, {
 "base": "CountryState",
 "class": "ActiveState",
 "language": "GDScript",
@@ -105,6 +110,7 @@ _global_script_classes=[ {
 "path": "res://Source/Menu/VMenu.gd"
 } ]
 _global_script_class_icons={
+"ActivePlayerHUD": "",
 "ActiveState": "",
 "AttackState": "",
 "Country": "",

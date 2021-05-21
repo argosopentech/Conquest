@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Source/Main/Menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Source/Main/Main.gd" type="Script" id=4]
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96
@@ -28,15 +29,39 @@ color = Color( 0.137255, 0.670588, 0.878431, 1 )
 
 [node name="Map" parent="." instance=ExtResource( 5 )]
 
-[node name="Menu" parent="." instance=ExtResource( 2 )]
-
-[node name="Heading" type="Label" parent="."]
+[node name="MenuBorder" type="TextureRect" parent="."]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-margin_left = -186.0
-margin_top = 160.0
-margin_right = 186.0
-margin_bottom = 257.0
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -50.0
+margin_right = 125.0
+margin_bottom = 210.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" parent="MenuBorder" instance=ExtResource( 2 )]
+margin_top = -110.0
+margin_bottom = 110.0
+
+[node name="HeadingBorder" type="TextureRect" parent="."]
+margin_left = 407.753
+margin_top = 145.357
+margin_right = 859.753
+margin_bottom = 261.357
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heading" type="Label" parent="HeadingBorder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
 text = "Conquest"
 align = 1

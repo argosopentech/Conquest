@@ -15,10 +15,10 @@ var countries_occupied_in_continents = {
 	"Australia": 0
 }
 var first_turn = true
-
 var initial_troops = 9
 
 onready var player_state = load("res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd").new()
+onready var hud: ActivePlayerHUD = find_node("ActivePlayerHUD")
 
 signal turn_completed
 
@@ -29,14 +29,29 @@ func setup():
 	set_active(false)
 	setup_reinforcements()
 	setup_state()
+	setup_hud()
 	connect("turn_completed", self, "turn_complete")
 
+func setup_hud():
+	hud.set_player_name(name)
+	hud.set_icon_color(GamePlay.colors[name])
+
 func turn_complete():
-	# hide hud
-	pass
+	if player_state.get_class() == "Reinforce" and first_turn:
+		return
+	hud.hide()
 
 func set_initial_troops(amount):
 	initial_troops = amount
+	hud.set_reinforcement_label(initial_troops)
+
+func increment_initial_troops():
+	initial_troops += 1
+	hud.set_reinforcement_label(initial_troops)
+	
+func decrement_initial_troops():
+	initial_troops -= 1
+	hud.set_reinforcement_label(initial_troops)
 
 func setup_state():
 	player_state.enter(self)
@@ -78,6 +93,10 @@ func move():
 
 func set_active(value):
 	is_active = value
+	if value:
+		hud.show()
+	else:
+		hud.hide()
 	set_process_input(value)
 
 func country_clicked(country: Country):

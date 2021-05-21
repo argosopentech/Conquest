@@ -2,7 +2,6 @@ extends Node2D
 
 class_name Game
 
-onready var hud = find_node("HUD")
 onready var countries = find_node("Countries")
 onready var players = find_node("PlayersQueue")
 
@@ -11,7 +10,7 @@ var active_player_index = -1
 var occupied_countries = 0
 var total_countries = 42
 var number_of_players_placed_all_troops = 0
-var auto_place = true
+var auto_place = false
 
 func _ready():
 	setup()
@@ -30,11 +29,9 @@ func set_initial_troops():
 		player.set_initial_troops(initial_troops)
 
 func active_player_changed(p_active_index, p_active_player: Player):
-	if not hud:
-		yield(self, "ready")
+	yield(get_tree(), "idle_frame")
 	active_player = p_active_player
 	active_player_index = p_active_index
-	hud.update_display(active_player_index, active_player)
 	update_countries_on_turn_complete()
 	if all_players_placed_all_troops():
 		p_active_player.all_troops_placed()

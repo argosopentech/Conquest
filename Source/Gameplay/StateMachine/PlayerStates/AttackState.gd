@@ -4,6 +4,7 @@ class_name AttackState
 
 func enter(player: Player):
 	.enter(player)
+	player.hud.set_player_state(get_class())
 
 func handle_input(player: Player, input: InputEvent):
 	return null
