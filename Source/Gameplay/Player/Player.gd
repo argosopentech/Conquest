@@ -53,6 +53,18 @@ func decrement_initial_troops():
 	initial_troops -= 1
 	hud.set_reinforcement_label(initial_troops)
 
+func set_reinforcement(amount = 0):
+	reinforcement = amount
+	hud.set_reinforcement_label(reinforcement)
+
+func increment_reinforcement(amount = 1):
+	reinforcement += amount
+	hud.set_reinforcement_label(reinforcement)
+
+func decrement_reinforcement(amount = 1):
+	reinforcement -= amount
+	hud.set_reinforcement_label(reinforcement)
+
 func setup_state():
 	player_state.enter(self)
 

@@ -93,14 +93,14 @@ __meta__ = {
 
 [node name="MarginTop" type="ColorRect" parent="InfoBorder/Info"]
 margin_right = 260.0
-margin_bottom = 5.0
-rect_min_size = Vector2( 0, 5 )
+margin_bottom = 8.0
+rect_min_size = Vector2( 0, 8 )
 color = Color( 1, 1, 1, 0 )
 
 [node name="Name" type="Label" parent="InfoBorder/Info"]
-margin_top = 9.0
+margin_top = 12.0
 margin_right = 260.0
-margin_bottom = 42.0
+margin_bottom = 45.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 text = "Player 1"
@@ -111,16 +111,16 @@ __meta__ = {
 }
 
 [node name="MarginMid" type="ColorRect" parent="InfoBorder/Info"]
-margin_top = 46.0
+margin_top = 49.0
 margin_right = 260.0
-margin_bottom = 51.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 1, 1, 1, 0 )
 
 [node name="State" type="Label" parent="InfoBorder/Info"]
-margin_top = 55.0
+margin_top = 58.0
 margin_right = 260.0
-margin_bottom = 92.0
+margin_bottom = 95.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 5 )
 text = "ATTACK"
