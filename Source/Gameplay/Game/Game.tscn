@@ -58,6 +58,7 @@ onready var player_name = find_node(\"PlayerName\")
 onready var player_reinforcement = find_node(\"PlayerReinforcement\")
 
 func update_display(index, player):
+	return
 	icon.color = GamePlay.colors[player.name]
 	player_name.text = \"Player \" + player.name
 	player_reinforcement.text = \"#\" + str(player.reinforcement)

@@ -29,6 +29,11 @@ func setup():
 	set_active(false)
 	setup_reinforcements()
 	setup_state()
+	connect("turn_completed", self, "turn_complete")
+
+func turn_complete():
+	# hide hud
+	pass
 
 func set_initial_troops(amount):
 	initial_troops = amount
@@ -53,6 +58,10 @@ func change_state(state):
 
 func setup_reinforcements():
 	reinforcement = randi() % 10 + 3
+
+func add_reinforcements(amount):
+	reinforcement += amount
+	# update hud
 
 func _input(event):
 	if not is_active:

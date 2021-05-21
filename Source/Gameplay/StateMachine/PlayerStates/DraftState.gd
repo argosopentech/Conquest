@@ -20,7 +20,7 @@ func add_reinforcement_amount(player: Player):
 	if default < 3:
 		default = 3
 	print("Player ", player.name, " gets ", default, " troops for occupying ", player.countries_occupied, " countries.")
-	player.reinforcement = default
+	player.reinforcement += default
 	add_continental_bonus(player)
 	add_first_turn_bonus(player)
 
@@ -52,4 +52,4 @@ func country_clicked(player: Player, country: Country):
 	pass
 
 func get_class():
-	return "Draft State"
+	return "Reinforce"

@@ -1,6 +1,36 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Graphics/Icons/Draft.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 36
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 42
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
 
 [node name="ActivePlayerHUD" type="HBoxContainer"]
 anchor_left = 0.5
@@ -16,13 +46,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerIcon" type="ColorRect" parent="."]
+[node name="IconBorder" type="ColorRect" parent="."]
 margin_right = 100.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 0 )
-color = Color( 0.392157, 0.784314, 1, 1 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Icon" type="ColorRect" parent="IconBorder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PlayerName" parent="." instance=ExtResource( 1 )]
+visible = false
 margin_left = 110.0
 margin_top = 20.0
 margin_right = 350.0
@@ -31,11 +73,122 @@ rect_min_size = Vector2( 240, 60 )
 size_flags_vertical = 4
 text = "Player 1"
 
+[node name="InfoBorder" type="ColorRect" parent="."]
+margin_left = 110.0
+margin_right = 370.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+color = Color( 0.117647, 0.117647, 0.117647, 1 )
+
+[node name="Info" type="VBoxContainer" parent="InfoBorder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginTop" type="ColorRect" parent="InfoBorder/Info"]
+margin_right = 260.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="Name" type="Label" parent="InfoBorder/Info"]
+margin_top = 9.0
+margin_right = 260.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "Player 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginMid" type="ColorRect" parent="InfoBorder/Info"]
+margin_top = 42.0
+margin_right = 260.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="State" type="Label" parent="InfoBorder/Info"]
+margin_top = 51.0
+margin_right = 260.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PlayerReinforcement" parent="." instance=ExtResource( 1 )]
-margin_left = 360.0
+visible = false
+margin_left = 370.0
 margin_top = 20.0
-margin_right = 460.0
+margin_right = 470.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 100, 60 )
 size_flags_vertical = 4
 text = "#30"
+
+[node name="DraftIcon" type="TextureRect" parent="."]
+visible = false
+margin_left = 380.0
+margin_right = 480.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Reinforcements" type="Label" parent="DraftIcon"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -43.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Go" type="ColorRect" parent="."]
+margin_left = 380.0
+margin_right = 480.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+color = Color( 0.117647, 0.117647, 0.117647, 1 )
+
+[node name="Button" type="TextureButton" parent="Go"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Go/Button"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -16.5
+margin_right = 20.0
+margin_bottom = 16.5
+custom_fonts/font = SubResource( 6 )
+text = "GO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

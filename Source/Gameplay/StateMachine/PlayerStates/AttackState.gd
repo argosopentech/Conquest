@@ -18,4 +18,4 @@ func country_clicked(player: Player, country: Country):
 	pass
 
 func get_class():
-	return "Attack State"
+	return "Attack"
