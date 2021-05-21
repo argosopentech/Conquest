@@ -19,11 +19,12 @@ func country_clicked(player: Player, country: Country):
 		if not country.occupier:
 			country.occupier = player
 			GamePlay.game.occupied_countries += 1
+			player.countries_occupied += 1
+			player.countries.append(country)
+			player.countries_occupied_in_continents[country.get_groups()[2]] += 1
 		country.increment_troops()
 		player.initial_troops -= 1
 		country.update()
-		if GamePlay.game.all_players_placed_all_troops():
-			return player_states.draft.new()
 		player.emit_signal("turn_completed")
 
 func get_class():
