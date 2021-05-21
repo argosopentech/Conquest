@@ -19,6 +19,9 @@ var initial_troops = 9
 
 onready var player_state = load("res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd").new()
 onready var hud: ActivePlayerHUD = find_node("ActivePlayerHUD")
+onready var activities = find_node("Activities")
+
+var Activity = preload("res://Source/Gameplay/HUD/PlayerActivity.tscn")
 
 signal turn_completed
 
@@ -31,6 +34,13 @@ func setup():
 	setup_state()
 	setup_hud()
 	connect("turn_completed", self, "turn_complete")
+
+var one_activity = false
+
+func set_activity(activity):
+	var player_activity = Activity.instance()
+	activities.add_child(player_activity)
+	player_activity.set_activity(activity)
 
 func setup_hud():
 	hud.set_player_name(name)

@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Source/Gameplay/Player/Player.gd"
 }, {
+"base": "TextureRect",
+"class": "PlayerActivity",
+"language": "GDScript",
+"path": "res://Source/Gameplay/HUD/PlayerActivity.gd"
+}, {
 "base": "StateMachine",
 "class": "PlayerState",
 "language": "GDScript",
@@ -124,6 +129,7 @@ _global_script_class_icons={
 "MainMenu": "",
 "PlacementState": "",
 "Player": "",
+"PlayerActivity": "",
 "PlayerState": "",
 "PlayersQueue": "",
 "SelectedState": "",
