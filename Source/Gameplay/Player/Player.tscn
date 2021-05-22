@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Source/Gameplay/HUD/ActivePlayerHUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Source/Gameplay/HUD/DeployMenu.tscn" type="PackedScene" id=3]
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,3 +25,13 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Overlay" type="ColorRect" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.117647, 0.117647, 0.117647, 0.352941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeployMenu" parent="HUD/Overlay" instance=ExtResource( 3 )]

@@ -24,16 +24,19 @@ script = ExtResource( 3 )
 
 [node name="Play" parent="." index="0" instance=ExtResource( 2 )]
 text = "Play"
+flat = true
 
 [node name="Options" parent="." index="1" instance=ExtResource( 2 )]
 margin_top = 80.0
 margin_bottom = 140.0
 text = "Options"
+flat = true
 
 [node name="Quit" parent="." index="2" instance=ExtResource( 2 )]
 margin_top = 160.0
 margin_bottom = 220.0
 text = "Quit"
+flat = true
 
 [node name="Overlay" type="CanvasLayer" parent="." index="3"]
 
