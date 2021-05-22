@@ -20,6 +20,7 @@ margin_left = -40.0
 margin_top = 72.0
 margin_bottom = 112.0
 grow_horizontal = 0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

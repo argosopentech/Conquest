@@ -4,8 +4,11 @@ class_name PlayerActivity
 
 onready var activity_label = $Label
 
+signal queue_freed
+
 func _ready():
 	yield(get_tree().create_timer(3), "timeout")
+	emit_signal("queue_freed")
 	queue_free()
 
 func set_activity(activity):

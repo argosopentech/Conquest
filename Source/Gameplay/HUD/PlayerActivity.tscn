@@ -18,6 +18,7 @@ margin_left = -780.0
 margin_top = 72.0
 margin_bottom = 142.0
 grow_horizontal = 0
+mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
