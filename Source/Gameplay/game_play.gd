@@ -16,6 +16,15 @@ var total_countries_in_continents = {
 	"Asia": 12,
 	"Australia": 4
 }
+var bordering_countries = {
+	"Afghanistan": ["China", "India", "MiddleEast", "Ukraine", "Ural"],
+	"Alaska": ["Kamchatka", "NorthwestTerritory", "Alberta"],
+	"Alberta": ["Alaska", "NorthwestTerritory", "Ontario", "WesternUnitedStates"],
+	"Argentina": ["Brazil", "Peru"],
+	"Brazil": ["Argentina", "Peru", "Venezuela"],
+	"CentralAmerica": ["EesternUnitedStates", "WesternUnitedStates", "Venezuela"],
+	"China": ["India", "Afghanistan", "Mongolia", "Siberia", "Ural", "Siam"],
+}
 
 var game: Game
 

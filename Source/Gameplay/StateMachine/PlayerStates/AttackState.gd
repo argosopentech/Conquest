@@ -2,6 +2,8 @@ extends PlayerState
 
 class_name AttackState
 
+var selected_country: Country = null
+
 func enter(player: Player):
 	.enter(player)
 	player.hud.set_player_state(get_class())
@@ -15,13 +17,9 @@ func update(player: Player):
 func exit(player: Player):
 	.exit(player)
 
-var state
-
 func country_clicked(player: Player, country: Country):
-	return
-	state = country.country_state.country_states.selected
-	print("New Country State: ", state.get_class())
-	country.change_state(state)
+	if not selected_country:
+		selected_country = country
 
 func get_class():
 	return "Attack"
