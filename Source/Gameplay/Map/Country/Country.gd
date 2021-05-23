@@ -24,6 +24,14 @@ func setup():
 	setup_name()
 	setup_state()
 	setup_troops()
+	call_deferred("setup_bordering_countries")
+
+func setup_bordering_countries():
+	if GamePlay.game:
+		for country_index in GamePlay.bordering_countries[name].size():
+			var country_name = GamePlay.bordering_countries[name][country_index]
+			if GamePlay.game.has_node("Countries/" + country_name):
+				GamePlay.bordering_countries[name][country_index] = GamePlay.game.get_node("Countries/" + country_name)
 
 func setup_troops():
 	troops = 0
