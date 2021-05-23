@@ -6,20 +6,20 @@
 [ext_resource path="res://Source/Button/Button.gd" type="Script" id=4]
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=5]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 800, 500 )
 modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=2]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="Theme" id=6]
-default_font = SubResource( 7 )
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
 LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
 LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
@@ -30,39 +30,39 @@ LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
 LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 4 )
-LineEdit/styles/normal = SubResource( 4 )
-LineEdit/styles/read_only = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 1 )
+LineEdit/styles/normal = SubResource( 1 )
+LineEdit/styles/read_only = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=5]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -76,7 +76,7 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -92,7 +92,7 @@ margin_left = -186.5
 margin_top = -109.5
 margin_right = 186.5
 margin_bottom = 109.5
-theme = SubResource( 6 )
+theme = SubResource( 3 )
 texture = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
@@ -119,7 +119,7 @@ margin_top = 9.0
 margin_right = 373.0
 margin_bottom = 46.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Deploy"
 align = 1
 valign = 1
@@ -156,7 +156,7 @@ margin_top = 121.0
 margin_right = 373.0
 margin_bottom = 158.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 text = "to Japan"
 align = 1
 valign = 1
@@ -186,11 +186,11 @@ margin_left = 20.0
 margin_right = 166.0
 margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/focus = SubResource( 10 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 8 )
+custom_styles/normal = SubResource( 10 )
 text = "Cancel"
 flat = true
 script = ExtResource( 4 )
@@ -206,11 +206,11 @@ margin_left = 206.0
 margin_right = 353.0
 margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/focus = SubResource( 10 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 8 )
+custom_styles/normal = SubResource( 10 )
 text = "Deploy"
 flat = true
 script = ExtResource( 4 )
@@ -227,3 +227,7 @@ margin_right = 373.0
 margin_bottom = 219.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
+
+[connection signal="value_changed" from="Info/TroopsRange" to="." method="value_changed"]
+[connection signal="pressed" from="Info/HMenu/Cancel" to="." method="cancel"]
+[connection signal="pressed" from="Info/HMenu/Deploy" to="." method="deploy"]

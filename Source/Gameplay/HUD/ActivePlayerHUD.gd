@@ -7,7 +7,9 @@ onready var name_label = $InfoBorder/Info/Name
 onready var state_label = $InfoBorder/Info/State
 onready var reinforcement_label = $DraftIcon/Reinforcements
 onready var draft_icon = $DraftIcon
-onready var go_button = $Go
+onready var go_button = $GoButton
+
+signal go_pressed
 
 func set_icon_color(color):
 	icon.color = color
@@ -32,3 +34,6 @@ func hide_go_button():
 
 func show_go_button():
 	go_button.show()
+
+func go_pressed():
+	emit_signal("go_pressed")

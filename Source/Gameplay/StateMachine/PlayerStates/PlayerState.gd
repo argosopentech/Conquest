@@ -26,3 +26,6 @@ func country_clicked(player: Player, country: Country):
 
 func all_troops_placed(player: Player):
 	pass
+
+func go_pressed(player: Player):
+	pass

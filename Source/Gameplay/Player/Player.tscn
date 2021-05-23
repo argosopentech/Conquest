@@ -9,6 +9,8 @@ script = ExtResource( 1 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+[node name="DeployMenu" parent="HUD" instance=ExtResource( 3 )]
+
 [node name="ActivePlayerHUD" parent="HUD" instance=ExtResource( 2 )]
 margin_top = -116.0
 margin_bottom = -16.0
@@ -25,13 +27,3 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Overlay" type="ColorRect" parent="HUD"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.117647, 0.117647, 0.117647, 0.352941 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DeployMenu" parent="HUD/Overlay" instance=ExtResource( 3 )]

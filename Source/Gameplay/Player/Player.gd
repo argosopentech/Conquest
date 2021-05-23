@@ -19,6 +19,7 @@ var initial_troops = 9
 
 onready var player_state = load("res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd").new()
 onready var hud: ActivePlayerHUD = find_node("ActivePlayerHUD")
+onready var deploy_menu: DeployMenu = find_node("DeployMenu")
 onready var activities = find_node("Activities")
 
 var Activity = preload("res://Source/Gameplay/HUD/PlayerActivity.tscn")
@@ -31,11 +32,9 @@ func _ready():
 func setup():
 	set_active(false)
 	setup_reinforcements()
-	setup_state()
 	setup_hud()
 	connect("turn_completed", self, "turn_complete")
-
-var one_activity = false
+	setup_state()
 
 func set_activity(activity):
 	var player_activity = Activity.instance()
@@ -45,6 +44,19 @@ func set_activity(activity):
 func setup_hud():
 	hud.set_player_name(name)
 	hud.set_icon_color(GamePlay.colors[name])
+	hud.connect("go_pressed", self, "go_pressed")
+	deploy_menu.hide()
+	deploy_menu.connect("deployed", self, "troops_deployed")
+
+func go_pressed():
+	var state = player_state.go_pressed(self)
+	if state:
+		change_state(state)
+
+func troops_deployed(troops: int, country: Country):
+	var state = player_state.troops_deployed(self, troops, country)
+	if state:
+		change_state(state)
 
 func turn_complete():
 	if player_state.get_class() == "Reinforce" and first_turn:

@@ -57,7 +57,19 @@ func exit(player: Player):
 	.exit(player)
 
 func country_clicked(player: Player, country: Country):
-	pass
+	if player.reinforcement:
+		player.deploy_menu.show()
+		player.deploy_menu.add_troops(player.reinforcement, country)
+
+func troops_deployed(player: Player, troops: int, country: Country):
+	player.decrement_reinforcement(troops)
+	country.add_troops(troops)
+	if player.reinforcement == 0:
+		player.hud.hide_draft_icon()
+		player.hud.show_go_button()
+
+func go_pressed(player: Player):
+	return player_states.attack.new()
 
 func get_class():
 	return "Reinforce"
