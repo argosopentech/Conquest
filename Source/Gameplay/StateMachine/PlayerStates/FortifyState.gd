@@ -20,3 +20,9 @@ func country_clicked(player: Player, country: Country):
 
 func get_class():
 	return "Fortify"
+
+func go_pressed(player: Player):
+	player.emit_signal("turn_completed")
+
+func all_troops_placed(player: Player):
+	return player_states.draft.new()

@@ -5,7 +5,7 @@ class_name Game
 onready var countries = find_node("Countries")
 onready var players = find_node("PlayersQueue")
 
-var active_player = null
+var active_player: Player = null
 var active_player_index = -1
 var occupied_countries = 0
 var total_countries = 42

@@ -35,9 +35,10 @@ func setup_state():
 	country_state.enter(self)
 
 func _process(delta):
-	var state = country_state.update(self)
-	if state:
-		change_state(state)
+	if country_state.has_method("update"):
+		var state = country_state.update(self)
+		if state:
+			change_state(state)
 
 func update():
 	var state = country_state.update(self)
@@ -48,6 +49,7 @@ func change_state(state):
 	var previous_state = country_state
 	previous_state.exit(self)
 	country_state = state
+	#print(state.get_class())
 	country_state.enter(self)
 	previous_state.queue_free()
 

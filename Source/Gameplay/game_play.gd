@@ -17,7 +17,7 @@ var total_countries_in_continents = {
 	"Australia": 4
 }
 
-var game
+var game: Game
 
 func _ready():
 	pass

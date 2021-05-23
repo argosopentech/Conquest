@@ -62,6 +62,7 @@ func turn_complete():
 	if player_state.get_class() == "Reinforce" and first_turn:
 		return
 	hud.hide()
+	set_active(false)
 
 func set_initial_troops(amount):
 	initial_troops = amount

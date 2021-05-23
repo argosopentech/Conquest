@@ -41,7 +41,7 @@ func add_first_turn_bonus(player: Player):
 		var player_name = int(player.name)
 		if player_name > 3:
 			var turn_bonus = player_name % 3
-			var activity = "Player " + player_name + " gets " + str(turn_bonus) + " for being at " + player_name + " position"
+			var activity = "Player " + str(player_name) + " gets " + str(turn_bonus) + " for being at " + str(player_name) + " position"
 			print(activity)
 			player.set_activity(activity)
 			player.increment_reinforcement(turn_bonus)

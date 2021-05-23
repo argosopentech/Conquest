@@ -34,6 +34,9 @@ func exit(country: Country):
 func clicked(country: Country):
 	pass
 
+func change_state(country: Country, state):
+	country.change_state(state)
+
 func set_country_color(country: Country):
 	if country.occupier:
 		country.sprite.modulate = GamePlay.colors[country.occupier.name]

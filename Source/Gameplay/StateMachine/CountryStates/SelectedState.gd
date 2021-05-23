@@ -16,4 +16,7 @@ func exit(country: Country):
 	pass
 
 func clicked(country: Country):
-	return country_states.active.new()
+	country_states.active.new()
+
+func get_class():
+	return "Selected State"

@@ -15,8 +15,16 @@ func update(player: Player):
 func exit(player: Player):
 	.exit(player)
 
+var state
+
 func country_clicked(player: Player, country: Country):
-	pass
+	return
+	state = country.country_state.country_states.selected
+	print("New Country State: ", state.get_class())
+	country.change_state(state)
 
 func get_class():
 	return "Attack"
+
+func go_pressed(player: Player):
+	return player_states.fortify.new()
