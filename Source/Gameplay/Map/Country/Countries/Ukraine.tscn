@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Graphics/Map/Countries/Ukraine.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/Map/Borders/Ukraine.png" type="Texture" id=3]
 
-[node name="Ukrain" groups=[
+[node name="Ukraine" groups=[
 "Europe",
 ] instance=ExtResource( 1 )]
 

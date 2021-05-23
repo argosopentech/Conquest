@@ -40,7 +40,7 @@
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/WesternEurope.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/Japan.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/GreatBritain.tscn" type="PackedScene" id=41]
-[ext_resource path="res://Source/Gameplay/Map/Country/Countries/Ukrain.tscn" type="PackedScene" id=42]
+[ext_resource path="res://Source/Gameplay/Map/Country/Countries/Ukraine.tscn" type="PackedScene" id=42]
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/Alaska.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/Alberta.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/Afghanistan.tscn" type="PackedScene" id=45]
@@ -196,7 +196,7 @@ position = Vector2( 643.023, 555.617 )
 [node name="SouthernEurope" parent="Countries" instance=ExtResource( 34 )]
 position = Vector2( 603.841, 237.156 )
 
-[node name="Ukrain" parent="Countries" instance=ExtResource( 42 )]
+[node name="Ukraine" parent="Countries" instance=ExtResource( 42 )]
 position = Vector2( 711.608, 151.09 )
 
 [node name="Ural" parent="Countries" instance=ExtResource( 17 )]
