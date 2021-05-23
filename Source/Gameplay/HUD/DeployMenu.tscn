@@ -120,7 +120,7 @@ margin_right = 373.0
 margin_bottom = 46.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
-text = "Deploy To"
+text = "Deploy"
 align = 1
 valign = 1
 __meta__ = {
@@ -134,35 +134,35 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="Country" type="Label" parent="Info"]
+[node name="TroopsRange" type="SpinBox" parent="Info"]
 margin_top = 59.0
 margin_right = 373.0
-margin_bottom = 96.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
-text = "Japan"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginMid2" type="ColorRect" parent="Info"]
-margin_top = 100.0
-margin_right = 373.0
-margin_bottom = 105.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="TroopsRange" type="SpinBox" parent="Info"]
-margin_top = 109.0
-margin_right = 373.0
-margin_bottom = 158.0
+margin_bottom = 108.0
 rect_min_size = Vector2( 0, 49 )
 min_value = 1.0
 value = 1.0
 align = 1
 suffix = "troops"
+
+[node name="MarginMid2" type="ColorRect" parent="Info"]
+margin_top = 112.0
+margin_right = 373.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Country" type="Label" parent="Info"]
+margin_top = 121.0
+margin_right = 373.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "to Japan"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginMid3" type="ColorRect" parent="Info"]
 margin_top = 162.0
