@@ -70,6 +70,17 @@ margin_right = 212.0
 margin_bottom = -32.0
 text = "Back"
 
+[node name="AutoPlace" parent="HUD" instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -212.0
+margin_top = -92.0
+margin_right = -32.0
+margin_bottom = -32.0
+text = "Auto Place"
+
 [node name="PlayersQueue" parent="." instance=ExtResource( 4 )]
 
 [node name="1" parent="PlayersQueue" instance=ExtResource( 5 )]
@@ -218,6 +229,7 @@ position = Vector2( 195.311, 187.05 )
 position = Vector2( 958.998, 59.45 )
 
 [connection signal="pressed" from="HUD/Quit" to="." method="quit"]
+[connection signal="pressed" from="HUD/AutoPlace" to="." method="auto_place_turned_on"]
 [connection signal="active_player_changed" from="PlayersQueue" to="." method="active_player_changed"]
 
 [editable path="Background"]

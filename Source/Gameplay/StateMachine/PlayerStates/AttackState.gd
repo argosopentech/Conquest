@@ -7,6 +7,8 @@ var selected_country: Country = null
 func enter(player: Player):
 	.enter(player)
 	player.hud.set_player_state(get_class())
+	for country in player.countries:
+		country.active_player_changed(player)
 
 func handle_input(player: Player, input: InputEvent):
 	return null

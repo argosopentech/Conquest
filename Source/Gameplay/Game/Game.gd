@@ -10,7 +10,7 @@ var active_player_index = -1
 var occupied_countries = 0
 var total_countries = 42
 var number_of_players_placed_all_troops = 0
-var auto_place = true
+var auto_place = false
 
 func _ready():
 	setup()
@@ -48,6 +48,10 @@ func auto_place_troops():
 		country.country_clicked()
 		if troops_before < country.troops:
 			placed = true
+
+func auto_place_turned_on():
+	auto_place = true
+	auto_place_troops()
 
 func _input(event):
 	if event.is_action_pressed("quit"):
