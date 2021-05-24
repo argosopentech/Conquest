@@ -36,4 +36,4 @@ func value_changed(value):
 		troops_range.suffix = "troop"
 	else:
 		troops_range.suffix = "troops"
-		
+

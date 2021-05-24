@@ -20,6 +20,7 @@ var initial_troops = 9
 onready var player_state = load("res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd").new()
 onready var hud: ActivePlayerHUD = find_node("ActivePlayerHUD")
 onready var deploy_menu: DeployMenu = find_node("DeployMenu")
+onready var attacking_menu: AttackingMenu = find_node("AttackingMenu")
 onready var activities = find_node("Activities")
 
 var Activity = preload("res://Source/Gameplay/HUD/PlayerActivity.tscn")
@@ -46,7 +47,14 @@ func setup_hud():
 	hud.set_icon_color(GamePlay.colors[name])
 	hud.connect("go_pressed", self, "go_pressed")
 	deploy_menu.hide()
+	attacking_menu.hide()
 	deploy_menu.connect("deployed", self, "troops_deployed")
+	attacking_menu.connect("attacked", self, "player_attacked")
+
+func player_attacked(troops: int, player_country: Country, opponent_country: Country):
+	var state = player_state.player_attacked(self, troops, player_country, opponent_country)
+	if state:
+		change_state(state)
 
 func go_pressed():
 	var state = player_state.go_pressed(self)

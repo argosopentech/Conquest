@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Source/Gameplay/StateMachine/PlayerStates/AttackState.gd"
 }, {
+"base": "TextureRect",
+"class": "AttackingMenu",
+"language": "GDScript",
+"path": "res://Source/Gameplay/HUD/AttackingMenu.gd"
+}, {
 "base": "Area2D",
 "class": "Country",
 "language": "GDScript",
@@ -123,6 +128,7 @@ _global_script_class_icons={
 "ActivePlayerHUD": "",
 "ActiveState": "",
 "AttackState": "",
+"AttackingMenu": "",
 "Country": "",
 "CountryState": "",
 "DeployMenu": "",
