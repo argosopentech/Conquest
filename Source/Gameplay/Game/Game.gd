@@ -4,6 +4,7 @@ class_name Game
 
 onready var countries = find_node("Countries")
 onready var players = find_node("PlayersQueue")
+onready var auto_place_button = find_node("AutoPlace")
 
 var active_player: Player = null
 var active_player_index = -1
@@ -35,6 +36,7 @@ func active_player_changed(p_active_index, p_active_player: Player):
 	update_countries_on_turn_complete()
 	if all_players_placed_all_troops():
 		p_active_player.all_troops_placed()
+		auto_place_button.hide()
 	else:
 		if auto_place:
 			auto_place_troops()
