@@ -22,6 +22,9 @@ func exit(country: Country):
 func clicked(country: Country):
 	GamePlay.game.active_player.country_clicked(country)
 	if GamePlay.game.active_player.player_state.get_class() == "Attack":
+		for bordering_country in GamePlay.bordering_countries[country.name]:
+			if bordering_country.occupier != country.occupier:
+				bordering_country.change_country_state("active")
 		return country_states.selected.new()
 
 func active_player_changed(country: Country, new_player: Player):
@@ -43,3 +46,9 @@ func active_player_changed(country: Country, new_player: Player):
 
 func get_class():
 	return "Active State"
+
+func change_country_state(country: Country, state_name = ""):
+	if state_name == "selected":
+		return country_states.selected.new()
+	if state_name == "in_active":
+		return country_states.in_active.new()

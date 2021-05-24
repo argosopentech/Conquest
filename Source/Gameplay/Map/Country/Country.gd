@@ -31,7 +31,7 @@ func setup_bordering_countries():
 		for country_index in GamePlay.bordering_countries[name].size():
 			var country_name = GamePlay.bordering_countries[name][country_index]
 			if GamePlay.game.has_node("Countries/" + country_name):
-				GamePlay.bordering_countries[name][country_index] = GamePlay.game.get_node("Countries/" + country_name)
+				GamePlay.bordering_countries_nodes[name][country_index] = GamePlay.game.get_node("Countries/" + country_name)
 
 func setup_troops():
 	troops = 0
@@ -129,5 +129,10 @@ func update_troops_label():
 
 func active_player_changed(new_player):
 	var state = country_state.active_player_changed(self, new_player)
+	if state:
+		change_state(state)
+
+func change_country_state(state_name = ""):
+	var state = country_state.change_country_state(self, state_name)
 	if state:
 		change_state(state)

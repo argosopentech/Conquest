@@ -75,3 +75,6 @@ func dim_country_color(country: Country):
 
 func active_player_changed(country: Country, new_player: Player):
 	pass
+
+func change_country_state(country: Country, state_name = ""):
+	pass
