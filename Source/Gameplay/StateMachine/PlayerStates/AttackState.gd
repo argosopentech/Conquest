@@ -20,6 +20,8 @@ func exit(player: Player):
 	.exit(player)
 
 func country_clicked(player: Player, country: Country):
+	if country.occupier != player:
+		return
 	if not selected_country:
 		selected_country = country
 

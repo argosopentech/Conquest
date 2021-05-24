@@ -16,7 +16,11 @@ func exit(country: Country):
 	pass
 
 func clicked(country: Country):
-	country_states.active.new()
+	if GamePlay.game.active_player.player_state is AttackState:
+		for bordering_country in GamePlay.bordering_countries_nodes[country.name]:
+			if bordering_country.occupier != country.occupier:
+				bordering_country.change_country_state("in_active")
+	return country_states.active.new()
 
 func get_class():
 	return "Selected State"
