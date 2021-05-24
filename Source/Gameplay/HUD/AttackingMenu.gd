@@ -21,9 +21,9 @@ var opponent_country: Country = null
 signal attacked
 
 func _ready():
-	add_troops()
+	attack_details()
 
-func add_troops(pc: Country = null, oc: Country = null):
+func attack_details(pc: Country = null, oc: Country = null):
 	var troops = 0
 	if pc == null:
 		troops = 8

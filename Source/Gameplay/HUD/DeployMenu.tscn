@@ -84,6 +84,7 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [node name="DeployMenu" type="TextureRect"]
+self_modulate = Color( 1, 1, 1, 0.941176 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

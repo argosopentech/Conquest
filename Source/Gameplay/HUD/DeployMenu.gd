@@ -21,7 +21,7 @@ func add_troops(troops: int, c: Country = null):
 	else:
 		troops_range.suffix = "troops"
 	if country:
-		country_label.text = country.get_name()
+		country_label.text = "To " + country.get_name()
 
 func cancel():
 	hide()

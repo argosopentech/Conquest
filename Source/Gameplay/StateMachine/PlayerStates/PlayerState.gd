@@ -29,3 +29,6 @@ func all_troops_placed(player: Player):
 
 func go_pressed(player: Player):
 	pass
+
+func player_attacked(player: Player, troops: int, player_country: Country, opponent_country: Country):
+	pass

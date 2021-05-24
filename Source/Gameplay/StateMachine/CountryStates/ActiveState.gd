@@ -21,12 +21,12 @@ func exit(country: Country):
 
 func clicked(country: Country):
 	GamePlay.game.active_player.country_clicked(country)
-	if country.occupier == GamePlay.game.active_player:
-		if GamePlay.game.active_player.player_state.get_class() == "Attack":
-			for bordering_country in GamePlay.bordering_countries_nodes[country.name]:
-				if bordering_country.occupier != country.occupier:
-					bordering_country.change_country_state("active")
-			return country_states.selected.new()
+#	if country.occupier == GamePlay.game.active_player:
+#		if GamePlay.game.active_player.player_state.get_class() == "Attack":
+#			for bordering_country in GamePlay.bordering_countries_nodes[country.name]:
+#				if bordering_country.occupier != country.occupier:
+#					bordering_country.change_country_state("active")
+#			return country_states.selected.new()
 
 func active_player_changed(country: Country, new_player: Player):
 	if new_player.player_state is PlacementState or new_player.player_state is FortifyState:

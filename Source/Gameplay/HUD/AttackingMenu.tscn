@@ -91,6 +91,7 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [node name="AttackingMenu" type="TextureRect"]
+self_modulate = Color( 1, 1, 1, 0.941176 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -134,12 +135,14 @@ rect_min_size = Vector2( 10, 0 )
 
 [node name="Player" type="VBoxContainer" parent="Info/Players"]
 margin_left = 14.0
-margin_right = 278.0
+margin_right = 286.0
 margin_bottom = 179.0
+rect_min_size = Vector2( 272, 179 )
+size_flags_horizontal = 3
 
 [node name="IconBorder" type="ColorRect" parent="Info/Players/Player"]
-margin_left = 92.0
-margin_right = 172.0
+margin_left = 96.0
+margin_right = 176.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
@@ -159,7 +162,7 @@ __meta__ = {
 
 [node name="Name" type="Label" parent="Info/Players/Player"]
 margin_top = 84.0
-margin_right = 264.0
+margin_right = 272.0
 margin_bottom = 113.0
 custom_fonts/font = SubResource( 11 )
 text = "Player 1"
@@ -168,7 +171,7 @@ valign = 1
 
 [node name="Country" type="Label" parent="Info/Players/Player"]
 margin_top = 117.0
-margin_right = 264.0
+margin_right = 272.0
 margin_bottom = 146.0
 custom_fonts/font = SubResource( 11 )
 text = "Eastern United States"
@@ -177,7 +180,7 @@ valign = 1
 
 [node name="Troops" type="Label" parent="Info/Players/Player"]
 margin_top = 150.0
-margin_right = 264.0
+margin_right = 272.0
 margin_bottom = 179.0
 custom_fonts/font = SubResource( 11 )
 text = "6 Troops"
@@ -185,7 +188,7 @@ align = 1
 valign = 1
 
 [node name="Vs" type="Label" parent="Info/Players"]
-margin_left = 282.0
+margin_left = 290.0
 margin_top = 71.0
 margin_right = 403.0
 margin_bottom = 108.0
@@ -198,6 +201,8 @@ valign = 1
 margin_left = 407.0
 margin_right = 679.0
 margin_bottom = 179.0
+rect_min_size = Vector2( 272, 179 )
+size_flags_horizontal = 3
 
 [node name="IconBorder" type="ColorRect" parent="Info/Players/Opponent"]
 margin_left = 96.0
