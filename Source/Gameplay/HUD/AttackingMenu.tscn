@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=3]
-[ext_resource path="res://Source/Button/Button.gd" type="Script" id=4]
 [ext_resource path="res://Source/Gameplay/HUD/AttackingMenu.gd" type="Script" id=5]
+[ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -55,40 +55,47 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFont" id=17]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
 
 [node name="AttackingMenu" type="TextureRect"]
 self_modulate = Color( 1, 1, 1, 0.941176 )
@@ -97,9 +104,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -346.5
-margin_top = -201.5
+margin_top = -214.0
 margin_right = 346.5
-margin_bottom = 201.5
+margin_bottom = 214.0
 theme = SubResource( 3 )
 texture = ExtResource( 3 )
 expand = true
@@ -325,57 +332,55 @@ color = Color( 0, 0, 0, 1 )
 [node name="HMenu" parent="Info" instance=ExtResource( 1 )]
 margin_top = 355.0
 margin_right = 693.0
-margin_bottom = 394.0
+margin_bottom = 419.0
 size_flags_vertical = 3
 
 [node name="MarginLeft" type="Label" parent="Info/HMenu"]
-margin_top = 1.0
-margin_bottom = 38.0
+margin_top = 13.0
+margin_bottom = 50.0
 
-[node name="Cancel" type="Button" parent="Info/HMenu"]
+[node name="Cancel" parent="Info/HMenu" instance=ExtResource( 6 )]
 margin_left = 20.0
 margin_right = 326.0
-margin_bottom = 39.0
-size_flags_horizontal = 3
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
-text = "Cancel"
+margin_bottom = 64.0
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
+text = "No"
 flat = true
-script = ExtResource( 4 )
 
 [node name="MarginMid" type="Label" parent="Info/HMenu"]
 margin_left = 346.0
-margin_top = 1.0
+margin_top = 13.0
 margin_right = 346.0
-margin_bottom = 38.0
+margin_bottom = 50.0
 
-[node name="Attack" type="Button" parent="Info/HMenu"]
+[node name="Attack" parent="Info/HMenu" instance=ExtResource( 6 )]
 margin_left = 366.0
 margin_right = 673.0
-margin_bottom = 39.0
-size_flags_horizontal = 3
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
-text = "Attack"
+margin_bottom = 64.0
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
+text = "Yes"
 flat = true
-script = ExtResource( 4 )
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
 margin_left = 693.0
-margin_top = 1.0
+margin_top = 13.0
 margin_right = 693.0
-margin_bottom = 38.0
+margin_bottom = 50.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 398.0
+margin_top = 423.0
 margin_right = 693.0
-margin_bottom = 403.0
+margin_bottom = 428.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 

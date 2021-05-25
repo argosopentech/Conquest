@@ -8,6 +8,8 @@ onready var state_label = $InfoBorder/Info/State
 onready var reinforcement_label = $DraftIcon/Reinforcements
 onready var draft_icon = $DraftIcon
 onready var go_button = $GoButton
+onready var focused_audio = $GoButton/Go/Focused
+onready var pressed_audio = $GoButton/Go/Pressed
 
 signal go_pressed
 
@@ -36,4 +38,5 @@ func show_go_button():
 	go_button.show()
 
 func go_pressed():
+	pressed_audio.play()
 	emit_signal("go_pressed")

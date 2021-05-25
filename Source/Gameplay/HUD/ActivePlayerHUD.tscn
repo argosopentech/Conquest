@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://Assets/Audio/glitch_001.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Graphics/Icons/Draft.png" type="Texture" id=3]
 [ext_resource path="res://Source/Gameplay/HUD/ActivePlayerHUD.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Audio/glitch_002.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -184,5 +186,11 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Focused" type="AudioStreamPlayer" parent="GoButton/Go"]
+stream = ExtResource( 1 )
+
+[node name="Pressed" type="AudioStreamPlayer" parent="GoButton/Go"]
+stream = ExtResource( 6 )
 
 [connection signal="pressed" from="GoButton/Go" to="." method="go_pressed"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Source/Button/Button.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=4]
 [ext_resource path="res://Source/Gameplay/HUD/StartGameMenu.gd" type="Script" id=5]
+[ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -48,50 +48,22 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+[sub_resource type="DynamicFont" id=6]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
 
 [node name="StartGameMenu" type="TextureRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -209.5
-margin_top = -119.0
-margin_right = 209.5
-margin_bottom = 119.0
+margin_left = -240.0
+margin_top = -125.0
+margin_right = 240.0
+margin_bottom = 125.0
 theme = SubResource( 3 )
 texture = ExtResource( 4 )
 expand = true
@@ -109,14 +81,14 @@ __meta__ = {
 }
 
 [node name="MarginTop" type="ColorRect" parent="Info"]
-margin_right = 419.0
+margin_right = 480.0
 margin_bottom = 5.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="Info"]
 margin_top = 9.0
-margin_right = 419.0
+margin_right = 480.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 4 )
@@ -129,14 +101,14 @@ __meta__ = {
 
 [node name="MarginMid1" type="ColorRect" parent="Info"]
 margin_top = 62.0
-margin_right = 419.0
+margin_right = 480.0
 margin_bottom = 67.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Info" type="Label" parent="Info"]
 margin_top = 71.0
-margin_right = 419.0
+margin_right = 480.0
 margin_bottom = 108.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 5 )
@@ -149,14 +121,14 @@ __meta__ = {
 
 [node name="MarginMid2" type="ColorRect" parent="Info"]
 margin_top = 112.0
-margin_right = 419.0
+margin_right = 480.0
 margin_bottom = 117.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="PlayersRange" type="SpinBox" parent="Info"]
 margin_top = 121.0
-margin_right = 419.0
+margin_right = 480.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 0, 49 )
 min_value = 2.0
@@ -166,67 +138,55 @@ align = 1
 
 [node name="MarginMid3" type="ColorRect" parent="Info"]
 margin_top = 174.0
-margin_right = 419.0
+margin_right = 480.0
 margin_bottom = 179.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HMenu" parent="Info" instance=ExtResource( 1 )]
 margin_top = 183.0
-margin_right = 419.0
-margin_bottom = 229.0
+margin_right = 480.0
+margin_bottom = 243.0
 size_flags_vertical = 3
 
 [node name="MarginLeft" type="Label" parent="Info/HMenu"]
-margin_top = 4.0
-margin_bottom = 41.0
+margin_top = 11.0
+margin_bottom = 48.0
 
-[node name="No" type="Button" parent="Info/HMenu"]
+[node name="No" parent="Info/HMenu" instance=ExtResource( 6 )]
 margin_left = 20.0
-margin_right = 189.0
-margin_bottom = 46.0
-size_flags_horizontal = 3
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+margin_right = 220.0
+custom_fonts/font = SubResource( 6 )
 text = "No"
 flat = true
-script = ExtResource( 3 )
 
 [node name="MarginMid" type="Label" parent="Info/HMenu"]
-margin_left = 209.0
-margin_top = 4.0
-margin_right = 209.0
-margin_bottom = 41.0
+margin_left = 240.0
+margin_top = 11.0
+margin_right = 240.0
+margin_bottom = 48.0
 
-[node name="Yes" type="Button" parent="Info/HMenu"]
-margin_left = 229.0
-margin_right = 399.0
-margin_bottom = 46.0
-size_flags_horizontal = 3
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+[node name="Yes" parent="Info/HMenu" instance=ExtResource( 6 )]
+margin_left = 260.0
+margin_right = 460.0
+custom_fonts/font = SubResource( 6 )
 text = "Yes"
 flat = true
-script = ExtResource( 3 )
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
-margin_left = 419.0
-margin_top = 4.0
-margin_right = 419.0
-margin_bottom = 41.0
+margin_left = 480.0
+margin_top = 11.0
+margin_right = 480.0
+margin_bottom = 48.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 233.0
-margin_right = 419.0
-margin_bottom = 238.0
+margin_top = 247.0
+margin_right = 480.0
+margin_bottom = 252.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [connection signal="pressed" from="Info/HMenu/No" to="." method="cancel"]
 [connection signal="pressed" from="Info/HMenu/Yes" to="." method="start_game"]
+
+[editable path="Info/HMenu/No"]

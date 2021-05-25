@@ -1,37 +1,39 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Source/Button/Button.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Audio/glitch_002.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/glitch_001.ogg" type="AudioStream" id=4]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -49,14 +51,25 @@ font_data = ExtResource( 1 )
 margin_right = 180.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 180, 60 )
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 1 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 text = "Button"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Focused" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="focus_entered" from="." to="." method="focus_entered"]
+[connection signal="pressed" from="." to="." method="button_pressed"]
