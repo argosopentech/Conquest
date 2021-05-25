@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Source/Menu/VMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Source/Main/Menu.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
+size = 48
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 32
-outline_size = 1
+outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
@@ -40,16 +47,14 @@ flat = true
 
 [node name="Overlay" type="CanvasLayer" parent="." index="3"]
 
-[node name="QuitConfirm" type="Control" parent="Overlay" index="0"]
+[node name="QuitConfirm" type="ColorRect" parent="Overlay" index="0"]
 pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color( 0, 0, 0, 0.686275 )
 
-[node name="ColorRect" type="ColorRect" parent="Overlay/QuitConfirm" index="0"]
+[node name="ColorRect" type="TextureRect" parent="Overlay/QuitConfirm" index="0"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -57,47 +62,74 @@ anchor_bottom = 0.5
 margin_left = -210.0
 margin_top = -140.0
 margin_right = 210.0
-margin_bottom = 140.0
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 189.0
+texture = ExtResource( 5 )
+expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Overlay/QuitConfirm/ColorRect" index="0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VMenu" parent="Overlay/QuitConfirm/ColorRect/MarginContainer" index="0" instance=ExtResource( 1 )]
-margin_right = 380.0
-margin_bottom = 240.0
+margin_right = 420.0
+margin_bottom = 329.0
 
-[node name="Label" type="Label" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="0"]
-margin_right = 380.0
-margin_bottom = 69.0
-custom_fonts/font = SubResource( 1 )
-text = "Are you sure, you want to quit the game?"
+[node name="MarginTop" type="ColorRect" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="0"]
+margin_right = 420.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="1"]
+margin_top = 25.0
+margin_right = 420.0
+margin_bottom = 94.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 3 )
+text = "Quit Game?"
 align = 1
 valign = 1
 autowrap = true
 
-[node name="quit_confirm" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="1" instance=ExtResource( 2 )]
-margin_top = 89.0
-margin_right = 380.0
-margin_bottom = 149.0
-text = "Yes"
+[node name="MarginMid1" type="ColorRect" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="2"]
+margin_top = 114.0
+margin_right = 420.0
+margin_bottom = 119.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
 
-[node name="quit_cancel" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="2" instance=ExtResource( 2 )]
-margin_top = 169.0
-margin_right = 380.0
-margin_bottom = 229.0
+[node name="quit_confirm" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="3" instance=ExtResource( 2 )]
+margin_top = 139.0
+margin_right = 420.0
+margin_bottom = 199.0
+custom_fonts/font = SubResource( 2 )
+text = "Yes"
+flat = true
+
+[node name="MarginMid2" type="ColorRect" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="4"]
+margin_top = 219.0
+margin_right = 420.0
+margin_bottom = 224.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="quit_cancel" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="5" instance=ExtResource( 2 )]
+margin_top = 244.0
+margin_right = 420.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 2 )
 text = "No"
+flat = true
+
+[node name="MarginBottom" type="ColorRect" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="6"]
+margin_top = 324.0
+margin_right = 420.0
+margin_bottom = 329.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
 
 [connection signal="pressed" from="Play" to="." method="play"]
 [connection signal="pressed" from="Quit" to="." method="quit"]
