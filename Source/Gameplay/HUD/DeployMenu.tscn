@@ -89,9 +89,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -186.5
+margin_left = -220.5
 margin_top = -109.5
-margin_right = 186.5
+margin_right = 220.5
 margin_bottom = 109.5
 theme = SubResource( 3 )
 texture = ExtResource( 2 )
@@ -110,14 +110,14 @@ __meta__ = {
 }
 
 [node name="MarginTop" type="ColorRect" parent="Info"]
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 5.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="Info"]
 margin_top = 9.0
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 46.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 4 )
@@ -130,14 +130,14 @@ __meta__ = {
 
 [node name="MarginMid1" type="ColorRect" parent="Info"]
 margin_top = 50.0
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="TroopsRange" type="SpinBox" parent="Info"]
 margin_top = 59.0
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 0, 49 )
 min_value = 1.0
@@ -147,18 +147,18 @@ suffix = "troops"
 
 [node name="MarginMid2" type="ColorRect" parent="Info"]
 margin_top = 112.0
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 117.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Country" type="Label" parent="Info"]
 margin_top = 121.0
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 158.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 5 )
-text = "to Japan"
+text = "to Western United States"
 align = 1
 valign = 1
 __meta__ = {
@@ -167,14 +167,14 @@ __meta__ = {
 
 [node name="MarginMid3" type="ColorRect" parent="Info"]
 margin_top = 162.0
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 167.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HMenu" parent="Info" instance=ExtResource( 5 )]
 margin_top = 171.0
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 210.0
 size_flags_vertical = 3
 
@@ -184,7 +184,7 @@ margin_bottom = 38.0
 
 [node name="Cancel" type="Button" parent="Info/HMenu"]
 margin_left = 20.0
-margin_right = 166.0
+margin_right = 200.0
 margin_bottom = 39.0
 size_flags_horizontal = 3
 custom_styles/hover = SubResource( 6 )
@@ -197,14 +197,14 @@ flat = true
 script = ExtResource( 4 )
 
 [node name="MarginMid" type="Label" parent="Info/HMenu"]
-margin_left = 186.0
+margin_left = 220.0
 margin_top = 1.0
-margin_right = 186.0
+margin_right = 220.0
 margin_bottom = 38.0
 
 [node name="Deploy" type="Button" parent="Info/HMenu"]
-margin_left = 206.0
-margin_right = 353.0
+margin_left = 240.0
+margin_right = 421.0
 margin_bottom = 39.0
 size_flags_horizontal = 3
 custom_styles/hover = SubResource( 6 )
@@ -217,14 +217,14 @@ flat = true
 script = ExtResource( 4 )
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
-margin_left = 373.0
+margin_left = 441.0
 margin_top = 1.0
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 38.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
 margin_top = 214.0
-margin_right = 373.0
+margin_right = 441.0
 margin_bottom = 219.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )

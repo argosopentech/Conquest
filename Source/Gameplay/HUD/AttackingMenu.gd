@@ -17,6 +17,7 @@ onready var win_chance = $Info/WinChance
 
 var player_country: Country = null
 var opponent_country: Country = null
+var win_chance_percentage = 0.0
 
 signal attacked
 
@@ -58,7 +59,7 @@ func cancel():
 	hide()
 
 func attack():
-	emit_signal("attacked", troops_range.value, player_country, opponent_country)
+	emit_signal("attacked", win_chance_percentage, troops_range.value, player_country, opponent_country)
 	player_country = null
 	opponent_country = null
 	hide()
@@ -71,12 +72,12 @@ func value_changed(value):
 	calculate_win_chance(value)
 
 func calculate_win_chance(troops):
-	var percentage = troops / 2.0
+	win_chance_percentage = troops / 2.0
 	var opponent_troops = 3
 	if opponent_country:
 		opponent_troops = opponent_country.troops
-	percentage = float(percentage / opponent_troops) * 100.0
-	if percentage > 100:
-		percentage = 100
-	win_chance.text = "Win Chance: " + str(stepify(percentage, 0.1)) + "%"
+	win_chance_percentage = float(win_chance_percentage / opponent_troops) * 100.0
+	if win_chance_percentage > 100:
+		win_chance_percentage = 100
+	win_chance.text = "Win Chance: " + str(stepify(win_chance_percentage, 0.1)) + "%"
 	

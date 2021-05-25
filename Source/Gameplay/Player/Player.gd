@@ -16,6 +16,7 @@ var countries_occupied_in_continents = {
 }
 var first_turn = true
 var initial_troops = 9
+var eliminated = false
 
 onready var player_state = load("res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd").new()
 onready var hud: ActivePlayerHUD = find_node("ActivePlayerHUD")
@@ -42,6 +43,21 @@ func set_activity(activity):
 	activities.add_child(player_activity)
 	player_activity.set_activity(activity)
 
+func occupy_country(country: Country):
+	countries_occupied += 1
+	countries.append(country)
+	country.occupier = self
+	for continent in country.get_groups():
+		if continent in GamePlay.total_countries_in_continents.keys():
+			countries_occupied_in_continents[continent] += 1
+
+func leave_country(country: Country):
+	countries_occupied -= 1
+	countries.erase(country)
+	for continent in country.get_groups():
+		if continent in GamePlay.total_countries_in_continents.keys():
+			countries_occupied_in_continents[continent] -= 1
+
 func setup_hud():
 	hud.set_player_name(name)
 	hud.set_icon_color(GamePlay.colors[name])
@@ -51,8 +67,8 @@ func setup_hud():
 	deploy_menu.connect("deployed", self, "troops_deployed")
 	attacking_menu.connect("attacked", self, "player_attacked")
 
-func player_attacked(troops: int, player_country: Country, opponent_country: Country):
-	var state = player_state.player_attacked(self, troops, player_country, opponent_country)
+func player_attacked(win_chance_percentage, troops: int, player_country: Country, opponent_country: Country):
+	var state = player_state.player_attacked(self, win_chance_percentage, troops, player_country, opponent_country)
 	if state:
 		change_state(state)
 
@@ -151,3 +167,6 @@ func _process(delta):
 	var state = player_state.update(self)
 	if state:
 		change_state(state)
+
+func eliminate():
+	eliminated = true

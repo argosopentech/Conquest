@@ -23,11 +23,12 @@ func country_clicked(player: Player, country: Country):
 		if not country.occupier:
 			country.occupier = player
 			GamePlay.game.occupied_countries += 1
-			player.countries_occupied += 1
-			player.countries.append(country)
-			for continent in country.get_groups():
-				if continent in GamePlay.total_countries_in_continents.keys():
-					player.countries_occupied_in_continents[continent] += 1
+			player.occupy_country(country)
+#			player.countries_occupied += 1
+#			player.countries.append(country)
+#			for continent in country.get_groups():
+#				if continent in GamePlay.total_countries_in_continents.keys():
+#					player.countries_occupied_in_continents[continent] += 1
 		country.increment_troops()
 		player.decrement_initial_troops()
 		country.update()

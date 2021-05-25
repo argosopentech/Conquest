@@ -12,10 +12,15 @@ var bonus_troops = {
 }
 
 func enter(player: Player):
+	if player.eliminated:
+		player.emit_signal("turn_completed")
+		return
 	.enter(player)
 	player.set_reinforcement()
 	add_reinforcement_amount(player)
 	player.hud.set_player_state(get_class())
+	player.hud.hide_go_button()
+	player.hud.show_draft_icon()
 
 func add_reinforcement_amount(player: Player):
 	var default = int(player.countries_occupied / 3)

@@ -30,6 +30,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
+size_flags_horizontal = 8
 custom_fonts/font = SubResource( 1 )
 text = "Player 4 gets 2 troops for occupying 11 countries."
 align = 1
