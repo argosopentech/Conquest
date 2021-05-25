@@ -86,9 +86,6 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 			opponent_country.occupier.eliminate()
 		opponent_country.occupier.leave_country(opponent_country)
 		player.occupy_country(opponent_country)
-#		opponent_country.occupier = player
-#		opponent_country.set_troops(player_country.troops - 1)
-#		player_country.set_troops(1)
 		opponent_country.set_troops(0)
 		player.move_menu.show()
 		player.move_menu.move_troops(player_country, opponent_country, "Attack")
