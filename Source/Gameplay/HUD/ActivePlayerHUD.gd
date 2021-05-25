@@ -38,5 +38,6 @@ func show_go_button():
 	go_button.show()
 
 func go_pressed():
-	pressed_audio.play()
+	if GamePlay.interface_sound:
+		pressed_audio.play()
 	emit_signal("go_pressed")

@@ -113,6 +113,8 @@ var music = preload("res://Assets/Audio/loops/mixkit-sports-highlights-51.mp3")
 var music_player: AudioStreamPlayer
 var main_menu_volume = -25
 var in_game_volume = -35
+var interface_sound = true
+var country_sound = true
 
 func _ready():
 	setup()

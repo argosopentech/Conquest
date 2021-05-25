@@ -20,7 +20,8 @@ func exit(country: Country):
 	set_border_color(country)
 
 func clicked(country: Country):
-	country.active_click_audio.play()
+	if GamePlay.country_sound:
+		country.active_click_audio.play()
 	GamePlay.game.active_player.country_clicked(country)
 
 func active_player_changed(country: Country, new_player: Player):

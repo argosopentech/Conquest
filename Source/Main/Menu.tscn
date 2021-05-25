@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Source/Menu/VMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=5]
 [ext_resource path="res://Source/Gameplay/HUD/StartGameMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Source/Gameplay/HUD/OptionsMenu.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -143,7 +144,20 @@ __meta__ = {
 
 [node name="StartGameMenu" parent="Overlay/StartGameOverlay" index="0" instance=ExtResource( 6 )]
 
+[node name="OptionsOverlay" type="ColorRect" parent="Overlay" index="2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.686275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsMenu" parent="Overlay/OptionsOverlay" index="0" instance=ExtResource( 7 )]
+
 [connection signal="pressed" from="Play" to="." method="play"]
+[connection signal="pressed" from="Options" to="." method="options"]
 [connection signal="pressed" from="Quit" to="." method="quit"]
 [connection signal="pressed" from="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu/quit_confirm" to="." method="quit_confirm"]
 [connection signal="pressed" from="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu/quit_cancel" to="." method="quit_cancel"]
+[connection signal="options_saved" from="Overlay/OptionsOverlay/OptionsMenu" to="." method="_on_OptionsMenu_options_saved"]

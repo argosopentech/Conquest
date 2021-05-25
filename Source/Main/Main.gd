@@ -10,3 +10,6 @@ func setup():
 
 func setup_music():
 	GamePlay.set_music_volume(GamePlay.main_menu_volume)
+
+func options_saved():
+	setup_music()

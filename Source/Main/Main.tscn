@@ -70,4 +70,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="options_saved" from="MenuBorder/Menu" to="." method="options_saved"]
+
 [editable path="Background"]
