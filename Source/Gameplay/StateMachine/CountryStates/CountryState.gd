@@ -3,9 +3,10 @@ extends StateMachine
 class_name CountryState
 
 var colors = {
-	"unoccupied": Color.burlywood,
+	"unoccupied": Color.white,
 	"hover": Color.white,
-	"not_hover": Color.black
+	"not_hover": Color.black,
+	"unoccoupied_border": Color.silver
 }
 
 var country_states = {
@@ -62,6 +63,8 @@ func set_border_color(country: Country):
 		country.z_index = 0
 		country.name_label.visible = false
 		country.border.modulate = colors.not_hover
+	if not country.occupier:
+		country.border.modulate = colors.unoccoupied_border
 
 func dim_border_color(country: Country):
 	country.border.modulate.r *= hover_multiplier

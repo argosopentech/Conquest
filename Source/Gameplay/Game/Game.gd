@@ -9,6 +9,9 @@ onready var players: PlayersQueue = find_node("PlayersQueue")
 onready var auto_place_button = find_node("AutoPlaceBorder")
 onready var overlay = find_node("Overlay")
 onready var quit_game_menu = find_node("QuitGameMenu")
+onready var quit_pressed_audio = $HUD/QuitBorder/QuitButton/Pressed
+onready var options_pressed_audio = $HUD/OptionsBorder/OptionsButton/Pressed
+onready var options_overlay = find_node("OptionsOverlay")
 
 var active_player: Player = null
 var active_player_index = -1
@@ -81,6 +84,8 @@ func _input(event):
 		quit()
 
 func quit():
+	if GamePlay.interface_sound:
+		quit_pressed_audio.play()
 	quit_game_menu.show()
 	overlay.show()
 	#get_tree().change_scene("res://Source/Main/Main.tscn")
@@ -112,3 +117,11 @@ func all_eliminated():
 			eliminations += 1
 	if eliminations == players.get_child_count() - 1:
 		return true
+
+func options_saved():
+	setup_music()
+
+func options():
+	if GamePlay.interface_sound:
+		options_pressed_audio.play()
+	options_overlay.show()

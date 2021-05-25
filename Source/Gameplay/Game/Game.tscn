@@ -1,9 +1,10 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=2]
 [ext_resource path="res://Source/Gameplay/Game/Game.gd" type="Script" id=3]
 [ext_resource path="res://Source/Gameplay/PlayersQueue/PlayersQueue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Graphics/Icons/exitLeft.png" type="Texture" id=5]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/Scandinavia.tscn" type="PackedScene" id=8]
@@ -50,13 +51,10 @@
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/China.tscn" type="PackedScene" id=49]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=50]
 [ext_resource path="res://Source/Gameplay/HUD/QuitGameMenu.tscn" type="PackedScene" id=51]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 50 )
+[ext_resource path="res://Assets/Audio/glitch_001.ogg" type="AudioStream" id=52]
+[ext_resource path="res://Assets/Audio/glitch_002.ogg" type="AudioStream" id=53]
+[ext_resource path="res://Assets/Graphics/Icons/gear.png" type="Texture" id=54]
+[ext_resource path="res://Source/Gameplay/HUD/OptionsMenu.tscn" type="PackedScene" id=55]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
@@ -64,6 +62,34 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 50 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 800, 500 )
+modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 50 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 1 )
+LineEdit/styles/normal = SubResource( 1 )
+LineEdit/styles/read_only = SubResource( 1 )
 
 [node name="Game" type="Node2D" groups=[
 "game",
@@ -80,28 +106,62 @@ color = Color( 0.0235294, 0.635294, 0.847059, 1 )
 [node name="QuitBorder" type="TextureRect" parent="HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 14.0
+margin_left = 32.0
 margin_top = -104.0
-margin_right = 234.0
+margin_right = 128.0
 margin_bottom = -20.0
 texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="TextureButton" parent="HUD/QuitBorder"]
+modulate = Color( 0.196078, 0.196078, 0.196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 5 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" parent="HUD/QuitBorder" instance=ExtResource( 6 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -90.0
-margin_top = -30.0
-margin_right = 90.0
-margin_bottom = 30.0
-custom_fonts/font = SubResource( 1 )
-text = "Back"
-flat = true
+[node name="Focused" type="AudioStreamPlayer" parent="HUD/QuitBorder/QuitButton"]
+stream = ExtResource( 52 )
+
+[node name="Pressed" type="AudioStreamPlayer" parent="HUD/QuitBorder/QuitButton"]
+stream = ExtResource( 53 )
+
+[node name="OptionsBorder" type="TextureRect" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 160.0
+margin_top = -104.0
+margin_right = 256.0
+margin_bottom = -20.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="TextureButton" parent="HUD/OptionsBorder"]
+modulate = Color( 0.196078, 0.196078, 0.196078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 54 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Focused" type="AudioStreamPlayer" parent="HUD/OptionsBorder/OptionsButton"]
+stream = ExtResource( 52 )
+
+[node name="Pressed" type="AudioStreamPlayer" parent="HUD/OptionsBorder/OptionsButton"]
+stream = ExtResource( 53 )
 
 [node name="AutoPlaceBorder" type="TextureRect" parent="HUD"]
 anchor_left = 1.0
@@ -142,6 +202,18 @@ __meta__ = {
 
 [node name="QuitGameMenu" parent="HUD" instance=ExtResource( 51 )]
 visible = false
+
+[node name="OptionsOverlay" type="ColorRect" parent="HUD"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.686275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsMenu" parent="HUD/OptionsOverlay" instance=ExtResource( 55 )]
+theme = SubResource( 4 )
 
 [node name="PlayersQueue" parent="." instance=ExtResource( 4 )]
 
@@ -280,8 +352,10 @@ position = Vector2( 195.311, 187.05 )
 [node name="Yakutsk" parent="Countries" instance=ExtResource( 12 )]
 position = Vector2( 958.998, 59.45 )
 
-[connection signal="pressed" from="HUD/QuitBorder/Quit" to="." method="quit"]
+[connection signal="pressed" from="HUD/QuitBorder/QuitButton" to="." method="quit"]
+[connection signal="pressed" from="HUD/OptionsBorder/OptionsButton" to="." method="options"]
 [connection signal="pressed" from="HUD/AutoPlaceBorder/AutoPlace" to="." method="auto_place_turned_on"]
+[connection signal="options_saved" from="HUD/OptionsOverlay/OptionsMenu" to="." method="options_saved"]
 [connection signal="active_player_changed" from="PlayersQueue" to="." method="active_player_changed"]
 
 [editable path="Background"]

@@ -3,7 +3,7 @@ extends CountryState
 class_name SelectedState
 
 func enter(country: Country):
-	color_multiplier = 1.1
+	color_multiplier = 1.3
 	.enter(country)
 
 func handle_input(country: Country, input: InputEvent):

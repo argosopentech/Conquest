@@ -4,7 +4,7 @@ class_name InActiveState
 
 func enter(country: Country):
 	country.active = false
-	color_multiplier = 0.9
+	color_multiplier = 0.7
 	.enter(country)
 
 func handle_input(country: Country, input: InputEvent):

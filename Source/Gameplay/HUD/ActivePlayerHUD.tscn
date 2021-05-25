@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Audio/glitch_001.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Source/Gameplay/HUD/ActivePlayerHUD.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Audio/glitch_002.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Graphics/Icons/fastForward.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -155,22 +156,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GoButton" type="ColorRect" parent="."]
+[node name="GoButton" type="TextureRect" parent="."]
 margin_left = 380.0
 margin_right = 480.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-color = Color( 0.117647, 0.117647, 0.117647, 1 )
+texture = ExtResource( 5 )
+expand = true
 
 [node name="Go" type="TextureButton" parent="GoButton"]
+modulate = Color( 0.196078, 0.196078, 0.196078, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+texture_normal = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="GoButton/Go"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
