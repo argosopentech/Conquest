@@ -14,6 +14,8 @@ var troops = 0
 onready var country_state = load("res://Source/Gameplay/StateMachine/CountryStates/ActiveState.gd").new()
 onready var name_label = $Name
 onready var troops_label = $Troops
+onready var active_click_audio = $ActiveClick
+onready var selected_click_audio = $SelectedClick
 
 signal troops_updated
 

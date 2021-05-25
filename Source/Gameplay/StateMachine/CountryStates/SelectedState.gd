@@ -16,6 +16,7 @@ func exit(country: Country):
 	pass
 
 func clicked(country: Country):
+	country.selected_click_audio.play()
 	if GamePlay.game.active_player.player_state is AttackState:
 		for bordering_country in GamePlay.bordering_countries_nodes[country.name]:
 			if bordering_country.occupier != country.occupier:

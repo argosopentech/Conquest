@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Map/Countries/Afghanistan.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/Map/Borders/Afghanistan.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Audio/drop_002.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/drop_003.ogg" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 54.8251, 50.6346 )
@@ -94,6 +96,12 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ActiveClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="SelectedClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
