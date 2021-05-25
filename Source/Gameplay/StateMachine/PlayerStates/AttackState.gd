@@ -122,4 +122,6 @@ func go_pressed(player: Player):
 func troops_moved(player: Player, troops: int, source_country: Country, destination_country: Country):
 	destination_country.add_troops(troops)
 	source_country.subtract_troops(troops)
+	if source_country.troops == 1:
+		source_country.change_country_state("in_active")
 	player.overlay.hide()
