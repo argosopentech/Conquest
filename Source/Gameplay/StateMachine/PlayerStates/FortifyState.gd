@@ -26,3 +26,6 @@ func go_pressed(player: Player):
 
 func all_troops_placed(player: Player):
 	return player_states.draft.new()
+
+func troops_moved(player: Player, troops: int, source_country: Country, destination_country: Country):
+	pass

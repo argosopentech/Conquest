@@ -87,8 +87,11 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 		opponent_country.occupier.leave_country(opponent_country)
 		player.occupy_country(opponent_country)
 #		opponent_country.occupier = player
-		opponent_country.set_troops(player_country.troops - 1)
-		player_country.set_troops(1)
+#		opponent_country.set_troops(player_country.troops - 1)
+#		player_country.set_troops(1)
+		opponent_country.set_troops(0)
+		player.move_menu.show()
+		player.move_menu.move_troops(player_country, opponent_country, "Attack")
 	else:
 		if player_country.troops == 1:
 			player_country.change_country_state("in_active")
@@ -114,3 +117,7 @@ func get_class():
 
 func go_pressed(player: Player):
 	return player_states.fortify.new()
+
+func troops_moved(player: Player, troops: int, source_country: Country, destination_country: Country):
+	destination_country.add_troops(troops)
+	source_country.subtract_troops(troops)
