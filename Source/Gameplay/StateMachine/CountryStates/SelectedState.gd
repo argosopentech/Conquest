@@ -20,7 +20,9 @@ func clicked(country: Country):
 		for bordering_country in GamePlay.bordering_countries_nodes[country.name]:
 			if bordering_country.occupier != country.occupier:
 				bordering_country.change_country_state("in_active")
-	return country_states.active.new()
+		return country_states.active.new()
+	elif GamePlay.game.active_player.player_state is FortifyState:
+		GamePlay.game.active_player.country_clicked(country)
 
 func get_class():
 	return "Selected State"

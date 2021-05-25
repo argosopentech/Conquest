@@ -1,3 +1,4 @@
+
 extends PlayerState
 
 class_name FortifyState
@@ -43,21 +44,20 @@ func country_clicked(player: Player, country: Country):
 		select_country(player, country)
 
 func select_country(player: Player, country: Country):
-#	for player_country in player.countries:
-#		player_country.change_country_state("in_active")
-	for bordering_country in GamePlay.bordering_countries_nodes[country.name]:
-		if bordering_country.occupier == country.occupier:
-			if bordering_country.troops == 1:
-				bordering_country.change_country_state("active")
+	for player_country in player.countries:
+		player_country.change_country_state("in_active")
+	activate_bordering_countries(country)
 	country.change_country_state("selected")
 	selected_country = country
 
-func unselect_country(player: Player, country: Country):
+func activate_bordering_countries(country: Country):
 	for bordering_country in GamePlay.bordering_countries_nodes[country.name]:
 		if bordering_country.occupier == country.occupier:
-			if bordering_country.troops == 1:
-				bordering_country.change_country_state("in_active")
-	country.change_country_state("active")
+			if not bordering_country.country_state.get_class() in ["Selected State", "Active State"]:
+				bordering_country.change_country_state("active")
+				activate_bordering_countries(bordering_country)
+func unselect_country(player: Player, country: Country):
+	push_countries_in_fortify_state(player)
 	selected_country = null
 
 func get_class():
