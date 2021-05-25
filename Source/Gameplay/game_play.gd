@@ -109,6 +109,23 @@ var bordering_countries_nodes = {
 }
 
 var game: Game
+var music = preload("res://Assets/Audio/loops/mixkit-sports-highlights-51.mp3")
+var music_player: AudioStreamPlayer
+var main_menu_volume = -25
+var in_game_volume = -35
 
 func _ready():
-	pass
+	setup()
+
+func setup():
+	setup_music()
+
+func setup_music():
+	music_player = AudioStreamPlayer.new()
+	music_player.stream = music
+	add_child(music_player)
+	music_player.play()
+	set_music_volume(main_menu_volume)
+
+func set_music_volume(volume):
+	music_player.volume_db = volume

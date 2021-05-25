@@ -25,6 +25,10 @@ func setup():
 	spawn_players()
 	set_initial_troops()
 	setup_hud()
+	setup_music()
+
+func setup_music():
+	GamePlay.set_music_volume(GamePlay.in_game_volume)
 
 func spawn_players():
 	for i in range(GamePlay.players):
