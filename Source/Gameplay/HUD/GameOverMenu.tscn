@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=3]
 [ext_resource path="res://Source/Button/Button.gd" type="Script" id=4]
-[ext_resource path="res://Source/Gameplay/HUD/MoveMenu.gd" type="Script" id=5]
+[ext_resource path="res://Source/Gameplay/HUD/GameOverMenu.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 3 )
@@ -34,15 +34,15 @@ LineEdit/styles/focus = SubResource( 1 )
 LineEdit/styles/normal = SubResource( 1 )
 LineEdit/styles/read_only = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 36
+[sub_resource type="DynamicFont" id=11]
+size = 48
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 36
+[sub_resource type="DynamicFont" id=12]
+size = 42
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
@@ -83,16 +83,16 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[node name="MoveMenu" type="TextureRect"]
+[node name="GameoverMenu" type="TextureRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -287.5
-margin_top = -143.0
-margin_right = 287.5
-margin_bottom = 143.0
-rect_min_size = Vector2( 575, 286 )
+margin_left = -233.5
+margin_top = -101.5
+margin_right = 233.5
+margin_bottom = 101.5
+rect_min_size = Vector2( 467, 203 )
 theme = SubResource( 3 )
 texture = ExtResource( 3 )
 expand = true
@@ -110,18 +110,19 @@ __meta__ = {
 }
 
 [node name="MarginTop" type="ColorRect" parent="Info"]
-margin_right = 575.0
+margin_right = 467.0
 margin_bottom = 5.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="Info"]
 margin_top = 9.0
-margin_right = 575.0
-margin_bottom = 46.0
+margin_right = 467.0
+margin_bottom = 62.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
-text = "Moving"
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 11 )
+text = "Winner"
 align = 1
 valign = 1
 __meta__ = {
@@ -129,126 +130,89 @@ __meta__ = {
 }
 
 [node name="MarginMid1" type="ColorRect" parent="Info"]
-margin_top = 50.0
-margin_right = 575.0
-margin_bottom = 55.0
+margin_top = 66.0
+margin_right = 467.0
+margin_bottom = 71.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="TroopsRange" type="SpinBox" parent="Info"]
-margin_top = 59.0
-margin_right = 575.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 0, 49 )
-min_value = 1.0
-value = 1.0
+[node name="Player" type="Label" parent="Info"]
+margin_top = 75.0
+margin_right = 467.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 12 )
+text = "Player 1"
 align = 1
-suffix = "troops"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginMid2" type="ColorRect" parent="Info"]
-margin_top = 112.0
-margin_right = 575.0
-margin_bottom = 117.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="SourceCountry" type="Label" parent="Info"]
-margin_top = 121.0
-margin_right = 575.0
-margin_bottom = 158.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
-text = "from Western United States"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginMid3" type="ColorRect" parent="Info"]
-margin_top = 162.0
-margin_right = 575.0
-margin_bottom = 167.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="DestinationCountry" type="Label" parent="Info"]
-margin_top = 171.0
-margin_right = 575.0
-margin_bottom = 208.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
-text = "to Eastern United States"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginMid4" type="ColorRect" parent="Info"]
-margin_top = 212.0
-margin_right = 575.0
-margin_bottom = 217.0
+margin_top = 132.0
+margin_right = 467.0
+margin_bottom = 137.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HMenu" parent="Info" instance=ExtResource( 1 )]
-margin_top = 221.0
-margin_right = 575.0
-margin_bottom = 277.0
+margin_top = 141.0
+margin_right = 467.0
+margin_bottom = 194.0
 size_flags_vertical = 3
 
 [node name="MarginLeft" type="Label" parent="Info/HMenu"]
-margin_top = 9.0
-margin_bottom = 46.0
+margin_top = 8.0
+margin_bottom = 45.0
 
-[node name="Cancel" type="Button" parent="Info/HMenu"]
+[node name="PlayAgain" type="Button" parent="Info/HMenu"]
 margin_left = 20.0
-margin_right = 267.0
-margin_bottom = 56.0
+margin_right = 213.0
+margin_bottom = 53.0
 size_flags_horizontal = 3
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
-text = "Cancel"
+text = "Play Again"
 flat = true
 script = ExtResource( 4 )
 
 [node name="MarginMid" type="Label" parent="Info/HMenu"]
-margin_left = 287.0
-margin_top = 9.0
-margin_right = 287.0
-margin_bottom = 46.0
+margin_left = 233.0
+margin_top = 8.0
+margin_right = 233.0
+margin_bottom = 45.0
 
-[node name="Move" type="Button" parent="Info/HMenu"]
-margin_left = 307.0
-margin_right = 555.0
-margin_bottom = 56.0
+[node name="MainMenu" type="Button" parent="Info/HMenu"]
+margin_left = 253.0
+margin_right = 447.0
+margin_bottom = 53.0
 size_flags_horizontal = 3
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
-text = "Move"
+text = "Main Menu"
 flat = true
 script = ExtResource( 4 )
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
-margin_left = 575.0
-margin_top = 9.0
-margin_right = 575.0
-margin_bottom = 46.0
+margin_left = 467.0
+margin_top = 8.0
+margin_right = 467.0
+margin_bottom = 45.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 281.0
-margin_right = 575.0
-margin_bottom = 286.0
+margin_top = 198.0
+margin_right = 467.0
+margin_bottom = 203.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[connection signal="value_changed" from="Info/TroopsRange" to="." method="value_changed"]
-[connection signal="pressed" from="Info/HMenu/Cancel" to="." method="cancel"]
-[connection signal="pressed" from="Info/HMenu/Move" to="." method="move"]
+[connection signal="pressed" from="Info/HMenu/PlayAgain" to="." method="play_again"]
+[connection signal="pressed" from="Info/HMenu/MainMenu" to="." method="main_menu"]

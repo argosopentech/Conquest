@@ -63,12 +63,14 @@ func exit(player: Player):
 
 func country_clicked(player: Player, country: Country):
 	if player.reinforcement:
+		player.overlay.show()
 		player.deploy_menu.show()
 		player.deploy_menu.add_troops(player.reinforcement, country)
 
 func troops_deployed(player: Player, troops: int, country: Country):
 	player.decrement_reinforcement(troops)
 	country.add_troops(troops)
+	player.overlay.hide()
 	if player.reinforcement == 0:
 		player.hud.hide_draft_icon()
 		player.hud.show_go_button()

@@ -81,3 +81,11 @@ func all_players_placed_all_troops():
 		if player.initial_troops > 0:
 			return false
 	return true
+
+func all_eliminated():
+	var eliminations = 0
+	for player in players.get_children():
+		if player.eliminated:
+			eliminations += 1
+	if eliminations == players.get_child_count() - 1:
+		return true

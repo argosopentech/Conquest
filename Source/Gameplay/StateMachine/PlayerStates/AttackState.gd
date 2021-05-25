@@ -39,11 +39,13 @@ func country_clicked(player: Player, country: Country):
 		else:
 			player.attacking_menu.attack_details(selected_country, country)
 			player.attacking_menu.show()
+			player.overlay.show()
 	else:
 		select_country(country)
 
 func player_attacked(player: Player, win_chance_percentage, troops: int, player_country: Country, opponent_country: Country):
 	randomize()
+	player.overlay.hide()
 	var random_number = randi() % 4
 	var successful = false
 	var troops_lost = 1
@@ -84,11 +86,16 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 			var elimination = "Player " + opponent_country.occupier.name + " has been eliminated."
 			player.set_activity(elimination)
 			opponent_country.occupier.eliminate()
+			if GamePlay.game.all_eliminated():
+				player.overlay.show()
+				player.gameover_menu.show()
 		opponent_country.occupier.leave_country(opponent_country)
 		player.occupy_country(opponent_country)
 		opponent_country.set_troops(0)
-		player.move_menu.show()
-		player.move_menu.move_troops(player_country, opponent_country, "Attack")
+		if not GamePlay.game.all_eliminated():
+			player.move_menu.show()
+			player.move_menu.move_troops(player_country, opponent_country, "Attack")
+			player.overlay.show()
 	else:
 		if player_country.troops == 1:
 			player_country.change_country_state("in_active")
@@ -118,3 +125,4 @@ func go_pressed(player: Player):
 func troops_moved(player: Player, troops: int, source_country: Country, destination_country: Country):
 	destination_country.add_troops(troops)
 	source_country.subtract_troops(troops)
+	player.overlay.hide()

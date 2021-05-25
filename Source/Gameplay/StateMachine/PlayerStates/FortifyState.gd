@@ -40,6 +40,7 @@ func country_clicked(player: Player, country: Country):
 		else:
 			player.move_menu.move_troops(selected_country, country, "Fortify")
 			player.move_menu.show()
+			player.overlay.show()
 	else:
 		select_country(player, country)
 
@@ -74,3 +75,4 @@ func troops_moved(player: Player, troops: int, source_country: Country, destinat
 	source_country.subtract_troops(troops)
 	unselect_country(player, source_country)
 	player.emit_signal("turn_completed")
+	player.overlay.hide()
