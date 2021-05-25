@@ -199,7 +199,7 @@ custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
 custom_fonts/font = SubResource( 11 )
-text = "No"
+text = "Cancel"
 flat = true
 
 [node name="MarginMid" type="Label" parent="Info/HMenu"]
@@ -218,7 +218,7 @@ custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
 custom_fonts/font = SubResource( 11 )
-text = "Yes"
+text = "Deploy"
 flat = true
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
