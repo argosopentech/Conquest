@@ -1,5 +1,6 @@
 extends Node
 
+var players = 3
 var colors = {
 	"1": Color.orange,
 	"2": Color.lightblue,

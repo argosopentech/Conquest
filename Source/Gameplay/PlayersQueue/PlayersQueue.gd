@@ -8,7 +8,6 @@ var active_index = -1
 signal active_player_changed(active_index, active_player)
 
 func _ready():
-	connect_signals()
 	setup()
 
 func connect_signals():
@@ -17,6 +16,7 @@ func connect_signals():
 			child.connect("turn_completed", self, "next_turn")
 
 func setup():
+	connect_signals()
 	play_first_turn()
 
 func play_first_turn():

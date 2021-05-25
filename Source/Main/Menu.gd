@@ -4,16 +4,19 @@ class_name MainMenu
 
 onready var quit_confirm_menu = $Overlay/QuitConfirm
 onready var quit_confirm_vmenu = $Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu
+onready var start_game_overlay = $Overlay/StartGameOverlay
 
 func _ready():
 	quit_confirm_menu.hide()
+	start_game_overlay.hide()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("quit"):
 		quit()
 
 func play():
-	get_tree().change_scene("res://Source/Gameplay/Game/Game.tscn")
+	start_game_overlay.show()
+	#get_tree().change_scene("res://Source/Gameplay/Game/Game.tscn")
 
 func options():
 	pass

@@ -2,8 +2,10 @@ extends Node2D
 
 class_name Game
 
+var player_scene = preload("res://Source/Gameplay/Player/Player.tscn")
+
 onready var countries = find_node("Countries")
-onready var players = find_node("PlayersQueue")
+onready var players: PlayersQueue = find_node("PlayersQueue")
 onready var auto_place_button = find_node("AutoPlaceBorder")
 onready var overlay = find_node("Overlay")
 onready var quit_game_menu = find_node("QuitGameMenu")
@@ -20,8 +22,16 @@ func _ready():
 
 func setup():
 	GamePlay.game = self
+	spawn_players()
 	set_initial_troops()
 	setup_hud()
+
+func spawn_players():
+	for i in range(GamePlay.players):
+		var p = player_scene.instance()
+		p.name = str(i + 1)
+		players.add_child(p)
+	players.setup()
 
 func setup_hud():
 	overlay.hide()
