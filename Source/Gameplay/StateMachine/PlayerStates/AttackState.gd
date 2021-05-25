@@ -52,13 +52,10 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 	if troops - 1 > 0:
 		troops_lost = randi() % (troops - 1) + 1
 	if win_chance_percentage > 90:
-		if troops - 5 > 1:
-			troops_lost = randi() % (troops - 5) + 1
-		else:
-			troops_lost = 1
+		troops_lost = randi() % 3 + 1
 		successful = true
 	elif win_chance_percentage > 75:
-		if troops - 4 > 1:
+		if troops - 5 > 1:
 			troops_lost = randi() % (troops - 4) + 1
 		else:
 			troops_lost = 1
