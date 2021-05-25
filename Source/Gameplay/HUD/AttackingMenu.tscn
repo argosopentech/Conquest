@@ -34,56 +34,56 @@ LineEdit/styles/focus = SubResource( 1 )
 LineEdit/styles/normal = SubResource( 1 )
 LineEdit/styles/read_only = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=4]
 size = 28
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=5]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=6]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -164,7 +164,7 @@ __meta__ = {
 margin_top = 84.0
 margin_right = 272.0
 margin_bottom = 113.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
 text = "Player 1"
 align = 1
 valign = 1
@@ -173,7 +173,7 @@ valign = 1
 margin_top = 117.0
 margin_right = 272.0
 margin_bottom = 146.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
 text = "Eastern United States"
 align = 1
 valign = 1
@@ -182,7 +182,7 @@ valign = 1
 margin_top = 150.0
 margin_right = 272.0
 margin_bottom = 179.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
 text = "6 Troops"
 align = 1
 valign = 1
@@ -228,7 +228,7 @@ __meta__ = {
 margin_top = 84.0
 margin_right = 272.0
 margin_bottom = 113.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
 text = "Player 3"
 align = 1
 valign = 1
@@ -237,7 +237,7 @@ valign = 1
 margin_top = 117.0
 margin_right = 272.0
 margin_bottom = 146.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
 text = "Western United States"
 align = 1
 valign = 1
@@ -246,7 +246,7 @@ valign = 1
 margin_top = 150.0
 margin_right = 272.0
 margin_bottom = 179.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 4 )
 text = "4 Troops"
 align = 1
 valign = 1
@@ -270,7 +270,7 @@ margin_top = 201.0
 margin_right = 693.0
 margin_bottom = 234.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 5 )
 text = "Attacking with"
 align = 1
 valign = 1
@@ -307,7 +307,7 @@ margin_top = 309.0
 margin_right = 693.0
 margin_bottom = 342.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 6 )
 text = "Win Chance: 75%"
 align = 1
 valign = 1
@@ -337,11 +337,11 @@ margin_left = 20.0
 margin_right = 326.0
 margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
 text = "Cancel"
 flat = true
 script = ExtResource( 4 )
@@ -357,11 +357,11 @@ margin_left = 366.0
 margin_right = 673.0
 margin_bottom = 39.0
 size_flags_horizontal = 3
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
 text = "Attack"
 flat = true
 script = ExtResource( 4 )

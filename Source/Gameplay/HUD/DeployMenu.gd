@@ -24,6 +24,7 @@ func add_troops(troops: int, c: Country = null):
 		country_label.text = "To " + country.get_name()
 
 func cancel():
+	GamePlay.game.active_player.overlay.hide()
 	hide()
 
 func deploy():

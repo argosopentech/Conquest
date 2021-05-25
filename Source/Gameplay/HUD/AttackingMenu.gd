@@ -56,6 +56,7 @@ func attack_details(pc: Country = null, oc: Country = null):
 	calculate_win_chance(troops_range.value)
 
 func cancel():
+	GamePlay.game.active_player.overlay.hide()
 	hide()
 
 func attack():

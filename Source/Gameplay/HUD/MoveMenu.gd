@@ -34,6 +34,7 @@ func move_troops(c1: Country = null, c2: Country = null, state = ""):
 		destination_country_label.text = "to " + destination_country.get_name()
 
 func cancel():
+	GamePlay.game.active_player.overlay.hide()
 	hide()
 
 func move():
