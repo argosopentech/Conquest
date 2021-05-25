@@ -114,6 +114,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Source/Gameplay/PlayersQueue/PlayersQueue.gd"
 }, {
+"base": "TextureRect",
+"class": "QuitGameMenu",
+"language": "GDScript",
+"path": "res://Source/Gameplay/HUD/QuitGameMenu.gd"
+}, {
 "base": "CountryState",
 "class": "SelectedState",
 "language": "GDScript",
@@ -156,6 +161,7 @@ _global_script_class_icons={
 "PlayerActivity": "",
 "PlayerState": "",
 "PlayersQueue": "",
+"QuitGameMenu": "",
 "SelectedState": "",
 "SmartButton": "",
 "StateMachine": "",

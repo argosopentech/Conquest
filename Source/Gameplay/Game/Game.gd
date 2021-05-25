@@ -4,7 +4,9 @@ class_name Game
 
 onready var countries = find_node("Countries")
 onready var players = find_node("PlayersQueue")
-onready var auto_place_button = find_node("AutoPlace")
+onready var auto_place_button = find_node("AutoPlaceBorder")
+onready var overlay = find_node("Overlay")
+onready var quit_game_menu = find_node("QuitGameMenu")
 
 var active_player: Player = null
 var active_player_index = -1
@@ -19,6 +21,11 @@ func _ready():
 func setup():
 	GamePlay.game = self
 	set_initial_troops()
+	setup_hud()
+
+func setup_hud():
+	overlay.hide()
+	quit_game_menu.hide()
 
 func number_of_players():
 	return players.get_child_count()
@@ -60,7 +67,9 @@ func _input(event):
 		quit()
 
 func quit():
-	get_tree().change_scene("res://Source/Main/Main.tscn")
+	quit_game_menu.show()
+	overlay.show()
+	#get_tree().change_scene("res://Source/Main/Main.tscn")
 
 func update_countries_on_turn_complete():
 	for country in countries.get_children():
