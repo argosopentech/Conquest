@@ -76,6 +76,7 @@ func auto_place_troops():
 			placed = true
 
 func auto_place_turned_on():
+	auto_place_button.hide()
 	auto_place = true
 	auto_place_troops()
 
