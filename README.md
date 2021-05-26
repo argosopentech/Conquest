@@ -1,1 +1,3 @@
 # Conquest
+
+![](Images/GameStarted.PNG)
