@@ -88,7 +88,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="Label" type="Label" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="1"]
 margin_top = 25.0
 margin_right = 420.0
-margin_bottom = 94.0
+margin_bottom = 88.0
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 1 )
 text = "Quit Game?"
@@ -97,29 +97,29 @@ valign = 1
 autowrap = true
 
 [node name="MarginMid1" type="ColorRect" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="2"]
-margin_top = 114.0
+margin_top = 108.0
 margin_right = 420.0
-margin_bottom = 119.0
+margin_bottom = 113.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="quit_confirm" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="3" instance=ExtResource( 2 )]
-margin_top = 139.0
+margin_top = 133.0
 margin_right = 420.0
-margin_bottom = 199.0
+margin_bottom = 196.0
 custom_fonts/font = SubResource( 2 )
 text = "Yes"
 flat = true
 
 [node name="MarginMid2" type="ColorRect" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="4"]
-margin_top = 219.0
+margin_top = 216.0
 margin_right = 420.0
-margin_bottom = 224.0
+margin_bottom = 221.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="quit_cancel" parent="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu" index="5" instance=ExtResource( 2 )]
-margin_top = 244.0
+margin_top = 241.0
 margin_right = 420.0
 margin_bottom = 304.0
 custom_fonts/font = SubResource( 2 )
@@ -134,7 +134,6 @@ rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="StartGameOverlay" type="ColorRect" parent="Overlay" index="1"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.686275 )
