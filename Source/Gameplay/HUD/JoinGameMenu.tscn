@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=4]
-[ext_resource path="res://Source/Gameplay/HUD/StartGameMenu.gd" type="Script" id=5]
+[ext_resource path="res://Source/Gameplay/HUD/JoinGameMenu.gd" type="Script" id=5]
+[ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -55,24 +57,38 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[node name="JoinGameMenu" type="TextureRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -360.0
-margin_top = -187.5
-margin_right = 360.0
-margin_bottom = 187.5
+[node name="JoinGameMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = SubResource( 3 )
-texture = ExtResource( 4 )
-expand = true
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Info" type="VBoxContainer" parent="."]
+[node name="Background" parent="." instance=ExtResource( 7 )]
+
+[node name="ColorRect" parent="Background" index="0"]
+color = Color( 0.137255, 0.670588, 0.878431, 1 )
+
+[node name="Map" parent="." instance=ExtResource( 6 )]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -560.0
+margin_top = -300.0
+margin_right = 560.0
+margin_bottom = 300.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="VBoxContainer" parent="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 260, 0 )
@@ -80,15 +96,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginTop" type="ColorRect" parent="Info"]
-margin_right = 720.0
+[node name="MarginTop" type="ColorRect" parent="TextureRect/Info"]
+margin_right = 1120.0
 margin_bottom = 5.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="Label" type="Label" parent="Info"]
+[node name="Label" type="Label" parent="TextureRect/Info"]
 margin_top = 9.0
-margin_right = 720.0
+margin_right = 1120.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 4 )
@@ -99,19 +115,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginMid1" type="ColorRect" parent="Info"]
+[node name="MarginMid1" type="ColorRect" parent="TextureRect/Info"]
 visible = false
 margin_top = 62.0
-margin_right = 480.0
+margin_right = 900.0
 margin_bottom = 67.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="Info" type="Label" parent="Info"]
+[node name="Info" type="Label" parent="TextureRect/Info"]
 visible = false
-margin_top = 62.0
-margin_right = 480.0
-margin_bottom = 99.0
+margin_top = 71.0
+margin_right = 900.0
+margin_bottom = 108.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 5 )
 text = "Number of players?"
@@ -121,86 +137,187 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayersRange" type="SpinBox" parent="Info"]
+[node name="PlayersRange" type="SpinBox" parent="TextureRect/Info"]
 visible = false
-margin_top = 62.0
-margin_right = 480.0
-margin_bottom = 111.0
+margin_top = 112.0
+margin_right = 900.0
+margin_bottom = 161.0
 rect_min_size = Vector2( 0, 49 )
 min_value = 2.0
 max_value = 6.0
 value = 2.0
 align = 1
 
-[node name="MarginMid2" type="ColorRect" parent="Info"]
+[node name="MarginMid2" type="ColorRect" parent="TextureRect/Info"]
 margin_top = 62.0
-margin_right = 720.0
+margin_right = 1120.0
 margin_bottom = 67.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Info"]
+[node name="HMenu2" parent="TextureRect/Info" instance=ExtResource( 3 )]
 margin_top = 71.0
-margin_right = 720.0
-margin_bottom = 293.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_right = 1120.0
+margin_bottom = 131.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Info/ScrollContainer"]
-margin_right = 720.0
-margin_bottom = 222.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="MarginMid3" type="ColorRect" parent="Info"]
-margin_top = 297.0
-margin_right = 720.0
-margin_bottom = 302.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="HMenu2" parent="Info" instance=ExtResource( 3 )]
-margin_top = 306.0
-margin_right = 720.0
-margin_bottom = 366.0
-
-[node name="MarginLeft" type="Label" parent="Info/HMenu2"]
+[node name="MarginLeft" type="Label" parent="TextureRect/Info/HMenu2"]
 margin_top = 11.0
 margin_bottom = 48.0
 
-[node name="Cancel" parent="Info/HMenu2" instance=ExtResource( 2 )]
+[node name="Code" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
 margin_left = 20.0
-margin_right = 680.0
+margin_right = 204.0
+rect_min_size = Vector2( 184, 60 )
 custom_fonts/font = SubResource( 6 )
-text = "Cancel"
+text = "CODE"
 flat = true
 
-[node name="MarginMid" type="Label" parent="Info/HMenu2"]
-margin_left = 700.0
+[node name="MarginLeft2" type="Label" parent="TextureRect/Info/HMenu2"]
+margin_left = 224.0
 margin_top = 11.0
-margin_right = 700.0
+margin_right = 224.0
 margin_bottom = 48.0
 
-[node name="Join" parent="Info/HMenu2" instance=ExtResource( 2 )]
-visible = false
-margin_left = 380.0
-margin_right = 700.0
+[node name="Name" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
+margin_left = 244.0
+margin_right = 428.0
+rect_min_size = Vector2( 184, 60 )
 custom_fonts/font = SubResource( 6 )
-text = "Join"
+text = "NAME"
 flat = true
 
-[node name="MarginRight" type="Label" parent="Info/HMenu2"]
-margin_left = 720.0
+[node name="MarginLeft3" type="Label" parent="TextureRect/Info/HMenu2"]
+margin_left = 448.0
 margin_top = 11.0
-margin_right = 720.0
+margin_right = 448.0
 margin_bottom = 48.0
 
-[node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 370.0
-margin_right = 720.0
-margin_bottom = 375.0
+[node name="Players" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
+margin_left = 468.0
+margin_right = 652.0
+rect_min_size = Vector2( 184, 60 )
+custom_fonts/font = SubResource( 6 )
+text = "PLAYERS"
+flat = true
+
+[node name="MarginLeft4" type="Label" parent="TextureRect/Info/HMenu2"]
+margin_left = 672.0
+margin_top = 11.0
+margin_right = 672.0
+margin_bottom = 48.0
+
+[node name="Password" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
+margin_left = 692.0
+margin_right = 876.0
+rect_min_size = Vector2( 184, 60 )
+custom_fonts/font = SubResource( 6 )
+text = "PASSWORD"
+flat = true
+
+[node name="MarginLeft5" type="Label" parent="TextureRect/Info/HMenu2"]
+margin_left = 896.0
+margin_top = 11.0
+margin_right = 896.0
+margin_bottom = 48.0
+
+[node name="Join" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
+margin_left = 916.0
+margin_right = 1100.0
+rect_min_size = Vector2( 184, 60 )
+custom_fonts/font = SubResource( 6 )
+text = "JOIN"
+flat = true
+
+[node name="MarginRight" type="Label" parent="TextureRect/Info/HMenu2"]
+margin_left = 1120.0
+margin_top = 11.0
+margin_right = 1120.0
+margin_bottom = 48.0
+
+[node name="MarginMid3" type="ColorRect" parent="TextureRect/Info"]
+margin_top = 135.0
+margin_right = 1120.0
+margin_bottom = 140.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[connection signal="pressed" from="Info/HMenu2/Cancel" to="." method="cancel"]
-[connection signal="pressed" from="Info/HMenu2/Join" to="." method="start_game"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/Info"]
+margin_top = 144.0
+margin_right = 1120.0
+margin_bottom = 518.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/Info/ScrollContainer"]
+margin_right = 1120.0
+margin_bottom = 374.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginMid4" type="ColorRect" parent="TextureRect/Info"]
+margin_top = 522.0
+margin_right = 1120.0
+margin_bottom = 527.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="HMenu3" parent="TextureRect/Info" instance=ExtResource( 3 )]
+margin_top = 531.0
+margin_right = 1120.0
+margin_bottom = 591.0
+
+[node name="MarginLeft" type="Label" parent="TextureRect/Info/HMenu3"]
+margin_top = 11.0
+margin_bottom = 48.0
+
+[node name="Cancel" parent="TextureRect/Info/HMenu3" instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_right = 353.0
+custom_fonts/font = SubResource( 6 )
+text = "Back"
+flat = true
+
+[node name="MarginMid" type="Label" parent="TextureRect/Info/HMenu3"]
+margin_left = 373.0
+margin_top = 11.0
+margin_right = 373.0
+margin_bottom = 48.0
+
+[node name="JoinCode" parent="TextureRect/Info/HMenu3" instance=ExtResource( 2 )]
+margin_left = 393.0
+margin_right = 726.0
+custom_fonts/font = SubResource( 6 )
+text = "Join with Code"
+flat = true
+
+[node name="MarginMid2" type="Label" parent="TextureRect/Info/HMenu3"]
+margin_left = 746.0
+margin_top = 11.0
+margin_right = 746.0
+margin_bottom = 48.0
+
+[node name="Refresh" parent="TextureRect/Info/HMenu3" instance=ExtResource( 2 )]
+margin_left = 766.0
+margin_right = 1100.0
+custom_fonts/font = SubResource( 6 )
+text = "Refresh"
+flat = true
+
+[node name="MarginRight" type="Label" parent="TextureRect/Info/HMenu3"]
+margin_left = 1120.0
+margin_top = 11.0
+margin_right = 1120.0
+margin_bottom = 48.0
+
+[node name="MarginBottom" type="ColorRect" parent="TextureRect/Info"]
+margin_top = 595.0
+margin_right = 1120.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="pressed" from="TextureRect/Info/HMenu3/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="TextureRect/Info/HMenu3/JoinCode" to="." method="_on_JoinCode_pressed"]
+[connection signal="pressed" from="TextureRect/Info/HMenu3/Refresh" to="." method="_on_Refresh_pressed"]
+
+[editable path="Background"]

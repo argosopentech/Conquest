@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
@@ -41,13 +41,6 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 36
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=6]
 size = 32
 outline_size = 3
@@ -61,9 +54,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -240.0
-margin_top = -125.0
+margin_top = -106.0
 margin_right = 240.0
-margin_bottom = 193.0
+margin_bottom = 106.0
 theme = SubResource( 3 )
 texture = ExtResource( 4 )
 expand = true
@@ -106,58 +99,22 @@ margin_bottom = 67.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="Info" type="Label" parent="Info"]
+[node name="HostJoin" parent="Info" instance=ExtResource( 1 )]
 margin_top = 71.0
 margin_right = 480.0
-margin_bottom = 108.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
-text = "Number of players?"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginMid2" type="ColorRect" parent="Info"]
-margin_top = 112.0
-margin_right = 480.0
-margin_bottom = 117.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="PlayersRange" type="SpinBox" parent="Info"]
-margin_top = 121.0
-margin_right = 480.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 0, 49 )
-min_value = 2.0
-max_value = 6.0
-value = 2.0
-align = 1
-
-[node name="MarginMid3" type="ColorRect" parent="Info"]
-margin_top = 174.0
-margin_right = 480.0
-margin_bottom = 179.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="HostJoin" parent="Info" instance=ExtResource( 1 )]
-margin_top = 183.0
-margin_right = 480.0
-margin_bottom = 243.0
-size_flags_vertical = 3
+margin_bottom = 131.0
+size_flags_vertical = 0
 
 [node name="MarginLeft" type="Label" parent="Info/HostJoin"]
 margin_top = 11.0
 margin_bottom = 48.0
 
-[node name="Browse" parent="Info/HostJoin" instance=ExtResource( 6 )]
+[node name="Join" parent="Info/HostJoin" instance=ExtResource( 6 )]
 margin_left = 20.0
 margin_right = 220.0
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 6 )
-text = "Browse"
+text = "Join Lobby"
 flat = true
 
 [node name="MarginMid" type="Label" parent="Info/HostJoin"]
@@ -166,11 +123,12 @@ margin_top = 11.0
 margin_right = 240.0
 margin_bottom = 48.0
 
-[node name="Host" parent="Info/HostJoin" instance=ExtResource( 6 )]
+[node name="Create" parent="Info/HostJoin" instance=ExtResource( 6 )]
 margin_left = 260.0
 margin_right = 460.0
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 6 )
-text = "Host"
+text = "Create Lobby"
 flat = true
 
 [node name="MarginRight" type="Label" parent="Info/HostJoin"]
@@ -180,17 +138,17 @@ margin_right = 480.0
 margin_bottom = 48.0
 
 [node name="MarginMid4" type="ColorRect" parent="Info"]
-margin_top = 247.0
+margin_top = 135.0
 margin_right = 480.0
-margin_bottom = 252.0
+margin_bottom = 140.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HMenu" parent="Info" instance=ExtResource( 1 )]
-margin_top = 256.0
+margin_top = 144.0
 margin_right = 480.0
-margin_bottom = 316.0
-size_flags_vertical = 3
+margin_bottom = 204.0
+size_flags_vertical = 0
 
 [node name="MarginLeft" type="Label" parent="Info/HMenu"]
 margin_top = 11.0
@@ -198,24 +156,9 @@ margin_bottom = 48.0
 
 [node name="Cancel" parent="Info/HMenu" instance=ExtResource( 6 )]
 margin_left = 20.0
-margin_right = 440.0
-custom_fonts/font = SubResource( 6 )
-text = "Cancel"
-flat = true
-
-[node name="MarginMid" type="Label" parent="Info/HMenu"]
-margin_left = 460.0
-margin_top = 11.0
 margin_right = 460.0
-margin_bottom = 48.0
-
-[node name="Yes" parent="Info/HMenu" instance=ExtResource( 6 )]
-visible = false
-margin_left = 260.0
-margin_right = 460.0
-margin_bottom = 126.0
 custom_fonts/font = SubResource( 6 )
-text = "Start"
+text = "Back"
 flat = true
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
@@ -225,15 +168,14 @@ margin_right = 480.0
 margin_bottom = 48.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 320.0
+margin_top = 208.0
 margin_right = 480.0
-margin_bottom = 325.0
+margin_bottom = 213.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[connection signal="pressed" from="Info/HostJoin/Browse" to="." method="cancel"]
-[connection signal="pressed" from="Info/HostJoin/Host" to="." method="start_game"]
+[connection signal="pressed" from="Info/HostJoin/Join" to="." method="_on_Join_pressed"]
+[connection signal="pressed" from="Info/HostJoin/Create" to="." method="_on_Create_pressed"]
 [connection signal="pressed" from="Info/HMenu/Cancel" to="." method="cancel"]
-[connection signal="pressed" from="Info/HMenu/Yes" to="." method="start_game"]
 
-[editable path="Info/HostJoin/Browse"]
+[editable path="Info/HostJoin/Join"]
