@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Source/Gameplay/HUD/JoinGameMenu.gd" type="Script" id=5]
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Source/Gameplay/HUD/LobbySearchInstance.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Source/Gameplay/HUD/JoinCodeMenu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
@@ -155,80 +157,96 @@ margin_bottom = 67.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="HMenu2" parent="TextureRect/Info" instance=ExtResource( 3 )]
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/Info"]
 margin_top = 71.0
 margin_right = 1120.0
 margin_bottom = 131.0
+custom_constants/separation = 20
 
-[node name="MarginLeft" type="Label" parent="TextureRect/Info/HMenu2"]
+[node name="MarginLeft" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_top = 11.0
 margin_bottom = 48.0
 
-[node name="Code" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
+[node name="Code" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 20.0
 margin_right = 204.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 184, 60 )
-custom_fonts/font = SubResource( 6 )
+size_flags_horizontal = 3
+size_flags_vertical = 7
 text = "CODE"
-flat = true
+align = 1
+valign = 1
 
-[node name="MarginLeft2" type="Label" parent="TextureRect/Info/HMenu2"]
+[node name="MarginLeft2" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 224.0
 margin_top = 11.0
 margin_right = 224.0
 margin_bottom = 48.0
 
-[node name="Name" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
+[node name="Name" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 244.0
 margin_right = 428.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 184, 60 )
-custom_fonts/font = SubResource( 6 )
+size_flags_horizontal = 3
+size_flags_vertical = 7
 text = "NAME"
-flat = true
+align = 1
+valign = 1
 
-[node name="MarginLeft3" type="Label" parent="TextureRect/Info/HMenu2"]
+[node name="MarginLeft3" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 448.0
 margin_top = 11.0
 margin_right = 448.0
 margin_bottom = 48.0
 
-[node name="Players" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
+[node name="Players" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 468.0
 margin_right = 652.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 184, 60 )
-custom_fonts/font = SubResource( 6 )
+size_flags_horizontal = 3
+size_flags_vertical = 7
 text = "PLAYERS"
-flat = true
+align = 1
+valign = 1
 
-[node name="MarginLeft4" type="Label" parent="TextureRect/Info/HMenu2"]
+[node name="MarginLeft4" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 672.0
 margin_top = 11.0
 margin_right = 672.0
 margin_bottom = 48.0
 
-[node name="Password" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
+[node name="Password" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 692.0
 margin_right = 876.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 184, 60 )
-custom_fonts/font = SubResource( 6 )
-text = "PASSWORD"
-flat = true
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "PASS"
+align = 1
+valign = 1
 
-[node name="MarginLeft5" type="Label" parent="TextureRect/Info/HMenu2"]
+[node name="MarginLeft5" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 896.0
 margin_top = 11.0
 margin_right = 896.0
 margin_bottom = 48.0
 
-[node name="Join" parent="TextureRect/Info/HMenu2" instance=ExtResource( 2 )]
+[node name="Join" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 916.0
 margin_right = 1100.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 184, 60 )
-custom_fonts/font = SubResource( 6 )
+size_flags_horizontal = 3
+size_flags_vertical = 7
 text = "JOIN"
-flat = true
+align = 1
+valign = 1
 
-[node name="MarginRight" type="Label" parent="TextureRect/Info/HMenu2"]
+[node name="MarginRight" type="Label" parent="TextureRect/Info/HBoxContainer"]
 margin_left = 1120.0
 margin_top = 11.0
 margin_right = 1120.0
@@ -241,18 +259,20 @@ margin_bottom = 140.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/Info"]
+[node name="LobbiesContainer" type="ScrollContainer" parent="TextureRect/Info"]
 margin_top = 144.0
 margin_right = 1120.0
 margin_bottom = 518.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/Info/ScrollContainer"]
+[node name="Lobbies" type="VBoxContainer" parent="TextureRect/Info/LobbiesContainer"]
 margin_right = 1120.0
 margin_bottom = 374.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="0" parent="TextureRect/Info/LobbiesContainer/Lobbies" instance=ExtResource( 8 )]
 
 [node name="MarginMid4" type="ColorRect" parent="TextureRect/Info"]
 margin_top = 522.0
@@ -315,6 +335,10 @@ margin_right = 1120.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="JoinCodeMenu" parent="Overlay" instance=ExtResource( 9 )]
 
 [connection signal="pressed" from="TextureRect/Info/HMenu3/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="TextureRect/Info/HMenu3/JoinCode" to="." method="_on_JoinCode_pressed"]

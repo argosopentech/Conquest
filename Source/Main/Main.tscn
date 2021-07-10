@@ -37,7 +37,7 @@ anchor_bottom = 0.5
 margin_left = -125.0
 margin_top = -50.0
 margin_right = 125.0
-margin_bottom = 210.0
+margin_bottom = 270.0
 texture = ExtResource( 6 )
 expand = true
 __meta__ = {
@@ -45,8 +45,14 @@ __meta__ = {
 }
 
 [node name="Menu" parent="MenuBorder" instance=ExtResource( 2 )]
-margin_top = -110.0
-margin_bottom = 110.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
 
 [node name="HeadingBorder" type="TextureRect" parent="."]
 margin_left = 407.753
@@ -59,9 +65,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Heading" type="Label" parent="HeadingBorder"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HeadingBorder"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="MarginMid1" type="ColorRect" parent="HeadingBorder/VBoxContainer"]
+margin_right = 452.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Heading" type="Label" parent="HeadingBorder/VBoxContainer"]
+margin_top = 9.0
+margin_right = 452.0
+margin_bottom = 107.0
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Conquest"
 align = 1
@@ -69,6 +87,13 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MarginMid2" type="ColorRect" parent="HeadingBorder/VBoxContainer"]
+margin_top = 111.0
+margin_right = 452.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
 
 [connection signal="options_saved" from="MenuBorder/Menu" to="." method="options_saved"]
 

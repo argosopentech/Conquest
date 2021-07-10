@@ -13,7 +13,7 @@ func start_game():
 	get_tree().change_scene("res://Source/Gameplay/Game/Game.tscn")
 
 func _on_Join_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://Source/Gameplay/HUD/JoinGameMenu.tscn")
 
 func _on_Create_pressed():
 	get_tree().change_scene("res://Source/Gameplay/HUD/HostGameMenu.tscn")
