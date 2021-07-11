@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="PlayerListInstance" type="VBoxContainer"]
+margin_top = 13.0
+margin_right = 280.0
+margin_bottom = 66.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Details" type="HBoxContainer" parent="."]
+margin_right = 280.0
+margin_bottom = 40.0
+custom_constants/separation = 10
+
+[node name="Color" type="ColorRect" parent="Details"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+color = Color( 1, 0.513726, 0, 1 )
+
+[node name="Name" type="Label" parent="Details"]
+margin_left = 50.0
+margin_top = 7.0
+margin_right = 220.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "player 1"
+valign = 1
+
+[node name="Send" parent="Details" instance=ExtResource( 1 )]
+margin_left = 230.0
+margin_right = 270.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 1 )
+text = "X"
+
+[node name="Margin" type="Label" parent="Details"]
+margin_left = 280.0
+margin_top = 13.0
+margin_right = 280.0
+margin_bottom = 27.0
+
+[node name="Margin" type="ColorRect" parent="."]
+margin_top = 48.0
+margin_right = 280.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
