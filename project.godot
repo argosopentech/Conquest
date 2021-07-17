@@ -189,6 +189,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GamePlay="*res://Source/Gameplay/game_play.gd"
+Server="*res://Source/Server/Server.gd"
 
 [display]
 
