@@ -6,6 +6,11 @@ var player_name = "player"
 var my_lobby = {}
 var active_lobbies = {}
 
+signal lobby_created_signal(lobby_data)
+signal lobby_updated_signal(lobby_data, reason)
+signal failed_to_join_lobby_signal(reason)
+signal got_active_lobbies_signal(lobbies)
+
 func _ready():
 	connect_signals()
 	connect_to_server()
@@ -42,15 +47,18 @@ func create_lobby(lobby_data):
 
 remote func lobby_created(lobby_data):
 	my_lobby = lobby_data
+	emit_signal("lobby_created_signal", lobby_data)
 
 func join_lobby(lobby_code, lobby_pass):
 	rpc_id(1, "join_lobby", lobby_code, lobby_pass)
 
 remote func update_lobby(lobby_data, reason = ""):
 	my_lobby = lobby_data
+	emit_signal("lobby_updated_signal", lobby_data, reason)
 	print(reason)
 
 remote func failed_to_join_lobby(reason = ""):
+	emit_signal("failed_to_join_lobby_signal", reason)
 	print(reason)
 
 func ask_for_active_lobbies():
@@ -58,4 +66,5 @@ func ask_for_active_lobbies():
 
 remote func get_active_lobbies(lobbies):
 	active_lobbies = lobbies
+	emit_signal("got_active_lobbies_signal", lobbies)
 	print("Got active lobbies.")
