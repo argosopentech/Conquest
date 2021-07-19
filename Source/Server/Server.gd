@@ -68,3 +68,6 @@ remote func get_active_lobbies(lobbies):
 	active_lobbies = lobbies
 	emit_signal("got_active_lobbies_signal", lobbies)
 	print("Got active lobbies.")
+
+func leave_lobby():
+	rpc_id(1, "leave_lobby", my_lobby.code)
