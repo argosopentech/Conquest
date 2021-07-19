@@ -12,7 +12,7 @@ onready var error_label = $Overlay/Error
 func _ready():
 	error_label.hide()
 	join_code_menu.hide()
-	
+	join_code_menu.connect("joining_lobby", self, "joining_lobby")
 	Server.connect("got_active_lobbies_signal", self, "got_active_lobbies")
 	Server.connect("failed_to_join_lobby_signal", self, "failed_to_join_lobby")
 	Server.connect("lobby_updated_signal", self, "joined_lobby")
