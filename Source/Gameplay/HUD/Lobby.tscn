@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Source/Gameplay/HUD/MessageInstance.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=6]
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=8]
@@ -44,7 +43,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0, 0, 0.196078 )
 border_width_left = 5
 border_width_top = 5
@@ -59,14 +58,14 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 24
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -98,6 +97,7 @@ margin_left = -560.0
 margin_top = -300.0
 margin_right = 560.0
 margin_bottom = 300.0
+grow_horizontal = 2
 texture = ExtResource( 6 )
 expand = true
 __meta__ = {
@@ -107,6 +107,7 @@ __meta__ = {
 [node name="Info" type="VBoxContainer" parent="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
 rect_min_size = Vector2( 260, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -142,6 +143,7 @@ color = Color( 0, 0, 0, 1 )
 margin_top = 71.0
 margin_right = 1120.0
 margin_bottom = 518.0
+grow_horizontal = 2
 size_flags_vertical = 3
 
 [node name="Margin1" type="Label" parent="TextureRect/Info/Window"]
@@ -296,6 +298,7 @@ rect_min_size = Vector2( 25, 0 )
 margin_left = 282.0
 margin_right = 807.0
 margin_bottom = 447.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -309,18 +312,18 @@ color = Color( 0, 0, 0, 1 )
 margin_top = 9.0
 margin_right = 525.0
 margin_bottom = 365.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
+scroll_horizontal_enabled = false
 
 [node name="Chat" type="VBoxContainer" parent="TextureRect/Info/Window/Chat/ChatBox"]
 margin_right = 525.0
 margin_bottom = 356.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="MessageInstance" parent="TextureRect/Info/Window/Chat/ChatBox/Chat" instance=ExtResource( 5 )]
-margin_right = 525.0
 
 [node name="Margin2" type="ColorRect" parent="TextureRect/Info/Window/Chat"]
 margin_top = 369.0
@@ -340,9 +343,9 @@ margin_right = 425.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 3
-custom_styles/read_only = SubResource( 7 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/read_only = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 placeholder_text = "Chat here..."
 placeholder_alpha = 1.0
@@ -352,7 +355,7 @@ margin_left = 435.0
 margin_right = 525.0
 rect_min_size = Vector2( 90, 60 )
 size_flags_horizontal = 8
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "send"
 
 [node name="Margin3" type="ColorRect" parent="TextureRect/Info/Window/Chat"]
@@ -402,7 +405,7 @@ margin_bottom = 48.0
 [node name="Cancel" parent="TextureRect/Info/HMenu3" instance=ExtResource( 8 )]
 margin_left = 20.0
 margin_right = 540.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "Exit Lobby"
 flat = true
 
@@ -415,7 +418,7 @@ margin_bottom = 48.0
 [node name="StartGame" parent="TextureRect/Info/HMenu3" instance=ExtResource( 8 )]
 margin_left = 580.0
 margin_right = 1100.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "Start Game"
 flat = true
 
@@ -432,7 +435,8 @@ margin_bottom = 600.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[connection signal="pressed" from="TextureRect/Info/Window/Chat/MessageBox/Send" to="." method="_on_Cancel_pressed"]
+[connection signal="text_entered" from="TextureRect/Info/Window/Chat/MessageBox/Message" to="." method="_on_Message_text_entered"]
+[connection signal="pressed" from="TextureRect/Info/Window/Chat/MessageBox/Send" to="." method="_on_Send_pressed"]
 [connection signal="pressed" from="TextureRect/Info/HMenu3/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="TextureRect/Info/HMenu3/StartGame" to="." method="_on_JoinCode_pressed"]
 

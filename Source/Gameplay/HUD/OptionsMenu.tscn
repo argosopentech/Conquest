@@ -170,6 +170,7 @@ margin_bottom = 171.0
 rect_min_size = Vector2( 0, 50 )
 text = "player"
 align = 1
+max_length = 15
 
 [node name="MarginMid1" type="ColorRect" parent="Info"]
 margin_top = 175.0

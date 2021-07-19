@@ -14,6 +14,7 @@ signal lobby_updated_signal(lobby_data, reason)
 signal failed_to_join_lobby_signal(reason)
 signal got_active_lobbies_signal(lobbies)
 signal kicked_from_lobby_signal(reason)
+signal got_message(message, sender)
 
 func _ready():
 	connect_signals()
@@ -94,3 +95,9 @@ remote func kicked_from_lobby(reason = ""):
 	print(reason)
 	emit_signal("kicked_from_lobby_signal")
 
+func send_message(lobby_code, message, sender):
+	rpc_id(1, "send_message", lobby_code, message, sender)
+
+remote func get_message(message, sender):
+	print("Got message:\n", message, "\nfrom\n", sender)
+	emit_signal("got_message", message, sender)
