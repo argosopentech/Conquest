@@ -7,7 +7,6 @@ func enter(player: Player):
 	player.hud.set_player_state(get_class())
 	player.hud.hide_go_button()
 	player.hud.show_draft_icon()
-	#player.hud.set_reinforcement_label(player.initial_troops)
 
 func handle_input(player: Player, input: InputEvent):
 	return null
@@ -21,14 +20,9 @@ func exit(player: Player):
 func country_clicked(player: Player, country: Country):
 	if not country.occupier or (country.occupier == player and GamePlay.game.occupied_countries == GamePlay.game.total_countries):
 		if not country.occupier:
-			country.occupier = player
-			GamePlay.game.occupied_countries += 1
+			country.set_occupier(player)
+			GamePlay.game.increment_occupied_countries()
 			player.occupy_country(country)
-#			player.countries_occupied += 1
-#			player.countries.append(country)
-#			for continent in country.get_groups():
-#				if continent in GamePlay.total_countries_in_continents.keys():
-#					player.countries_occupied_in_continents[continent] += 1
 		country.increment_troops()
 		player.decrement_initial_troops()
 		country.update()

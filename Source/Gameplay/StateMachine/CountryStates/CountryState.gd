@@ -18,29 +18,32 @@ var country_states = {
 var color_multiplier = 1
 var hover_multiplier = 1.25
 
-func enter(country: Country):
+func enter(country):
 	set_country_color(country)
 	dim_country_color(country)
 	set_border_color(country)
 
-func handle_input(country: Country, input: InputEvent):
+func handle_input(country, input: InputEvent):
 	return null
 
-func update(country: Country):
+func update(country):
 	pass
 
-func exit(country: Country):
+func exit(country):
 	pass
 
-func clicked(country: Country):
+func clicked(country):
 	pass
+
+func get_state_name():
+	return "country_state"
 
 func change_state(country: Country, state):
 	country.change_state(state)
 
 func set_country_color(country: Country):
 	if country.occupier:
-		country.sprite.modulate = GamePlay.colors[country.occupier.name]
+		country.sprite.modulate = GamePlay.colors[str(int(country.occupier.name) + 1)]
 	else:
 		country.sprite.modulate = colors.unoccupied
 

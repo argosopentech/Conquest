@@ -57,6 +57,7 @@ func activate_bordering_countries(country: Country):
 			if not bordering_country.country_state.get_class() in ["Selected State", "Active State"]:
 				bordering_country.change_country_state("active")
 				activate_bordering_countries(bordering_country)
+
 func unselect_country(player: Player, country: Country):
 	push_countries_in_fortify_state(player)
 	selected_country = null

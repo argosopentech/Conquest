@@ -8,6 +8,7 @@ var active_lobbies = {}
 var join_lobby_request_sent = false
 var ask_for_lobbies_request_sent = false
 var player_id = null
+var player_number = null
 
 signal lobby_created_signal(lobby_data)
 signal lobby_updated_signal(lobby_data, reason)
@@ -15,6 +16,7 @@ signal failed_to_join_lobby_signal(reason)
 signal got_active_lobbies_signal(lobbies)
 signal kicked_from_lobby_signal(reason)
 signal got_message(message, sender)
+signal game_started_signal()
 
 func _ready():
 	connect_signals()
@@ -101,3 +103,19 @@ func send_message(lobby_code, message, sender):
 remote func get_message(message, sender):
 	print("Got message:\n", message, "\nfrom\n", sender)
 	emit_signal("got_message", message, sender)
+
+func send_node_func_call(node_path, function, parameter=null):
+	rpc_id(1, "send_node_func_call", int(my_lobby.code), node_path, function, parameter)
+
+remote func get_node_func_call(node_path, function, parameter=null):
+	if parameter:
+		get_node(node_path).call(function, parameter, true)
+	else:
+		get_node(node_path).call(function, true)
+
+func start_game(lobby_code):
+	rpc_id(1, "start_game", lobby_code)
+
+remote func game_started():
+	print("game started")
+	emit_signal("game_started_signal")

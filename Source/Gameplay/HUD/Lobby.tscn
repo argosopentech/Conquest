@@ -438,6 +438,6 @@ color = Color( 0, 0, 0, 1 )
 [connection signal="text_entered" from="TextureRect/Info/Window/Chat/MessageBox/Message" to="." method="_on_Message_text_entered"]
 [connection signal="pressed" from="TextureRect/Info/Window/Chat/MessageBox/Send" to="." method="_on_Send_pressed"]
 [connection signal="pressed" from="TextureRect/Info/HMenu3/Cancel" to="." method="_on_Cancel_pressed"]
-[connection signal="pressed" from="TextureRect/Info/HMenu3/StartGame" to="." method="_on_JoinCode_pressed"]
+[connection signal="pressed" from="TextureRect/Info/HMenu3/StartGame" to="." method="_on_StartGame_pressed"]
 
 [editable path="Background"]

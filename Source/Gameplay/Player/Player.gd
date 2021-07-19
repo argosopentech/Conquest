@@ -62,14 +62,15 @@ func leave_country(country: Country):
 			countries_occupied_in_continents[continent] -= 1
 
 func setup_hud():
-	hud.set_player_name(name)
-	hud.set_icon_color(GamePlay.colors[name])
+	var player_data = Server.my_lobby.players[int(name)]
+	hud.set_player_name(player_data.name)
+	hud.set_icon_color(player_data.color)
 	hud.connect("go_pressed", self, "go_pressed")
 	deploy_menu.hide()
 	attacking_menu.hide()
 	move_menu.hide()
 	overlay.hide()
-	gameover_menu.set_player_name(name)
+	gameover_menu.set_player_name(player_data.name)
 	gameover_menu.hide()
 	deploy_menu.connect("deployed", self, "troops_deployed")
 	attacking_menu.connect("attacked", self, "player_attacked")
@@ -86,6 +87,8 @@ func player_attacked(win_chance_percentage, troops: int, player_country: Country
 		change_state(state)
 
 func go_pressed():
+	if Server.my_lobby.players[int(name)].id != Server.player_id:
+		return
 	var state = player_state.go_pressed(self)
 	if state:
 		change_state(state)
@@ -95,35 +98,56 @@ func troops_deployed(troops: int, country: Country):
 	if state:
 		change_state(state)
 
-func turn_complete():
+func turn_complete(net_call=false):
 	if player_state.get_class() == "Reinforce" and first_turn:
 		return
 	hud.hide()
 	set_active(false)
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "turn_complete")
 
-func set_initial_troops(amount):
+func set_initial_troops(amount, net_call=false):
 	initial_troops = amount
 	hud.set_reinforcement_label(initial_troops)
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "set_initial_troops", amount)
 
-func increment_initial_troops():
+func increment_initial_troops(net_call=false):
 	initial_troops += 1
 	hud.set_reinforcement_label(initial_troops)
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "increment_initial_troops")
 	
-func decrement_initial_troops():
+func decrement_initial_troops(net_call=false):
 	initial_troops -= 1
 	hud.set_reinforcement_label(initial_troops)
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "decrement_initial_troops")
 
-func set_reinforcement(amount = 0):
+func set_reinforcement(amount = 0, net_call=false):
 	reinforcement = amount
 	hud.set_reinforcement_label(reinforcement)
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "set_reinforcement", amount)
 
-func increment_reinforcement(amount = 1):
+func increment_reinforcement(amount = 1, net_call=false):
 	reinforcement += amount
 	hud.set_reinforcement_label(reinforcement)
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "increment_reinforcement", amount)
 
-func decrement_reinforcement(amount = 1):
+func decrement_reinforcement(amount = 1, net_call=false):
 	reinforcement -= amount
 	hud.set_reinforcement_label(reinforcement)
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "decrement_reinforcement", amount)
 
 func setup_state():
 	player_state.enter(self)
@@ -133,7 +157,7 @@ func all_troops_placed():
 	if state:
 		change_state(state)
 
-func change_state(state):
+func change_state(state, net_call=false):
 	print("Player ", name, " state changed.")
 	var previous_state = player_state
 	previous_state.exit(self)
@@ -142,15 +166,25 @@ func change_state(state):
 	print("New state: ", player_state.get_class())
 	previous_state.queue_free()
 	player_state.enter(self)
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "change_state", state)
 
-func setup_reinforcements():
+func setup_reinforcements(net_call=false):
 	reinforcement = randi() % 10 + 3
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "setup_reinforcements")
 
-func add_reinforcements(amount):
+func add_reinforcements(amount, net_call=false):
 	reinforcement += amount
-	# update hud
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "add_reinforcements", amount)
 
 func _input(event):
+	if Server.my_lobby.players[int(name)].id != Server.player_id:
+		return
 	if not is_active:
 		return
 	if event.is_action_pressed("move"):
@@ -177,9 +211,14 @@ func country_clicked(country: Country):
 		change_state(state)
 
 func _process(delta):
+	if Server.my_lobby.players[int(name)].id != Server.player_id:
+		return
 	var state = player_state.update(self)
 	if state:
 		change_state(state)
 
-func eliminate():
+func eliminate(net_call=false):
 	eliminated = true
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "eliminate")

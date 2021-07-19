@@ -29,6 +29,9 @@ func clicked(country: Country):
 func get_class():
 	return "Selected State"
 
+func get_state_name():
+	return "selected"
+
 func change_country_state(country: Country, state_name = ""):
 	if state_name == "in_active":
 		return country_states.in_active.new()

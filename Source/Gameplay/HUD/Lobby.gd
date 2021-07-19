@@ -14,7 +14,6 @@ onready var message_edit = $TextureRect/Info/Window/Chat/MessageBox/Message
 
 var player_instance_scene = preload("res://Source/Gameplay/HUD/PlayerListInstance.tscn")
 var message_instance_scene = preload("res://Source/Gameplay/HUD/MessageInstance.tscn")
-var player_number = null
 var max_scroll_length = 0
 
 func _ready():
@@ -30,6 +29,7 @@ func connect_server_signals():
 	Server.connect("lobby_updated_signal", self, "lobby_updated")
 	Server.connect("kicked_from_lobby_signal", self, "kicked_from_lobby")
 	Server.connect("got_message", self, "got_message")
+	Server.connect("game_started_signal", self, "start_game")
 
 func setup_lobby_ui():
 	name_label.text = str(Server.my_lobby.name)
@@ -56,7 +56,7 @@ func instance_player_list():
 			start_margin.hide()
 		if Server.my_lobby.players[i].id == Server.player_id:
 			player_instance.name_label.set("custom_colors/font_color", Color.orangered)
-			player_number = i
+			Server.player_number = i
 
 func kicked_from_lobby(reason = ""):
 	print(reason)
@@ -92,9 +92,15 @@ func _on_Cancel_pressed():
 func _on_Send_pressed():
 	var code = int(code_label.text)
 	var message = message_edit.text
-	var sender = Server.my_lobby.players[player_number]
+	var sender = Server.my_lobby.players[Server.player_number]
 	Server.send_message(code, message, sender)
 	message_edit.text = ""
 
 func _on_Message_text_entered(new_text):
 	_on_Send_pressed()
+
+func _on_StartGame_pressed():
+	Server.start_game(int(code_label.text))
+
+func start_game():
+	get_tree().change_scene("res://Source/Gameplay/Game/Game.tscn")

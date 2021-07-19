@@ -33,6 +33,9 @@ func active_player_changed(country: Country, new_player: Player):
 func get_class():
 	return "In-Active State"
 
+func get_state_name():
+	return "in_active"
+
 func change_country_state(country: Country, state_name = ""):
 	if state_name == "selected":
 		return country_states.selected.new()

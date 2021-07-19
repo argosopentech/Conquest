@@ -29,14 +29,16 @@ func setup():
 	set_initial_troops()
 	setup_hud()
 	setup_music()
+	active_player_changed(0, players.get_child(0))
 
 func setup_music():
 	GamePlay.set_music_volume(GamePlay.in_game_volume)
 
 func spawn_players():
-	for i in range(GamePlay.players):
+#	for i in range(GamePlay.players):
+	for i in range(Server.my_lobby.current_players):
 		var p = player_scene.instance()
-		p.name = str(i + 1)
+		p.name = str(i)
 		players.add_child(p)
 	players.setup()
 
@@ -48,7 +50,8 @@ func number_of_players():
 	return players.get_child_count()
 
 func set_initial_troops():
-	var subtraction = 5 * (number_of_players() - 1)
+#	var subtraction = 5 * (number_of_players() - 1)
+	var subtraction = 5 * (Server.my_lobby.current_players - 1)
 	var initial_troops = 45 - subtraction
 	for player in players.get_children():
 		player.set_initial_troops(initial_troops)
@@ -89,7 +92,6 @@ func quit():
 		quit_pressed_audio.play()
 	quit_game_menu.show()
 	overlay.show()
-	#get_tree().change_scene("res://Source/Main/Main.tscn")
 
 func update_countries_on_turn_complete():
 	for country in countries.get_children():
@@ -126,3 +128,9 @@ func options():
 	if GamePlay.interface_sound:
 		options_pressed_audio.play()
 	options_overlay.show()
+
+func increment_occupied_countries(net_call=false):
+	occupied_countries += 1
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "increment_occupied_countries")

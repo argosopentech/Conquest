@@ -41,27 +41,38 @@ func setup_troops():
 
 func setup_name():
 	name_label.text = get_name()
+
 func setup_state():
 	country_state.enter(self)
 
 func _process(delta):
+	if GamePlay.game.active_player:
+		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
+			return
 	if country_state.has_method("update"):
 		var state = country_state.update(self)
 		if state:
 			change_state(state)
 
 func update():
+	if GamePlay.game.active_player:
+		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
+			return
 	var state = country_state.update(self)
 	if state:
 		change_state(state)
 
-func change_state(state):
+func change_state(state, net_call=false):
 	var previous_state = country_state
 	previous_state.exit(self)
 	country_state = state
 	#print(state.get_class())
 	country_state.enter(self)
 	previous_state.queue_free()
+	if net_call:
+		return
+	state = state.get_state_name()
+	Server.send_node_func_call(get_path(), "change_country_state", state)
 
 func get_name():
 	return space_pascal_case(name)
@@ -81,12 +92,21 @@ func space_pascal_case(string):
 	return new_string
 
 func _on_mouse_entered():
+	if GamePlay.game.active_player:
+		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
+			return
 	hovering = true
 
 func _on_mouse_exited():
+	if GamePlay.game.active_player:
+		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
+			return
 	hovering = false
 
 func _on_input_event(viewport, event, shape_idx):
+	if GamePlay.game.active_player:
+		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
+			return
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
@@ -101,27 +121,42 @@ func _input(event):
 	if event.is_action_pressed("reveal_country_names"):
 		name_label.visible = !name_label.visible
 
-func increment_troops():
+func increment_troops(net_call=false):
 	troops += 1
 	emit_signal("troops_updated")
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "increment_troops")
 
-func decrement_troops():
+func decrement_troops(net_call=false):
 	troops -= 1
 	if troops < 0:
 		troops = 0
 	emit_signal("troops_updated")
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "decrement_troops")
 
-func add_troops(troops_amount):
+func add_troops(troops_amount, net_call=false):
 	troops += troops_amount
 	emit_signal("troops_updated")
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "add_troops", troops_amount)
 
-func subtract_troops(troops_amount):
+func subtract_troops(troops_amount, net_call=false):
 	troops -= troops_amount
 	emit_signal("troops_updated")
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "subtract_troops", troops_amount)
 
-func set_troops(troops_amount):
+func set_troops(troops_amount, net_call = false):
 	troops = troops_amount
 	emit_signal("troops_updated")
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "set_troops", troops_amount)
 
 func get_troops():
 	return troops
@@ -134,7 +169,27 @@ func active_player_changed(new_player):
 	if state:
 		change_state(state)
 
-func change_country_state(state_name = ""):
+func change_country_state(state_name = "", net_call=false):
 	var state = country_state.change_country_state(self, state_name)
 	if state:
-		change_state(state)
+		change_state(state, net_call)
+
+func set_occupier(new_occupier, net_call=false):
+	if net_call:
+		occupier = get_node(new_occupier)
+		return
+	else:
+		occupier = new_occupier
+	Server.send_node_func_call(get_path(), "set_occupier", new_occupier.get_path())
+
+func play_active_click(net_call=false):
+	active_click_audio.play()
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "play_active_click")
+
+func play_selected_click(net_call=false):
+	selected_click_audio.play()
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "play_selected_click")

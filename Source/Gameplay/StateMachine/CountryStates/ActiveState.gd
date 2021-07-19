@@ -21,7 +21,7 @@ func exit(country: Country):
 
 func clicked(country: Country):
 	if GamePlay.country_sound:
-		country.active_click_audio.play()
+		country.play_active_click()
 	GamePlay.game.active_player.country_clicked(country)
 
 func active_player_changed(country: Country, new_player: Player):
@@ -31,6 +31,9 @@ func active_player_changed(country: Country, new_player: Player):
 
 func get_class():
 	return "Active State"
+
+func get_state_name():
+	return "active"
 
 func change_country_state(country: Country, state_name = ""):
 	if state_name == "selected":

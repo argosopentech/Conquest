@@ -17,7 +17,7 @@ func set_icon_color(color):
 	icon.color = color
 
 func set_player_name(player_name):
-	name_label.text = "Player " + player_name
+	name_label.text = player_name
 
 func set_player_state(state):
 	state_label.text = state
