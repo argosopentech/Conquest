@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Source/Gameplay/HUD/PlayerListInstance.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Source/Gameplay/HUD/MessageInstance.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=6]
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=7]
@@ -45,7 +44,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0, 0, 0.196078 )
 border_width_left = 5
 border_width_top = 5
@@ -59,14 +58,6 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0, 0, 0, 0.196078 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 0.196078 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 24
@@ -323,143 +314,13 @@ size_flags_vertical = 3
 follow_focus = true
 
 [node name="Chat" type="VBoxContainer" parent="TextureRect/Info/Window/Chat/ChatBox"]
-margin_right = 513.0
-margin_bottom = 383.0
+margin_right = 525.0
+margin_bottom = 356.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MessageInstance" parent="TextureRect/Info/Window/Chat/ChatBox/Chat" instance=ExtResource( 5 )]
-
-[node name="MessageInstance2" type="HBoxContainer" parent="TextureRect/Info/Window/Chat/ChatBox/Chat"]
-margin_top = 64.0
-margin_right = 513.0
-margin_bottom = 127.0
-rect_min_size = Vector2( 0, 60 )
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance2"]
-margin_top = 11.0
-margin_right = 40.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_vertical = 4
-color = Color( 1, 0, 0, 1 )
-
-[node name="Message" type="Label" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance2"]
-margin_left = 44.0
-margin_right = 513.0
-margin_bottom = 63.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
-text = "I am good, thank you!
-What  about you?"
-valign = 1
-autowrap = true
-
-[node name="MessageInstance3" type="HBoxContainer" parent="TextureRect/Info/Window/Chat/ChatBox/Chat"]
-margin_top = 131.0
-margin_right = 513.0
-margin_bottom = 191.0
-rect_min_size = Vector2( 0, 60 )
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance3"]
-margin_top = 10.0
-margin_right = 40.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_vertical = 4
-color = Color( 0.478431, 0, 1, 1 )
-
-[node name="Message" type="Label" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance3"]
-margin_left = 44.0
-margin_right = 513.0
-margin_bottom = 60.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
-text = "Hey guys, sup?"
-valign = 1
-autowrap = true
-
-[node name="MessageInstance4" type="HBoxContainer" parent="TextureRect/Info/Window/Chat/ChatBox/Chat"]
-margin_top = 195.0
-margin_right = 513.0
-margin_bottom = 255.0
-rect_min_size = Vector2( 0, 60 )
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance4"]
-margin_top = 10.0
-margin_right = 40.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_vertical = 4
-color = Color( 1, 0.913725, 0, 1 )
-
-[node name="Message" type="Label" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance4"]
-margin_left = 44.0
-margin_right = 513.0
-margin_bottom = 60.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
-text = "@Player 1 I am all good too, thank you ^^"
-valign = 1
-autowrap = true
-
-[node name="MessageInstance5" type="HBoxContainer" parent="TextureRect/Info/Window/Chat/ChatBox/Chat"]
-margin_top = 259.0
-margin_right = 513.0
-margin_bottom = 319.0
-rect_min_size = Vector2( 0, 60 )
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance5"]
-margin_top = 10.0
-margin_right = 40.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_vertical = 4
-color = Color( 1, 0.913725, 0, 1 )
-
-[node name="Message" type="Label" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance5"]
-margin_left = 44.0
-margin_right = 513.0
-margin_bottom = 60.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
-text = "@Player 6 Yo!"
-valign = 1
-autowrap = true
-
-[node name="MessageInstance6" type="HBoxContainer" parent="TextureRect/Info/Window/Chat/ChatBox/Chat"]
-margin_top = 323.0
-margin_right = 513.0
-margin_bottom = 383.0
-rect_min_size = Vector2( 0, 60 )
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance6"]
-margin_top = 10.0
-margin_right = 40.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_vertical = 4
-color = Color( 0, 1, 0.976471, 1 )
-
-[node name="Message" type="Label" parent="TextureRect/Info/Window/Chat/ChatBox/Chat/MessageInstance6"]
-margin_left = 44.0
-margin_right = 513.0
-margin_bottom = 60.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
-text = "Oi let's play already <~>"
-valign = 1
-autowrap = true
+margin_right = 525.0
 
 [node name="Margin2" type="ColorRect" parent="TextureRect/Info/Window/Chat"]
 margin_top = 369.0
@@ -519,163 +380,6 @@ custom_constants/separation = 8
 [node name="Margin1" type="ColorRect" parent="TextureRect/Info/Window/PlayersList"]
 margin_right = 280.0
 margin_bottom = 5.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="PlayerListInstance" parent="TextureRect/Info/Window/PlayersList" instance=ExtResource( 4 )]
-
-[node name="1" type="HBoxContainer" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 74.0
-margin_right = 280.0
-margin_bottom = 114.0
-custom_constants/separation = 10
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/PlayersList/1"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-color = Color( 1, 0, 0, 1 )
-
-[node name="Name" type="Label" parent="TextureRect/Info/Window/PlayersList/1"]
-margin_left = 50.0
-margin_top = 7.0
-margin_right = 136.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 6 )
-text = "player 2"
-align = 1
-valign = 1
-
-[node name="Margin3" type="ColorRect" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 122.0
-margin_right = 280.0
-margin_bottom = 127.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="2" type="HBoxContainer" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 135.0
-margin_right = 280.0
-margin_bottom = 175.0
-custom_constants/separation = 10
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/PlayersList/2"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-color = Color( 0, 1, 0.0392157, 1 )
-
-[node name="Name" type="Label" parent="TextureRect/Info/Window/PlayersList/2"]
-margin_left = 50.0
-margin_top = 7.0
-margin_right = 136.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 6 )
-text = "player 3"
-align = 1
-valign = 1
-
-[node name="Margin4" type="ColorRect" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 183.0
-margin_right = 280.0
-margin_bottom = 188.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="3" type="HBoxContainer" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 196.0
-margin_right = 280.0
-margin_bottom = 236.0
-custom_constants/separation = 10
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/PlayersList/3"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-color = Color( 0, 0.976471, 1, 1 )
-
-[node name="Name" type="Label" parent="TextureRect/Info/Window/PlayersList/3"]
-margin_left = 50.0
-margin_top = 7.0
-margin_right = 136.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 6 )
-text = "player 4"
-align = 1
-valign = 1
-
-[node name="Margin5" type="ColorRect" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 244.0
-margin_right = 280.0
-margin_bottom = 249.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="4" type="HBoxContainer" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 257.0
-margin_right = 280.0
-margin_bottom = 297.0
-custom_constants/separation = 10
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/PlayersList/4"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-color = Color( 1, 0.913725, 0, 1 )
-
-[node name="Name" type="Label" parent="TextureRect/Info/Window/PlayersList/4"]
-margin_left = 50.0
-margin_top = 7.0
-margin_right = 136.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 6 )
-text = "player 5"
-align = 1
-valign = 1
-
-[node name="Margin6" type="ColorRect" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 305.0
-margin_right = 280.0
-margin_bottom = 310.0
-rect_min_size = Vector2( 0, 5 )
-color = Color( 0, 0, 0, 1 )
-
-[node name="5" type="HBoxContainer" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 318.0
-margin_right = 280.0
-margin_bottom = 358.0
-custom_constants/separation = 10
-
-[node name="Color" type="ColorRect" parent="TextureRect/Info/Window/PlayersList/5"]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-color = Color( 0.568627, 0, 1, 1 )
-
-[node name="Name" type="Label" parent="TextureRect/Info/Window/PlayersList/5"]
-margin_left = 50.0
-margin_top = 7.0
-margin_right = 135.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 6 )
-text = "player 6"
-align = 1
-valign = 1
-
-[node name="Margin7" type="ColorRect" parent="TextureRect/Info/Window/PlayersList"]
-margin_top = 366.0
-margin_right = 280.0
-margin_bottom = 371.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 

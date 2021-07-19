@@ -6,6 +6,7 @@ onready var main_menu_slider = $Info/MainMenuVolume
 onready var in_game_slider = $Info/InGameVolume
 onready var interface_sound = $Info/InterfaceSFX/InterfaceCheckBox
 onready var country_sound = $Info/CountrySFX/CountryCheckBox
+onready var name_edit = $Info/NameEdit
 
 var main_menu_volume = 75
 var in_game_volume = 65
@@ -22,6 +23,7 @@ func setup():
 	setup_sliders()
 	setup_sound_values()
 	setup_sounds()
+	setup_player_name()
 
 func setup_volume():
 	main_menu_volume = 50 + GamePlay.main_menu_volume
@@ -39,6 +41,9 @@ func setup_sounds():
 	interface_sound.pressed = interface_sound_on
 	country_sound.pressed = country_sound_on
 
+func setup_player_name():
+	name_edit.text = Server.player_name
+
 func cancel():
 	if get_parent() is ColorRect:
 		get_parent().hide()
@@ -50,6 +55,9 @@ func save():
 	GamePlay.in_game_volume = in_game_volume - 50
 	GamePlay.interface_sound = interface_sound_on
 	GamePlay.country_sound = country_sound_on
+	if Server.player_name != name_edit.text:
+		Server.player_name = name_edit.text
+		Server.send_player_name()
 	emit_signal("options_saved")
 
 func _on_MainMenuVolume_value_changed(value):

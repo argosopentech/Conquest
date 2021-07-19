@@ -5,11 +5,15 @@ const SERVER_PORT = 1909
 var player_name = "player"
 var my_lobby = {}
 var active_lobbies = {}
+var join_lobby_request_sent = false
+var ask_for_lobbies_request_sent = false
+var player_id = null
 
 signal lobby_created_signal(lobby_data)
 signal lobby_updated_signal(lobby_data, reason)
 signal failed_to_join_lobby_signal(reason)
 signal got_active_lobbies_signal(lobbies)
+signal kicked_from_lobby_signal(reason)
 
 func _ready():
 	connect_signals()
@@ -22,12 +26,14 @@ func connect_signals():
 
 func _connected_to_server():
 	print("Connected to the server.")
+	player_id = get_tree().get_network_unique_id()
 
 func _connection_failed():
 	print("Failed to connect to the server.")
 
 func _server_disconnected():
 	print("Server disconnected.")
+	player_id = null
 
 func connect_to_server():
 	var peer = NetworkedMultiplayerENet.new()
@@ -50,24 +56,41 @@ remote func lobby_created(lobby_data):
 	emit_signal("lobby_created_signal", lobby_data)
 
 func join_lobby(lobby_code, lobby_pass):
+	if join_lobby_request_sent:
+		return
 	rpc_id(1, "join_lobby", lobby_code, lobby_pass)
+	join_lobby_request_sent = true
 
 remote func update_lobby(lobby_data, reason = ""):
 	my_lobby = lobby_data
+	join_lobby_request_sent = false
 	emit_signal("lobby_updated_signal", lobby_data, reason)
 	print(reason)
 
 remote func failed_to_join_lobby(reason = ""):
+	join_lobby_request_sent = false
 	emit_signal("failed_to_join_lobby_signal", reason)
 	print(reason)
 
 func ask_for_active_lobbies():
+	if ask_for_lobbies_request_sent:
+		return
 	rpc_id(1, "send_active_lobbies")
+	ask_for_lobbies_request_sent = true
 
 remote func get_active_lobbies(lobbies):
+	ask_for_lobbies_request_sent = false
 	active_lobbies = lobbies
 	emit_signal("got_active_lobbies_signal", lobbies)
 	print("Got active lobbies.")
 
 func leave_lobby():
 	rpc_id(1, "leave_lobby", my_lobby.code)
+
+func kick_player_from_lobby(lobby_code, player_id):
+	rpc_id(1, "kick_player_from_lobby", lobby_code, player_id)
+
+remote func kicked_from_lobby(reason = ""):
+	print(reason)
+	emit_signal("kicked_from_lobby_signal")
+
