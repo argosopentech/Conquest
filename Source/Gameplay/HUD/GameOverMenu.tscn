@@ -125,7 +125,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="Label" type="Label" parent="Info"]
 margin_top = 9.0
 margin_right = 467.0
-margin_bottom = 58.0
+margin_bottom = 65.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 4 )
@@ -137,16 +137,16 @@ __meta__ = {
 }
 
 [node name="MarginMid1" type="ColorRect" parent="Info"]
-margin_top = 62.0
+margin_top = 69.0
 margin_right = 467.0
-margin_bottom = 67.0
+margin_bottom = 74.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Player" type="Label" parent="Info"]
-margin_top = 71.0
+margin_top = 78.0
 margin_right = 467.0
-margin_bottom = 121.0
+margin_bottom = 134.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 5 )
@@ -158,23 +158,25 @@ __meta__ = {
 }
 
 [node name="MarginMid2" type="ColorRect" parent="Info"]
-margin_top = 125.0
+margin_top = 138.0
 margin_right = 467.0
-margin_bottom = 130.0
+margin_bottom = 143.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HMenu" parent="Info" instance=ExtResource( 1 )]
-margin_top = 134.0
+margin_top = 147.0
 margin_right = 467.0
-margin_bottom = 194.0
+margin_bottom = 203.0
 size_flags_vertical = 3
+custom_constants/separation = 15
 
 [node name="MarginLeft" type="Label" parent="Info/HMenu"]
-margin_top = 11.0
-margin_bottom = 48.0
+margin_top = 9.0
+margin_bottom = 46.0
 
 [node name="PlayAgain" parent="Info/HMenu" instance=ExtResource( 6 )]
+visible = false
 margin_left = 20.0
 margin_right = 213.0
 custom_styles/hover = SubResource( 6 )
@@ -187,13 +189,34 @@ text = "Play Again"
 flat = true
 
 [node name="MarginMid" type="Label" parent="Info/HMenu"]
-margin_left = 233.0
-margin_top = 11.0
-margin_right = 233.0
-margin_bottom = 48.0
+margin_left = 15.0
+margin_top = 9.0
+margin_right = 15.0
+margin_bottom = 46.0
+align = 1
+valign = 1
+
+[node name="Back" type="Label" parent="Info/HMenu"]
+margin_left = 30.0
+margin_top = 9.0
+margin_right = 437.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+text = "Back to lobby in 5(s)"
+align = 1
+valign = 1
+
+[node name="MarginMid5" type="Label" parent="Info/HMenu"]
+margin_left = 452.0
+margin_top = 9.0
+margin_right = 452.0
+margin_bottom = 46.0
+align = 1
+valign = 1
 
 [node name="MainMenu" parent="Info/HMenu" instance=ExtResource( 6 )]
-margin_left = 253.0
+visible = false
+margin_left = 40.0
 margin_right = 447.0
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
@@ -206,16 +229,20 @@ flat = true
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
 margin_left = 467.0
-margin_top = 11.0
+margin_top = 9.0
 margin_right = 467.0
-margin_bottom = 48.0
+margin_bottom = 46.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 198.0
+margin_top = 207.0
 margin_right = 467.0
-margin_bottom = 203.0
+margin_bottom = 212.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="visibility_changed" from="." to="." method="_on_GameoverMenu_visibility_changed"]
 [connection signal="pressed" from="Info/HMenu/PlayAgain" to="." method="play_again"]
 [connection signal="pressed" from="Info/HMenu/MainMenu" to="." method="main_menu"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

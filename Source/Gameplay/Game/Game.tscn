@@ -164,6 +164,7 @@ stream = ExtResource( 52 )
 stream = ExtResource( 53 )
 
 [node name="AutoPlaceBorder" type="TextureRect" parent="HUD"]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

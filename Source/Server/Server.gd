@@ -10,6 +10,9 @@ var ask_for_lobbies_request_sent = false
 var player_id = null
 var player_number = null
 
+var lobby_data = null
+var reason = null
+
 signal lobby_created_signal(lobby_data)
 signal lobby_updated_signal(lobby_data, reason)
 signal failed_to_join_lobby_signal(reason)
@@ -49,6 +52,10 @@ func connect_to_server():
 remote func send_player_name():
 	var sender_id = get_tree().get_rpc_sender_id()
 	rpc_id(sender_id, "get_player_name", player_name)
+	print("Sent player name")
+
+func send_saved_player_name():
+	rpc_id(1, "get_player_name", player_name)
 	print("Sent player name")
 
 func create_lobby(lobby_data):

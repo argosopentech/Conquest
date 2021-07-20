@@ -24,6 +24,11 @@ func setup():
 	setup_sound_values()
 	setup_sounds()
 	setup_player_name()
+	set_name_edit()
+
+func set_name_edit():
+	if get_owner().name == "Game":
+		name_edit.editable = false
 
 func setup_volume():
 	main_menu_volume = 50 + GamePlay.main_menu_volume
@@ -57,7 +62,7 @@ func save():
 	GamePlay.country_sound = country_sound_on
 	if Server.player_name != name_edit.text:
 		Server.player_name = name_edit.text
-		Server.send_player_name()
+		Server.send_saved_player_name()
 	emit_signal("options_saved")
 
 func _on_MainMenuVolume_value_changed(value):

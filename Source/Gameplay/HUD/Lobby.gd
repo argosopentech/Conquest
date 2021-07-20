@@ -17,9 +17,16 @@ var message_instance_scene = preload("res://Source/Gameplay/HUD/MessageInstance.
 var max_scroll_length = 0
 
 func _ready():
+	check_for_previous_messages()
 	connect_signals()
 	setup_lobby_ui()
 	max_scroll_length = chat_scroll.max_value
+
+func check_for_previous_messages():
+	if Server.lobby_data:
+		if Server.reason:
+			start_button.hide()
+			lobby_updated(Server.lobby_data, Server.reason)
 
 func connect_signals():
 	chat_scroll.connect("changed", self, "scroll_chat_box")
@@ -84,6 +91,9 @@ func scroll_chat_box():
 func lobby_updated(lobby_data, reason):
 	setup_lobby_ui()
 	write_server_message(reason)
+	if Server.lobby_data:
+		Server.lobby_data = null
+		Server.reason = null
 
 func _on_Cancel_pressed():
 	Server.leave_lobby()

@@ -7,4 +7,6 @@ func cancel():
 	hide()
 
 func quit_game():
+	if get_owner().name == "Game":
+		Server.leave_lobby()
 	get_tree().change_scene("res://Source/Main/Main.tscn")

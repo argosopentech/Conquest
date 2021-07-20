@@ -80,6 +80,8 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 		troops_lost = 1
 	if random_number > win_chance_percentage:
 		successful = true
+	if troops_lost > 0:
+		troops_lost -= 1
 	player_country.subtract_troops(troops_lost)
 	var activity = Server.my_lobby.players[int(player.name)].name + " lost " + str(troops_lost) + " troops"
 	player.set_activity(activity)
