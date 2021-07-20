@@ -193,3 +193,9 @@ func play_selected_click(net_call=false):
 	if net_call:
 		return
 	Server.send_node_func_call(get_path(), "play_selected_click")
+
+func set_country_color(net_call=false):
+	country_state.set_country_color(self)
+
+func set_border_color(net_call=false):
+	country_state.set_border_color(self)

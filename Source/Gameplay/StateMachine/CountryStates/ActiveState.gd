@@ -40,3 +40,9 @@ func change_country_state(country: Country, state_name = ""):
 		return country_states.selected.new()
 	if state_name == "in_active":
 		return country_states.in_active.new()
+
+func set_country_color(country: Country):
+	.set_country_color(country)
+
+func set_border_color(country: Country):
+	.set_border_color(country)

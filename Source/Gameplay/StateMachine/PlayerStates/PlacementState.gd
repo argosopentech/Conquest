@@ -33,3 +33,14 @@ func get_class():
 
 func all_troops_placed(player: Player):
 	return player_states.draft.new()
+
+func change_player_state(player: Player, state_name = ""):
+	if state_name == "draft":
+		return player_states.draft.new()
+	if state_name == "fortify":
+		return player_states.fortify.new()
+	if state_name == "attack":
+		return player_states.attack.new()
+
+func get_state_name():
+	return "placement"

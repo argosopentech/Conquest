@@ -49,7 +49,7 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 	var random_number = randi() % 4
 	var successful = false
 	var troops_lost = 1
-	if troops - 1 > 0:
+	if troops - 1 > 1:
 		troops_lost = randi() % (troops - 1) + 1
 	if win_chance_percentage > 90:
 		troops_lost = randi() % 3 + 1
@@ -71,16 +71,18 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 			troops_lost = randi() % (troops - 2) + 1
 		if random_number > 2:
 			successful = true
+	if troops <= 3:
+		troops_lost = 1
 	if random_number > win_chance_percentage:
 		successful = true
 	player_country.subtract_troops(troops_lost)
-	var activity = "Player " + player.name + " lost " + str(troops_lost) + " troops"
+	var activity = Server.my_lobby.players[int(player.name)].name + " lost " + str(troops_lost) + " troops"
 	player.set_activity(activity)
-	activity = "Player " + player.name + "'s attack on Player " + opponent_country.occupier.name + " failed."
+	activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " failed."
 	if successful:
-		activity = "Player " + player.name + "'s attack on Player " + opponent_country.occupier.name + " succeeded!."
+		activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " succeeded!."
 		if opponent_country.occupier.countries_occupied == 1:
-			var elimination = "Player " + opponent_country.occupier.name + " has been eliminated."
+			var elimination = Server.my_lobby.players[int(opponent_country.occupier.name)].name + " has been eliminated."
 			player.set_activity(elimination)
 			opponent_country.occupier.eliminate()
 			if GamePlay.game.all_eliminated():
@@ -125,3 +127,14 @@ func troops_moved(player: Player, troops: int, source_country: Country, destinat
 	if source_country.troops == 1:
 		source_country.change_country_state("in_active")
 	player.overlay.hide()
+
+func change_player_state(player: Player, state_name = ""):
+	if state_name == "draft":
+		return player_states.draft.new()
+	if state_name == "fortify":
+		return player_states.fortify.new()
+	if state_name == "placement":
+		return player_states.placement.new()
+
+func get_state_name():
+	return "attack"

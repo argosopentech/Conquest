@@ -26,7 +26,7 @@ func add_reinforcement_amount(player: Player):
 	var default = int(player.countries_occupied / 3)
 	if default < 3:
 		default = 3
-	var activity = "Player " + player.name + " gets " + str(default) + " troops for occupying " + str(player.countries_occupied) + " countries."
+	var activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(default) + " troops for occupying " + str(player.countries_occupied) + " countries."
 	print(activity)
 	player.set_activity(activity)
 	player.increment_reinforcement(default)
@@ -36,17 +36,17 @@ func add_reinforcement_amount(player: Player):
 func add_continental_bonus(player: Player):
 	for continent in bonus_troops.keys():
 		if player.countries_occupied_in_continents[continent] == GamePlay.total_countries_in_continents[continent]:
-			var activity = "Player gets " + str(bonus_troops[continent]) + " for occupying " + continent
+			var activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(bonus_troops[continent]) + " for occupying " + continent
 			print(activity)
 			player.set_activity(activity)
 			player.increment_reinforcement(bonus_troops[continent])
 
 func add_first_turn_bonus(player: Player):
 	if player.first_turn:
-		var player_name = int(player.name)
+		var player_name = int(player.name) + 1
 		if player_name > 3:
 			var turn_bonus = player_name % 3
-			var activity = "Player " + str(player_name) + " gets " + str(turn_bonus) + " for being at " + str(player_name) + " position"
+			var activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(turn_bonus) + " for being at " + str(player_name) + " position"
 			print(activity)
 			player.set_activity(activity)
 			player.increment_reinforcement(turn_bonus)
@@ -80,3 +80,14 @@ func go_pressed(player: Player):
 
 func get_class():
 	return "Reinforce"
+
+func change_player_state(player: Player, state_name = ""):
+	if state_name == "attack":
+		return player_states.attack.new()
+	if state_name == "fortify":
+		return player_states.fortify.new()
+	if state_name == "placement":
+		return player_states.placement.new()
+
+func get_state_name():
+	return "draft"

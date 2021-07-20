@@ -40,13 +40,15 @@ func attack_details(pc: Country = null, oc: Country = null):
 		troops_range.max_value = player_country.troops - 1
 		troops_range.value = troops_range.max_value
 		player_troops_label.text = str(player_country.troops)
-		player_name_label.text = "Player " + player_country.occupier.name
-		player_icon.color = GamePlay.colors[player_country.occupier.name]
+		player_name_label.text = Server.my_lobby.players[int(player_country.occupier.name)].name
+#		player_icon.color = GamePlay.colors[str(int(player_country.occupier.name) + 1)]
+		player_icon.color = Server.my_lobby.players[int(player_country.occupier.name)].color
 	if opponent_country:
 		opponent_country_label.text = opponent_country.get_name()
 		opponent_troops_label.text = str(opponent_country.troops)
-		opponent_name_label.text = "Player " + opponent_country.occupier.name
-		opponent_icon.color = GamePlay.colors[opponent_country.occupier.name]
+		opponent_name_label.text = Server.my_lobby.players[int(opponent_country.occupier.name)].name
+#		opponent_icon.color = GamePlay.colors[str(int(opponent_country.occupier.name) + 1)]
+		opponent_icon.color = Server.my_lobby.players[int(opponent_country.occupier.name)].color
 	
 	if troops_range.value == 1:
 		troops_range.suffix = "troop"

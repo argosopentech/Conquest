@@ -77,3 +77,14 @@ func troops_moved(player: Player, troops: int, source_country: Country, destinat
 	unselect_country(player, source_country)
 	player.emit_signal("turn_completed")
 	player.overlay.hide()
+
+func change_player_state(player: Player, state_name = ""):
+	if state_name == "draft":
+		return player_states.draft.new()
+	if state_name == "attack":
+		return player_states.attack.new()
+	if state_name == "placement":
+		return player_states.placement.new()
+
+func get_state_name():
+	return "fortify"

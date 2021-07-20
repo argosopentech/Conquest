@@ -35,3 +35,9 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 
 func troops_moved(player: Player, troops: int, source_country: Country, destination_country: Country):
 	pass
+
+func change_player_state(player: Player, state_name = ""):
+	pass
+
+func get_state_name():
+	return "player_state"

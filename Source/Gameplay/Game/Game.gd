@@ -29,7 +29,7 @@ func setup():
 	set_initial_troops()
 	setup_hud()
 	setup_music()
-	active_player_changed(0, players.get_child(0))
+	#active_player_changed(0, players.get_child(0))
 
 func setup_music():
 	GamePlay.set_music_volume(GamePlay.in_game_volume)

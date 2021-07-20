@@ -108,10 +108,11 @@ func send_node_func_call(node_path, function, parameter=null):
 	rpc_id(1, "send_node_func_call", int(my_lobby.code), node_path, function, parameter)
 
 remote func get_node_func_call(node_path, function, parameter=null):
-	if parameter:
-		get_node(node_path).call(function, parameter, true)
+	if parameter != null:
+		get_node(node_path).call_deferred(function, parameter, true)
 	else:
-		get_node(node_path).call(function, true)
+		if has_node(node_path):
+			get_node(node_path).call(function, true)
 
 func start_game(lobby_code):
 	rpc_id(1, "start_game", lobby_code)

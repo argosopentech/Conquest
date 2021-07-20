@@ -41,25 +41,44 @@ func setup():
 	connect("turn_completed", self, "turn_complete")
 	setup_state()
 
-func set_activity(activity):
+func set_activity(activity, net_call=false):
 	var player_activity = Activity.instance()
 	activities.add_child(player_activity)
 	player_activity.set_activity(activity)
+	if net_call:
+		return
+	#Server.send_node_func_call(get_path(), "set_activity", activity)
 
-func occupy_country(country: Country):
+func occupy_country(country: Country, net_call = false):
 	countries_occupied += 1
 	countries.append(country)
-	country.occupier = self
+	country.set_occupier(self)
 	for continent in country.get_groups():
 		if continent in GamePlay.total_countries_in_continents.keys():
 			countries_occupied_in_continents[continent] += 1
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "occupy_country_by_path", country.get_path())
+	Server.send_node_func_call(country.get_path(), "set_country_color")
+	Server.send_node_func_call(country.get_path(), "set_border_color")
 
-func leave_country(country: Country):
+func occupy_country_by_path(country_path, net_call=false):
+	if has_node(country_path):
+		occupy_country(get_node(country_path), net_call)
+
+func leave_country(country: Country, net_call=false):
 	countries_occupied -= 1
 	countries.erase(country)
 	for continent in country.get_groups():
 		if continent in GamePlay.total_countries_in_continents.keys():
 			countries_occupied_in_continents[continent] -= 1
+	if net_call:
+		return
+	Server.send_node_func_call(get_path(), "leave_country_by_path", country.get_path())
+
+func leave_country_by_path(country_path, net_call=false):
+	if has_node(country_path):
+		leave_country(get_node(country_path), net_call)
 
 func setup_hud():
 	var player_data = Server.my_lobby.players[int(name)]
@@ -89,6 +108,8 @@ func player_attacked(win_chance_percentage, troops: int, player_country: Country
 func go_pressed():
 	if Server.my_lobby.players[int(name)].id != Server.player_id:
 		return
+	if deploy_menu.visible or attacking_menu.visible or move_menu.visible or gameover_menu.visible:
+		return
 	var state = player_state.go_pressed(self)
 	if state:
 		change_state(state)
@@ -112,7 +133,7 @@ func set_initial_troops(amount, net_call=false):
 	hud.set_reinforcement_label(initial_troops)
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "set_initial_troops", amount)
+	#Server.send_node_func_call(get_path(), "set_initial_troops", amount)
 
 func increment_initial_troops(net_call=false):
 	initial_troops += 1
@@ -133,14 +154,14 @@ func set_reinforcement(amount = 0, net_call=false):
 	hud.set_reinforcement_label(reinforcement)
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "set_reinforcement", amount)
+	#Server.send_node_func_call(get_path(), "set_reinforcement", amount)
 
 func increment_reinforcement(amount = 1, net_call=false):
 	reinforcement += amount
 	hud.set_reinforcement_label(reinforcement)
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "increment_reinforcement", amount)
+	#Server.send_node_func_call(get_path(), "increment_reinforcement", amount)
 
 func decrement_reinforcement(amount = 1, net_call=false):
 	reinforcement -= amount
@@ -168,13 +189,14 @@ func change_state(state, net_call=false):
 	player_state.enter(self)
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "change_state", state)
+	state = state.get_state_name()
+	Server.send_node_func_call(get_path(), "change_player_state", state)
 
 func setup_reinforcements(net_call=false):
 	reinforcement = randi() % 10 + 3
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "setup_reinforcements")
+	#Server.send_node_func_call(get_path(), "setup_reinforcements")
 
 func add_reinforcements(amount, net_call=false):
 	reinforcement += amount
@@ -222,3 +244,8 @@ func eliminate(net_call=false):
 	if net_call:
 		return
 	Server.send_node_func_call(get_path(), "eliminate")
+
+func change_player_state(state_name = "", net_call=false):
+	var state = player_state.change_player_state(self, state_name)
+	if state:
+		change_state(state, net_call)
