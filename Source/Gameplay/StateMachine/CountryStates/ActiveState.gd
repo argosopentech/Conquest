@@ -13,8 +13,11 @@ func handle_input(country: Country, input: InputEvent):
 func update(country: Country):
 	set_country_color(country)
 	set_border_color(country)
-	if Input.is_action_just_pressed("ui_accept"):
-		return country_states.in_active.new()
+#	if GamePlay.game.active_player.player_state.get_state_name() == "attack":
+#		if country.troops == 1:
+#			return country_states.in_active.new()
+#	if Input.is_action_just_pressed("ui_accept"):
+#		return country_states.in_active.new()
 
 func exit(country: Country):
 	set_border_color(country)

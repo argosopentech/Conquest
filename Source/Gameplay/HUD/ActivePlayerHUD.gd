@@ -16,8 +16,11 @@ signal go_pressed
 func set_icon_color(color):
 	icon.color = color
 
-func set_player_name(player_name):
+func set_player_name(player_name, player_number):
 	name_label.text = player_name
+	if Server.my_lobby.players[player_number].id == Server.player_id:
+		var color = Server.my_lobby.players[player_number].color
+		name_label.set("custom_colors/font_color", color)
 
 func set_player_state(state):
 	state_label.text = state

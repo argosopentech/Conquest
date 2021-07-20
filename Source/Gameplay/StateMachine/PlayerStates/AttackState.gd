@@ -26,7 +26,12 @@ func handle_input(player: Player, input: InputEvent):
 	return null
 
 func update(player: Player):
-	pass
+	if selected_country:
+		if selected_country.troops == 1:
+			selected_country.change_country_state("in_active")
+			yield(get_tree(), "idle_frame")
+			selected_country = null
+
 
 func exit(player: Player):
 	.exit(player)

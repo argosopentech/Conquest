@@ -11,6 +11,9 @@ func handle_input(country: Country, input: InputEvent):
 
 func update(country: Country):
 	pass
+#	if GamePlay.game.active_player.player_state.get_state_name() == "attack":
+#		if country.troops == 1:
+#			return country_states.in_active.new()
 
 func exit(country: Country):
 	pass

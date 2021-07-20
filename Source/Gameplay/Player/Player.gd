@@ -82,7 +82,7 @@ func leave_country_by_path(country_path, net_call=false):
 
 func setup_hud():
 	var player_data = Server.my_lobby.players[int(name)]
-	hud.set_player_name(player_data.name)
+	hud.set_player_name(player_data.name, int(name))
 	hud.set_icon_color(player_data.color)
 	hud.connect("go_pressed", self, "go_pressed")
 	deploy_menu.hide()
@@ -236,8 +236,8 @@ func _process(delta):
 	for country in countries:
 		if not country.troops_label.visible:
 			country.troops_label.visible = true
-	if Server.my_lobby.players[int(name)].id != Server.player_id:
-		return
+#	if Server.my_lobby.players[int(name)].id != Server.player_id:
+#		return
 	var state = player_state.update(self)
 	if state:
 		change_state(state)
