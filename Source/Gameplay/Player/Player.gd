@@ -242,6 +242,8 @@ func _process(delta):
 func eliminate(net_call=false):
 	eliminated = true
 	if net_call:
+		var player_name = Server.my_lobby.players[int(name)].name
+		set_activity(player_name + " has been eliminated!")
 		return
 	Server.send_node_func_call(get_path(), "eliminate")
 
@@ -249,3 +251,7 @@ func change_player_state(state_name = "", net_call=false):
 	var state = player_state.change_player_state(self, state_name)
 	if state:
 		change_state(state, net_call)
+
+func game_over(net_call=false):
+	gameover_menu.show()
+	overlay.show()

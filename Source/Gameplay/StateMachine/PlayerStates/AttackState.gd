@@ -88,13 +88,18 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 			if GamePlay.game.all_eliminated():
 				player.overlay.show()
 				player.gameover_menu.show()
+				Server.send_node_func_call(player.get_path(), "game_over")
 		opponent_country.occupier.leave_country(opponent_country)
 		player.occupy_country(opponent_country)
 		opponent_country.set_troops(0)
+		Server.send_node_func_call(opponent_country.get_path(), "set_country_color")
+		Server.send_node_func_call(opponent_country.get_path(), "set_border_color")
 		if not GamePlay.game.all_eliminated():
 			player.move_menu.show()
 			player.move_menu.move_troops(player_country, opponent_country, "Attack")
 			player.overlay.show()
+		if player_country.troops == 1:
+			player_country.change_country_state("in_active")
 	else:
 		if player_country.troops == 1:
 			player_country.change_country_state("in_active")
