@@ -233,6 +233,9 @@ func country_clicked(country: Country):
 		change_state(state)
 
 func _process(delta):
+	for country in countries:
+		if not country.troops_label.visible:
+			country.troops_label.visible = true
 	if Server.my_lobby.players[int(name)].id != Server.player_id:
 		return
 	var state = player_state.update(self)

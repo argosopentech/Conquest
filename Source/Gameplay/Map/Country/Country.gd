@@ -46,9 +46,9 @@ func setup_state():
 	country_state.enter(self)
 
 func _process(delta):
-	if GamePlay.game.active_player:
-		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
-			return
+#	if GamePlay.game.active_player:
+#		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
+#			return
 	if country_state.has_method("update"):
 		var state = country_state.update(self)
 		if state:
