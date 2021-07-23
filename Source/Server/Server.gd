@@ -1,6 +1,6 @@
 extends Node
 
-const SERVER_IP = "127.0.0.1"
+const SERVER_IP = "45.79.222.199"
 const SERVER_PORT = 1909
 var player_name = "player"
 var my_lobby = {}
