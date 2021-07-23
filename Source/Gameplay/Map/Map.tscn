@@ -11,6 +11,7 @@ __meta__ = {
 }
 
 [node name="Image" type="TextureRect" parent="."]
+modulate = Color( 0.694118, 0.211765, 0.211765, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -576.0

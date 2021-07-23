@@ -27,6 +27,11 @@ func setup():
 	set_name_edit()
 
 func set_name_edit():
+	if Server.connected:
+		name_edit.editable = true
+	else:
+		name_edit.editable = false
+	
 	if get_owner().name == "Game":
 		name_edit.editable = false
 
@@ -60,7 +65,7 @@ func save():
 	GamePlay.in_game_volume = in_game_volume - 50
 	GamePlay.interface_sound = interface_sound_on
 	GamePlay.country_sound = country_sound_on
-	if Server.player_name != name_edit.text:
+	if Server.connected and Server.player_name != name_edit.text:
 		Server.player_name = name_edit.text
 		Server.send_saved_player_name()
 	emit_signal("options_saved")

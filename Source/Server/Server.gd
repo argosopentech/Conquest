@@ -1,7 +1,7 @@
 extends Node
 
-const SERVER_IP = "45.79.222.199"
 const SERVER_PORT = 1909
+var SERVER_IP = "127.0.0.1"
 var player_name = "player"
 var my_lobby = {}
 var active_lobbies = {}
@@ -21,6 +21,8 @@ signal kicked_from_lobby_signal(reason)
 signal got_message(message, sender)
 signal game_started_signal()
 
+var connected = false
+
 func _ready():
 	connect_signals()
 	connect_to_server()
@@ -30,16 +32,25 @@ func connect_signals():
 	get_tree().connect("connection_failed", self, "_connection_failed")
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
 
+func disconnect_server():
+	if get_tree().network_peer:
+		get_tree().network_peer.close_connection()
+		get_tree().network_peer = null
+		connected = false
+
 func _connected_to_server():
 	print("Connected to the server.")
 	player_id = get_tree().get_network_unique_id()
+	connected = true
 
 func _connection_failed():
 	print("Failed to connect to the server.")
+	connected = false
 
 func _server_disconnected():
 	print("Server disconnected.")
 	player_id = null
+	connected = false
 
 func connect_to_server():
 	var peer = NetworkedMultiplayerENet.new()

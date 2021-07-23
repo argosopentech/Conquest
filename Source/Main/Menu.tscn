@@ -26,9 +26,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -90.0
-margin_top = -160.0
+margin_top = -145.0
 margin_right = 90.0
-margin_bottom = 160.0
+margin_bottom = 145.0
 script = ExtResource( 3 )
 
 [node name="MarginMid1" type="ColorRect" parent="." index="0"]
@@ -39,40 +39,43 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Play" parent="." index="1" instance=ExtResource( 2 )]
 margin_top = 25.0
-margin_bottom = 85.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 180, 50 )
 text = "Play"
 flat = true
 
 [node name="MarginMid2" type="ColorRect" parent="." index="2"]
-margin_top = 105.0
+margin_top = 95.0
 margin_right = 180.0
-margin_bottom = 110.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Options" parent="." index="3" instance=ExtResource( 2 )]
-margin_top = 130.0
-margin_bottom = 190.0
+margin_top = 120.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 180, 50 )
 text = "Options"
 flat = true
 
 [node name="MarginMid3" type="ColorRect" parent="." index="4"]
-margin_top = 210.0
+margin_top = 190.0
 margin_right = 180.0
-margin_bottom = 215.0
+margin_bottom = 195.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Quit" parent="." index="5" instance=ExtResource( 2 )]
-margin_top = 235.0
-margin_bottom = 295.0
+margin_top = 215.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 180, 50 )
 text = "Quit"
 flat = true
 
 [node name="MarginMid4" type="ColorRect" parent="." index="6"]
-margin_top = 315.0
+margin_top = 285.0
 margin_right = 180.0
-margin_bottom = 320.0
+margin_bottom = 290.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 

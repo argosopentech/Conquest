@@ -276,4 +276,5 @@ color = Color( 0, 0, 0, 1 )
 [connection signal="pressed" from="Host/Info/HMenu/Host" to="." method="_on_Host_pressed"]
 
 [editable path="Background"]
+[editable path="Map"]
 [editable path="Host/Info/HMenu/Cancel"]

@@ -19,6 +19,8 @@ func _unhandled_input(event):
 		quit()
 
 func play():
+	if not Server.connected:
+		return
 	start_game_overlay.show()
 
 func options():
