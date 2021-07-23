@@ -101,6 +101,10 @@ script = ExtResource( 3 )
 [node name="ColorRect" parent="Background" index="0"]
 color = Color( 0.0235294, 0.635294, 0.847059, 1 )
 
+[node name="TextureRect" parent="Background" index="1"]
+visible = false
+mouse_filter = 2
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="QuitBorder" type="TextureRect" parent="HUD"]

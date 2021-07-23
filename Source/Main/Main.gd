@@ -31,20 +31,22 @@ func setup_server():
 func options_saved():
 	setup_music()
 
-func _on_Connect_pressed():
-	if not ip_edit.text.is_valid_ip_address():
+func _on_Connect_pressed(ip=ip_edit.text):
+	if not ip.is_valid_ip_address():
 		return
 	Server.disconnect_server()
 	server_not_connected()
-	Server.SERVER_IP = ip_edit.text
+	Server.SERVER_IP = ip
 	Server.connect_to_server()
 
 func server_connected():
 	success_label.show()
 	error_label.hide()
 	get_node("MenuBorder/Menu/Play").disabled = false
+	get_node("MenuBorder/Menu/Overlay/OptionsOverlay/OptionsMenu/Info/NameEdit").editable = true
 
 func server_not_connected():
 	success_label.hide()
 	error_label.show()
 	get_node("MenuBorder/Menu/Play").disabled = true
+	get_node("MenuBorder/Menu/Overlay/OptionsOverlay/OptionsMenu/Info/NameEdit").editable = false

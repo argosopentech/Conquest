@@ -254,6 +254,7 @@ __meta__ = {
 }
 
 [connection signal="options_saved" from="MenuBorder/Menu" to="." method="options_saved"]
+[connection signal="text_entered" from="Server/IP" to="." method="_on_Connect_pressed"]
 [connection signal="pressed" from="Server/Connect" to="." method="_on_Connect_pressed"]
 
 [editable path="Background"]

@@ -39,7 +39,7 @@ func disconnect_server():
 		connected = false
 
 func _connected_to_server():
-	print("Connected to the server.")
+	print("Connected to the server: ", SERVER_IP)
 	player_id = get_tree().get_network_unique_id()
 	connected = true
 

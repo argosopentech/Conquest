@@ -27,11 +27,6 @@ func setup():
 	set_name_edit()
 
 func set_name_edit():
-	if Server.connected:
-		name_edit.editable = true
-	else:
-		name_edit.editable = false
-	
 	if get_owner().name == "Game":
 		name_edit.editable = false
 
