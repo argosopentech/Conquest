@@ -1,17 +1,15 @@
 # Conquest
-
-Conquest is an online open source strategy game, very similar to RISK.
+Conquest is an online open source strategy game, similar to Risk.
 
 # Online
 To play online install and run [Godot](https://godotengine.org/download), download the project code from GitHub, and import and run from Godot. 
 
-# Source
-You can find the game's source code here in this repository.
-
-You can grab the server side code here:
-
-https://github.com/argosopentech/Conquest-server
-
-If you want to host your own dedicated server, you can find the instructions on the server repository's read-me file.
-
 ![Conquest](Images/SomePlaced.PNG)
+
+# Links
+- [Server code and documentation](https://github.com/argosopentech/Conquest-server)
+- Videos ([Gameplay](https://www.youtube.com/watch?v=zNjZFWyaR-M), [Multiplayer](https://www.youtube.com/watch?v=PQDjDbVymX0))
+- Public multiplayer server available at `conquestgame.online`
+
+# License
+Licensed under either the MIT license or CC0, [donations](https://github.com/sponsors/argosopentech) appreciated.
