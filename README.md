@@ -2,6 +2,9 @@
 
 Conquest is an online open source strategy game, very similar to RISK.
 
+# Online
+There is a public server available at `67.205.142.30`.
+
 You can find the game's source code here in this repository.
 
 You can grab the server side code here:
