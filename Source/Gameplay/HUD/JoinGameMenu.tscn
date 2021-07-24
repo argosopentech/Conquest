@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Source/Gameplay/HUD/JoinGameMenu.gd" type="Script" id=5]
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Source/Gameplay/HUD/LobbySearchInstance.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Source/Gameplay/HUD/JoinCodeMenu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -295,8 +294,6 @@ margin_right = 1120.0
 margin_bottom = 374.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="0" parent="TextureRect/Info/LobbiesContainer/Lobbies" instance=ExtResource( 8 )]
 
 [node name="MarginMid4" type="ColorRect" parent="TextureRect/Info"]
 margin_top = 522.0

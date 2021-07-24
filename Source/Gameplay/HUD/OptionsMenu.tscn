@@ -6,7 +6,7 @@
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Source/Gameplay/HUD/OptionsMenu.gd" type="Script" id=5]
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 800, 500 )
 modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
@@ -30,11 +30,11 @@ LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
 LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 4 )
-LineEdit/styles/normal = SubResource( 4 )
-LineEdit/styles/read_only = SubResource( 4 )
+LineEdit/styles/focus = SubResource( 1 )
+LineEdit/styles/normal = SubResource( 1 )
+LineEdit/styles/read_only = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=4]
 size = 48
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -128,7 +128,7 @@ margin_top = 9.0
 margin_right = 452.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 4 )
 text = "Settings"
 align = 1
 valign = 1
@@ -168,6 +168,8 @@ margin_top = 121.0
 margin_right = 452.0
 margin_bottom = 171.0
 rect_min_size = Vector2( 0, 50 )
+custom_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
+custom_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
 text = "player"
 align = 1
 max_length = 15

@@ -1,7 +1,7 @@
 extends Node
 
 const SERVER_PORT = 1909
-const default_ip = "67.205.142.30"
+const default_ip = "conquestgame.online"
 var SERVER_IP = default_ip
 var player_name = "player"
 var my_lobby = {}

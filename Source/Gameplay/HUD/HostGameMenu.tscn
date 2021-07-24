@@ -147,6 +147,8 @@ margin_top = 121.0
 margin_right = 480.0
 margin_bottom = 171.0
 rect_min_size = Vector2( 0, 50 )
+custom_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
+custom_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
 align = 1
 placeholder_alpha = 1.0
 
@@ -219,6 +221,8 @@ margin_top = 346.0
 margin_right = 480.0
 margin_bottom = 396.0
 rect_min_size = Vector2( 0, 50 )
+custom_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
+custom_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
 align = 1
 placeholder_alpha = 1.0
 

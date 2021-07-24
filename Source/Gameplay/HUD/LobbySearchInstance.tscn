@@ -130,6 +130,8 @@ size_flags_vertical = 7
 custom_styles/read_only = SubResource( 1 )
 custom_styles/focus = SubResource( 1 )
 custom_styles/normal = SubResource( 1 )
+custom_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
+custom_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
 align = 1
 
 [node name="MarginLeft5" type="Label" parent="HBox"]

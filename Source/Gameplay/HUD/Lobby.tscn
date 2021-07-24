@@ -347,6 +347,8 @@ custom_styles/read_only = SubResource( 5 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
+custom_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
 placeholder_text = "Chat here..."
 placeholder_alpha = 1.0
 

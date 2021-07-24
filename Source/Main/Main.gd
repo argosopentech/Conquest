@@ -32,7 +32,7 @@ func options_saved():
 	setup_music()
 
 func _on_Connect_pressed(ip=ip_edit.text):
-	if not ip.is_valid_ip_address():
+	if not ip:
 		return
 	Server.disconnect_server()
 	server_not_connected()
