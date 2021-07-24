@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Source/Main/Menu.tscn" type="PackedScene" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://Source/Main/Main.gd" type="Script" id=4]
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Graphics/Icons/reset_icons/reset_focused.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Icons/reset_icons/reset_hover.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/Icons/reset_icons/reset_normal.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Graphics/Icons/reset_icons/reset_disabled.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96
@@ -14,7 +18,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.360784, 0.360784, 0.360784, 0.607843 )
 border_width_left = 3
 border_width_top = 3
@@ -22,12 +26,20 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=3]
 size = 28
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.360784, 0.360784, 0.360784, 0.607843 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.360784, 0.360784, 0.360784, 0.607843 )
@@ -61,22 +73,14 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.360784, 0.360784, 0.360784, 0.607843 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=9]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=10]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -97,9 +101,6 @@ __meta__ = {
 color = Color( 0.137255, 0.670588, 0.878431, 1 )
 
 [node name="Map" parent="." instance=ExtResource( 5 )]
-
-[node name="Overlay" parent="Map" index="1"]
-color = Color( 0, 0, 0, 0.156863 )
 
 [node name="MenuBorder" type="TextureRect" parent="."]
 self_modulate = Color( 0.360784, 0.360784, 0.360784, 0.607843 )
@@ -186,10 +187,10 @@ __meta__ = {
 margin_right = 180.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 180, 60 )
-custom_styles/read_only = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 10 )
+custom_styles/read_only = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "127.0.0.1"
 align = 1
@@ -202,19 +203,18 @@ margin_left = 184.0
 margin_right = 244.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "GO"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Error" type="Label" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -224,7 +224,7 @@ margin_top = -61.0
 margin_right = 179.5
 margin_bottom = -24.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.905882, 0.317647, 0.317647, 1 )
 text = "SERVER NOT CONNECTED!"
 align = 1
@@ -244,7 +244,7 @@ margin_top = -61.0
 margin_right = 179.5
 margin_bottom = -24.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.321569, 0.929412, 0.215686, 1 )
 text = "SERVER CONNECTED!"
 align = 1
@@ -253,9 +253,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ResetIP" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 140.0
+margin_top = -130.0
+margin_right = 172.0
+margin_bottom = -98.0
+rect_min_size = Vector2( 32, 32 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+texture_disabled = ExtResource( 11 )
+texture_focused = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="options_saved" from="MenuBorder/Menu" to="." method="options_saved"]
 [connection signal="text_entered" from="Server/IP" to="." method="_on_Connect_pressed"]
 [connection signal="pressed" from="Server/Connect" to="." method="_on_Connect_pressed"]
+[connection signal="pressed" from="ResetIP" to="." method="_on_ResetIP_pressed"]
 
 [editable path="Background"]
 [editable path="Map"]

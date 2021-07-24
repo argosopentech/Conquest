@@ -50,3 +50,8 @@ func server_not_connected():
 	error_label.show()
 	get_node("MenuBorder/Menu/Play").disabled = true
 	get_node("MenuBorder/Menu/Overlay/OptionsOverlay/OptionsMenu/Info/NameEdit").editable = false
+
+
+func _on_ResetIP_pressed():
+	Server.SERVER_IP = Server.default_ip
+	ip_edit.text = Server.SERVER_IP

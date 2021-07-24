@@ -1,7 +1,8 @@
 extends Node
 
 const SERVER_PORT = 1909
-var SERVER_IP = "127.0.0.1"
+const default_ip = "67.205.142.30"
+var SERVER_IP = default_ip
 var player_name = "player"
 var my_lobby = {}
 var active_lobbies = {}
