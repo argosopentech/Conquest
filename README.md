@@ -15,7 +15,7 @@ To play online install and run [Godot](https://godotengine.org/download), downlo
 - Public multiplayer server available at `conquestgame.online`
 
 # About
-Developed by [Wamiq Ur Rehman](https://wamiqurrehman.wordpress.com/) ([GitHub](https://github.com/wamiqurrehman093)) for [Argos Open Tech](https://www.argosopentech.com).
+Developed by [Wamiq Ur Rehman](https://wamiqurrehman.wordpress.com/) for [Argos Open Tech](https://www.argosopentech.com).
 
 # License
 Licensed under either the MIT license or CC0, [donations](https://github.com/sponsors/argosopentech) appreciated.
