@@ -12,7 +12,6 @@ To play online install and run [Godot](https://godotengine.org/download), downlo
 # Links
 - [Server code and documentation](https://github.com/argosopentech/Conquest-server)
 - Videos ([Gameplay](https://www.youtube.com/watch?v=zNjZFWyaR-M), [Multiplayer](https://www.youtube.com/watch?v=PQDjDbVymX0))
-- Public multiplayer server available at `conquestgame.online`
 
 # About
 Developed by [Wamiq Ur Rehman](https://wamiqurrehman.wordpress.com/) for [Argos Open Tech](https://www.argosopentech.com).
