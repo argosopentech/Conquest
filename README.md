@@ -4,7 +4,7 @@ Conquest is an online open source strategy game, similar to Risk.
 # Online
 To play online install and run [Godot](https://godotengine.org/download), download the project code from GitHub, and import and run from Godot. 
 
-* The conquest.online server has been deactivated due to lack of use, if there's interest in using it I can restart it. *
+The conquest.online server has been deactivated due to lack of use, if there's interest in using it I can restart it.
 
 ![Conquest](Images/SomePlaced.PNG)
 ![Conquest](Images/MainMenu.png)
