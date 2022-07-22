@@ -28,7 +28,8 @@ func setup():
 	set_initial_troops()
 	setup_hud()
 	setup_music()
-	setup_for_online()
+	setup_game()
+	connect_signals()
 
 func spawn_players():
 	var current_players = GamePlay.number_of_players
@@ -56,9 +57,11 @@ func setup_hud():
 func setup_music():
 	GamePlay.set_music_volume(GamePlay.in_game_volume)
 
-func setup_for_online():
+func setup_game():
+	GamePlay.game = self
+
+func connect_signals():
 	if GamePlay.online:
-		GamePlay.game = self
 		Server.connect("lobby_updated_signal", self, "back_to_lobby")
 
 func back_to_lobby(lobby_data, reason):
@@ -145,4 +148,5 @@ func increment_occupied_countries(net_call=false):
 	occupied_countries += 1
 	if net_call:
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "increment_occupied_countries")

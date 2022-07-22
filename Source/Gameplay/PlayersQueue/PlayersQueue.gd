@@ -35,6 +35,6 @@ func next_turn(net_call = false):
 		active_player  = get_child(active_index)
 	active_player.set_active(true)
 	emit_signal("active_player_changed", active_index, active_player)
-	if net_call:
+	if net_call or not GamePlay.online:
 		return
 	Server.send_node_func_call(get_path(), "next_turn")

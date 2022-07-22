@@ -38,8 +38,45 @@ func setup():
 	set_active(false)
 	setup_reinforcements()
 	setup_hud()
-	connect("turn_completed", self, "turn_complete")
 	setup_state()
+	connect_signals()
+
+func set_active(value):
+	is_active = value
+	if value:
+		hud.show()
+	else:
+		hud.hide()
+	set_process_input(value)
+
+func setup_reinforcements(net_call=false):
+	reinforcement = randi() % 10 + 3
+	if net_call:
+		return
+	#Server.send_node_func_call(get_path(), "setup_reinforcements")
+
+func setup_hud():
+	var player_data = GamePlay.players_data[name]
+	if GamePlay.online:
+		player_data = Server.my_lobby.players[int(name)]
+	hud.set_player_name(player_data.name, int(name))
+	hud.set_icon_color(player_data.color)
+	hud.connect("go_pressed", self, "go_pressed")
+	deploy_menu.hide()
+	attacking_menu.hide()
+	move_menu.hide()
+	overlay.hide()
+	gameover_menu.set_player_name(player_data.name)
+	gameover_menu.hide()
+	deploy_menu.connect("deployed", self, "troops_deployed")
+	attacking_menu.connect("attacked", self, "player_attacked")
+	move_menu.connect("moved", self, "troops_moved")
+
+func setup_state():
+	player_state.enter(self)
+
+func connect_signals():
+	connect("turn_completed", self, "turn_complete")
 
 func set_activity(activity, net_call=false):
 	var player_activity = Activity.instance()
@@ -58,6 +95,7 @@ func occupy_country(country: Country, net_call = false):
 			countries_occupied_in_continents[continent] += 1
 	if net_call:
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "occupy_country_by_path", country.get_path())
 	Server.send_node_func_call(country.get_path(), "set_country_color")
 	Server.send_node_func_call(country.get_path(), "set_border_color")
@@ -79,21 +117,6 @@ func leave_country(country: Country, net_call=false):
 func leave_country_by_path(country_path, net_call=false):
 	if has_node(country_path):
 		leave_country(get_node(country_path), net_call)
-
-func setup_hud():
-	var player_data = Server.my_lobby.players[int(name)]
-	hud.set_player_name(player_data.name, int(name))
-	hud.set_icon_color(player_data.color)
-	hud.connect("go_pressed", self, "go_pressed")
-	deploy_menu.hide()
-	attacking_menu.hide()
-	move_menu.hide()
-	overlay.hide()
-	gameover_menu.set_player_name(player_data.name)
-	gameover_menu.hide()
-	deploy_menu.connect("deployed", self, "troops_deployed")
-	attacking_menu.connect("attacked", self, "player_attacked")
-	move_menu.connect("moved", self, "troops_moved")
 
 func troops_moved(troops, source_country, destination_country):
 	var state = player_state.troops_moved(self, troops, source_country, destination_country)
@@ -126,6 +149,7 @@ func turn_complete(net_call=false):
 	set_active(false)
 	if net_call:
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "turn_complete")
 
 func set_initial_troops(amount, net_call=false):
@@ -147,6 +171,7 @@ func decrement_initial_troops(net_call=false):
 	hud.set_reinforcement_label(initial_troops)
 	if net_call:
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "decrement_initial_troops")
 
 func set_reinforcement(amount = 0, net_call=false):
@@ -170,9 +195,6 @@ func decrement_reinforcement(amount = 1, net_call=false):
 		return
 	Server.send_node_func_call(get_path(), "decrement_reinforcement", amount)
 
-func setup_state():
-	player_state.enter(self)
-
 func all_troops_placed():
 	var state = player_state.all_troops_placed(self)
 	if state:
@@ -192,12 +214,6 @@ func change_state(state, net_call=false):
 	state = state.get_state_name()
 	Server.send_node_func_call(get_path(), "change_player_state", state)
 
-func setup_reinforcements(net_call=false):
-	reinforcement = randi() % 10 + 3
-	if net_call:
-		return
-	#Server.send_node_func_call(get_path(), "setup_reinforcements")
-
 func add_reinforcements(amount, net_call=false):
 	reinforcement += amount
 	if net_call:
@@ -205,8 +221,9 @@ func add_reinforcements(amount, net_call=false):
 	Server.send_node_func_call(get_path(), "add_reinforcements", amount)
 
 func _input(event):
-	if Server.my_lobby.players[int(name)].id != Server.player_id:
-		return
+	if GamePlay.online:
+		if Server.my_lobby.players[int(name)].id != Server.player_id:
+			return
 	if not is_active:
 		return
 	if event.is_action_pressed("move"):
@@ -218,14 +235,6 @@ func move():
 		reinforcement = 0
 	set_active(false)
 	emit_signal("turn_completed")
-
-func set_active(value):
-	is_active = value
-	if value:
-		hud.show()
-	else:
-		hud.hide()
-	set_process_input(value)
 
 func country_clicked(country: Country):
 	var state = player_state.country_clicked(self, country)

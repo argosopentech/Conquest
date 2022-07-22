@@ -55,7 +55,7 @@ func _process(delta):
 			change_state(state)
 
 func update():
-	if GamePlay.game.active_player:
+	if GamePlay.online and GamePlay.game.active_player:
 		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
 			return
 	var state = country_state.update(self)
@@ -72,6 +72,7 @@ func change_state(state, net_call=false):
 	if net_call:
 		return
 	state = state.get_state_name()
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "change_country_state", state)
 
 func get_name():
@@ -92,19 +93,19 @@ func space_pascal_case(string):
 	return new_string
 
 func _on_mouse_entered():
-	if GamePlay.game.active_player:
+	if GamePlay.online and GamePlay.game.active_player:
 		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
 			return
 	hovering = true
 
 func _on_mouse_exited():
-	if GamePlay.game.active_player:
+	if GamePlay.online and GamePlay.game.active_player:
 		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
 			return
 	hovering = false
 
 func _on_input_event(viewport, event, shape_idx):
-	if GamePlay.game.active_player:
+	if GamePlay.online and GamePlay.game.active_player:
 		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
 			return
 	if event is InputEventMouseButton:
@@ -126,6 +127,7 @@ func increment_troops(net_call=false):
 	emit_signal("troops_updated")
 	if net_call:
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "increment_troops")
 
 func decrement_troops(net_call=false):
@@ -175,6 +177,9 @@ func change_country_state(state_name = "", net_call=false):
 		change_state(state, net_call)
 
 func set_occupier(new_occupier, net_call=false):
+	if not GamePlay.online:
+		occupier = new_occupier
+		return
 	if net_call:
 		occupier = get_node(new_occupier)
 		return
@@ -184,7 +189,7 @@ func set_occupier(new_occupier, net_call=false):
 
 func play_active_click(net_call=false):
 	active_click_audio.play()
-	if net_call:
+	if net_call or not GamePlay.online:
 		return
 	Server.send_node_func_call(get_path(), "play_active_click")
 

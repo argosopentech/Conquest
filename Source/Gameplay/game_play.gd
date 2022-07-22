@@ -117,7 +117,32 @@ var interface_sound = true
 var country_sound = true
 var online: bool = true
 var number_of_players: int = 2
-
+var players_data = {
+	"0": {
+		"name": "Player 1",
+		"color": Color.orange,
+	},
+	"1": {
+		"name": "Player 2",
+		"color": Color.lightblue,
+	},
+	"2": {
+		"name": "Player 3",
+		"color": Color.yellow,
+	},
+	"3": {
+		"name": "Player 4",
+		"color": Color.lightsalmon,
+	},
+	"4": {
+		"name": "Player 5",
+		"color": Color.lightgreen,
+	},
+	"5": {
+		"name": "Player 6",
+		"color": Color.lightcoral,
+	},
+}
 func _ready():
 	setup()
 

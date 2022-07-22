@@ -26,7 +26,9 @@ func add_reinforcement_amount(player: Player):
 	var default = int(player.countries_occupied / 3)
 	if default < 3:
 		default = 3
-	var activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(default) + " troops for occupying " + str(player.countries_occupied) + " countries."
+	var activity = GamePlay.players_data[player.name].name + " gets " + str(default) + " troops for occupying " + str(player.countries_occupied) + " countries."
+	if GamePlay.online:
+		activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(default) + " troops for occupying " + str(player.countries_occupied) + " countries."
 	print(activity)
 	player.set_activity(activity)
 	player.increment_reinforcement(default)
