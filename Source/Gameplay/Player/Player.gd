@@ -112,6 +112,7 @@ func leave_country(country: Country, net_call=false):
 			countries_occupied_in_continents[continent] -= 1
 	if net_call:
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "leave_country_by_path", country.get_path())
 
 func leave_country_by_path(country_path, net_call=false):
@@ -129,7 +130,7 @@ func player_attacked(win_chance_percentage, troops: int, player_country: Country
 		change_state(state)
 
 func go_pressed():
-	if Server.my_lobby.players[int(name)].id != Server.player_id:
+	if GamePlay.online and Server.my_lobby.players[int(name)].id != Server.player_id:
 		return
 	if deploy_menu.visible or attacking_menu.visible or move_menu.visible or gameover_menu.visible:
 		return
@@ -164,6 +165,7 @@ func increment_initial_troops(net_call=false):
 	hud.set_reinforcement_label(initial_troops)
 	if net_call:
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "increment_initial_troops")
 	
 func decrement_initial_troops(net_call=false):
@@ -193,6 +195,7 @@ func decrement_reinforcement(amount = 1, net_call=false):
 	hud.set_reinforcement_label(reinforcement)
 	if net_call:
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "decrement_reinforcement", amount)
 
 func all_troops_placed():
@@ -212,12 +215,14 @@ func change_state(state, net_call=false):
 	if net_call:
 		return
 	state = state.get_state_name()
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "change_player_state", state)
 
 func add_reinforcements(amount, net_call=false):
 	reinforcement += amount
 	if net_call:
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "add_reinforcements", amount)
 
 func _input(event):
@@ -254,9 +259,12 @@ func _process(delta):
 func eliminate(net_call=false):
 	eliminated = true
 	if net_call:
-		var player_name = Server.my_lobby.players[int(name)].name
+		var player_name = GamePlay.players_data[name].name
+		if GamePlay.online:
+			player_name = Server.my_lobby.players[int(name)].name
 		set_activity(player_name + " has been eliminated!")
 		return
+	if not GamePlay.online: return
 	Server.send_node_func_call(get_path(), "eliminate")
 
 func change_player_state(state_name = "", net_call=false):
