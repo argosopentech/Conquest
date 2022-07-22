@@ -18,6 +18,13 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.360784, 0.360784, 0.360784, 0.607843 )
 border_width_left = 3
@@ -34,9 +41,9 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 24
-outline_size = 2
+[sub_resource type="DynamicFont" id=10]
+size = 36
+outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
@@ -80,13 +87,6 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="DynamicFont" id=10]
-size = 36
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 36
@@ -195,13 +195,13 @@ __meta__ = {
 margin_right = 250.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 250, 60 )
-custom_styles/read_only = SubResource( 2 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/read_only = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 text = "conquestgame.online"
 align = 1
 __meta__ = {
@@ -213,12 +213,12 @@ margin_left = 254.0
 margin_right = 314.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
+custom_fonts/font = SubResource( 10 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
 custom_styles/focus = SubResource( 7 )
 custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
 text = "GO"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -251,8 +251,8 @@ margin_top = -61.0
 margin_right = 179.5
 margin_bottom = -24.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.905882, 0.317647, 0.317647, 1 )
+custom_fonts/font = SubResource( 11 )
 text = "SERVER NOT CONNECTED!"
 align = 1
 valign = 1
@@ -271,8 +271,8 @@ margin_top = -61.0
 margin_right = 179.5
 margin_bottom = -24.0
 grow_horizontal = 2
-custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.321569, 0.929412, 0.215686, 1 )
+custom_fonts/font = SubResource( 11 )
 text = "SERVER CONNECTED!"
 align = 1
 valign = 1

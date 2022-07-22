@@ -10,14 +10,14 @@ signal active_player_changed(active_index, active_player)
 func _ready():
 	setup()
 
+func setup():
+	connect_signals()
+	play_first_turn()
+
 func connect_signals():
 	for child in get_children():
 		if child.has_signal("turn_completed"):
 			child.connect("turn_completed", self, "next_turn")
-
-func setup():
-	connect_signals()
-	play_first_turn()
 
 func play_first_turn():
 	if get_child_count() > 0:

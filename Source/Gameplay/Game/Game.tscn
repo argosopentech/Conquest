@@ -91,9 +91,7 @@ LineEdit/styles/focus = SubResource( 2 )
 LineEdit/styles/normal = SubResource( 2 )
 LineEdit/styles/read_only = SubResource( 2 )
 
-[node name="Game" type="Node2D" groups=[
-"game",
-]]
+[node name="Game" type="Node2D" groups=["game"]]
 script = ExtResource( 3 )
 
 [node name="Background" parent="." instance=ExtResource( 1 )]

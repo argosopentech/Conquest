@@ -8,12 +8,12 @@
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=7]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=6]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 800, 500 )
 modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=7]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -21,7 +21,7 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=3]
-default_font = SubResource( 2 )
+default_font = SubResource( 7 )
 LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
 LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
@@ -32,9 +32,9 @@ LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
 LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 1 )
-LineEdit/styles/normal = SubResource( 1 )
-LineEdit/styles/read_only = SubResource( 1 )
+LineEdit/styles/focus = SubResource( 6 )
+LineEdit/styles/normal = SubResource( 6 )
+LineEdit/styles/read_only = SubResource( 6 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 48
@@ -50,7 +50,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -92,9 +92,6 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 260, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginTop" type="ColorRect" parent="Host/Info"]
 margin_right = 480.0
@@ -246,7 +243,7 @@ margin_bottom = 48.0
 [node name="Cancel" parent="Host/Info/HMenu" instance=ExtResource( 2 )]
 margin_left = 20.0
 margin_right = 220.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Cancel"
 flat = true
 
@@ -259,7 +256,7 @@ margin_bottom = 48.0
 [node name="Host" parent="Host/Info/HMenu" instance=ExtResource( 2 )]
 margin_left = 260.0
 margin_right = 460.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "Create"
 flat = true
 

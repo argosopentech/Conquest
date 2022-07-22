@@ -24,43 +24,52 @@ func _ready():
 	setup()
 
 func setup():
-	GamePlay.game = self
 	spawn_players()
 	set_initial_troops()
 	setup_hud()
 	setup_music()
-	Server.connect("lobby_updated_signal", self, "back_to_lobby")
+	setup_for_online()
+
+func spawn_players():
+	var current_players = GamePlay.number_of_players
+	if GamePlay.online:
+		current_players = Server.my_lobby.current_players 
+	for i in range(current_players):
+		var p = player_scene.instance()
+		p.name = str(i)
+		players.add_child(p)
+	players.setup()
+
+func set_initial_troops():
+	var current_players = GamePlay.number_of_players
+	if GamePlay.online:
+		current_players = Server.my_lobby.current_players 
+	var subtraction = 5 * (current_players - 1)
+	var initial_troops = 45 - subtraction
+	for player in players.get_children():
+		player.set_initial_troops(initial_troops)
+
+func setup_hud():
+	overlay.hide()
+	quit_game_menu.hide()
+
+func setup_music():
+	GamePlay.set_music_volume(GamePlay.in_game_volume)
+
+func setup_for_online():
+	if GamePlay.online:
+		GamePlay.game = self
+		Server.connect("lobby_updated_signal", self, "back_to_lobby")
 
 func back_to_lobby(lobby_data, reason):
 	Server.lobby_data = lobby_data
 	Server.reason = reason
 	get_tree().change_scene("res://Source/Gameplay/HUD/Lobby.tscn")
 
-func setup_music():
-	GamePlay.set_music_volume(GamePlay.in_game_volume)
-
-func spawn_players():
-	for i in range(Server.my_lobby.current_players):
-		var p = player_scene.instance()
-		p.name = str(i)
-		players.add_child(p)
-	players.setup()
-
-func setup_hud():
-	overlay.hide()
-	quit_game_menu.hide()
-
 func number_of_players():
 	return players.get_child_count()
 
-func set_initial_troops():
-	var subtraction = 5 * (Server.my_lobby.current_players - 1)
-	var initial_troops = 45 - subtraction
-	for player in players.get_children():
-		player.set_initial_troops(initial_troops)
-
 func active_player_changed(p_active_index, p_active_player: Player):
-	#yield(get_tree(), "idle_frame")
 	active_player = p_active_player
 	active_player_index = p_active_index
 	update_countries_on_turn_complete()

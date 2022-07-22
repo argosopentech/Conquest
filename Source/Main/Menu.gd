@@ -6,6 +6,8 @@ onready var quit_confirm_menu = $Overlay/QuitConfirm
 onready var quit_confirm_vmenu = $Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu
 onready var start_game_overlay = $Overlay/StartGameOverlay
 onready var options_overlay = $Overlay/OptionsOverlay
+onready var offline_overlay = $Overlay/OfflineOverlay
+onready var players_range = $Overlay/OfflineOverlay/Container/Info/PlayersRange
 
 signal options_saved
 
@@ -41,3 +43,14 @@ func quit_cancel():
 
 func _on_OptionsMenu_options_saved():
 	emit_signal("options_saved")
+
+func play_offline():
+	offline_overlay.show()
+
+func create_offline_game():
+	GamePlay.online = false
+	GamePlay.number_of_players = players_range.value
+	get_tree().change_scene("res://Source/Gameplay/Game/Game.tscn")
+
+func cancel_offline_game():
+	offline_overlay.hide()

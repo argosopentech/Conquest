@@ -43,6 +43,13 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0, 0, 0.196078 )
 border_width_left = 5
@@ -50,13 +57,6 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 0, 0, 0, 0.196078 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 24
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 24
@@ -77,9 +77,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 3 )
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" parent="." instance=ExtResource( 3 )]
 
@@ -343,12 +340,12 @@ margin_right = 425.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 3
+custom_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
+custom_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
+custom_fonts/font = SubResource( 6 )
 custom_styles/read_only = SubResource( 5 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
-custom_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
 placeholder_text = "Chat here..."
 placeholder_alpha = 1.0
 

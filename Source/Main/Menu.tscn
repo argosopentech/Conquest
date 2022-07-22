@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Source/Menu/VMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=5]
 [ext_resource path="res://Source/Gameplay/HUD/StartGameMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Gameplay/HUD/OptionsMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -20,6 +21,55 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 800, 500 )
+modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 36
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 7 )
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 6 )
+LineEdit/styles/normal = SubResource( 6 )
+LineEdit/styles/read_only = SubResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 48
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
 [node name="Menu" instance=ExtResource( 1 )]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,6 +79,7 @@ margin_left = -90.0
 margin_top = -145.0
 margin_right = 90.0
 margin_bottom = 145.0
+custom_constants/separation = 12
 script = ExtResource( 3 )
 
 [node name="MarginMid1" type="ColorRect" parent="." index="0"]
@@ -37,49 +88,63 @@ margin_bottom = 5.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="Play" parent="." index="1" instance=ExtResource( 2 )]
-margin_top = 25.0
-margin_bottom = 75.0
+[node name="PlayOnline" parent="." index="1" instance=ExtResource( 2 )]
+margin_top = 17.0
+margin_bottom = 67.0
 rect_min_size = Vector2( 180, 50 )
-text = "Play"
+text = "Play Online"
 flat = true
 
 [node name="MarginMid2" type="ColorRect" parent="." index="2"]
-margin_top = 95.0
+margin_top = 79.0
 margin_right = 180.0
-margin_bottom = 100.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="Options" parent="." index="3" instance=ExtResource( 2 )]
-margin_top = 120.0
-margin_bottom = 170.0
+[node name="PlayOffline" parent="." index="3" instance=ExtResource( 2 )]
+margin_top = 96.0
+margin_bottom = 146.0
+rect_min_size = Vector2( 180, 50 )
+text = "Play Offline"
+flat = true
+
+[node name="MarginMid3" type="ColorRect" parent="." index="4"]
+margin_top = 158.0
+margin_right = 180.0
+margin_bottom = 163.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Options" parent="." index="5" instance=ExtResource( 2 )]
+margin_top = 175.0
+margin_bottom = 225.0
 rect_min_size = Vector2( 180, 50 )
 text = "Options"
 flat = true
 
-[node name="MarginMid3" type="ColorRect" parent="." index="4"]
-margin_top = 190.0
+[node name="MarginMid4" type="ColorRect" parent="." index="6"]
+margin_top = 237.0
 margin_right = 180.0
-margin_bottom = 195.0
+margin_bottom = 242.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="Quit" parent="." index="5" instance=ExtResource( 2 )]
-margin_top = 215.0
-margin_bottom = 265.0
+[node name="Quit" parent="." index="7" instance=ExtResource( 2 )]
+margin_top = 254.0
+margin_bottom = 304.0
 rect_min_size = Vector2( 180, 50 )
 text = "Quit"
 flat = true
 
-[node name="MarginMid4" type="ColorRect" parent="." index="6"]
-margin_top = 285.0
+[node name="MarginMid5" type="ColorRect" parent="." index="8"]
+margin_top = 316.0
 margin_right = 180.0
-margin_bottom = 290.0
+margin_bottom = 321.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="Overlay" type="CanvasLayer" parent="." index="7"]
+[node name="Overlay" type="CanvasLayer" parent="." index="9"]
 
 [node name="QuitConfirm" type="ColorRect" parent="Overlay" index="0"]
 pause_mode = 2
@@ -170,9 +235,6 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.686275 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StartGameMenu" parent="Overlay/StartGameOverlay" index="0" instance=ExtResource( 6 )]
 
@@ -187,9 +249,146 @@ __meta__ = {
 
 [node name="OptionsMenu" parent="Overlay/OptionsOverlay" index="0" instance=ExtResource( 7 )]
 
-[connection signal="pressed" from="Play" to="." method="play"]
+[node name="OfflineOverlay" type="ColorRect" parent="Overlay" index="3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.25098 )
+
+[node name="Container" type="TextureRect" parent="Overlay/OfflineOverlay" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -126.0
+margin_right = 240.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 480, 252 )
+theme = SubResource( 3 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Info" type="VBoxContainer" parent="Overlay/OfflineOverlay/Container" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -226.0
+rect_min_size = Vector2( 260, 252 )
+
+[node name="MarginTop" type="ColorRect" parent="Overlay/OfflineOverlay/Container/Info" index="0"]
+margin_right = 480.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="Overlay/OfflineOverlay/Container/Info" index="1"]
+margin_top = 9.0
+margin_right = 480.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 8 )
+text = "Offline Game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginMid1" type="ColorRect" parent="Overlay/OfflineOverlay/Container/Info" index="2"]
+margin_top = 62.0
+margin_right = 480.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Info" type="Label" parent="Overlay/OfflineOverlay/Container/Info" index="3"]
+margin_top = 71.0
+margin_right = 480.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
+text = "Number of players? *"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginMid2" type="ColorRect" parent="Overlay/OfflineOverlay/Container/Info" index="4"]
+margin_top = 112.0
+margin_right = 480.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="PlayersRange" type="SpinBox" parent="Overlay/OfflineOverlay/Container/Info" index="5"]
+margin_top = 121.0
+margin_right = 480.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 0, 49 )
+min_value = 2.0
+max_value = 6.0
+value = 2.0
+align = 1
+
+[node name="MarginMid3" type="ColorRect" parent="Overlay/OfflineOverlay/Container/Info" index="6"]
+margin_top = 174.0
+margin_right = 480.0
+margin_bottom = 179.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="HMenu" parent="Overlay/OfflineOverlay/Container/Info" index="7" instance=ExtResource( 8 )]
+margin_top = 183.0
+margin_right = 480.0
+margin_bottom = 243.0
+size_flags_vertical = 3
+
+[node name="MarginLeft" type="Label" parent="Overlay/OfflineOverlay/Container/Info/HMenu" index="0"]
+margin_top = 11.0
+margin_bottom = 48.0
+
+[node name="Cancel" parent="Overlay/OfflineOverlay/Container/Info/HMenu" index="1" instance=ExtResource( 2 )]
+margin_left = 20.0
+margin_right = 220.0
+custom_fonts/font = SubResource( 5 )
+text = "Cancel"
+flat = true
+
+[node name="MarginMid" type="Label" parent="Overlay/OfflineOverlay/Container/Info/HMenu" index="2"]
+margin_left = 240.0
+margin_top = 11.0
+margin_right = 240.0
+margin_bottom = 48.0
+
+[node name="Create" parent="Overlay/OfflineOverlay/Container/Info/HMenu" index="3" instance=ExtResource( 2 )]
+margin_left = 260.0
+margin_right = 460.0
+custom_fonts/font = SubResource( 5 )
+text = "Create"
+flat = true
+
+[node name="MarginRight" type="Label" parent="Overlay/OfflineOverlay/Container/Info/HMenu" index="4"]
+margin_left = 480.0
+margin_top = 11.0
+margin_right = 480.0
+margin_bottom = 48.0
+
+[node name="MarginBottom" type="ColorRect" parent="Overlay/OfflineOverlay/Container/Info" index="8"]
+margin_top = 247.0
+margin_right = 480.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 0, 5 )
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="pressed" from="PlayOnline" to="." method="play"]
+[connection signal="pressed" from="PlayOffline" to="." method="play_offline"]
 [connection signal="pressed" from="Options" to="." method="options"]
 [connection signal="pressed" from="Quit" to="." method="quit"]
 [connection signal="pressed" from="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu/quit_confirm" to="." method="quit_confirm"]
 [connection signal="pressed" from="Overlay/QuitConfirm/ColorRect/MarginContainer/VMenu/quit_cancel" to="." method="quit_cancel"]
 [connection signal="options_saved" from="Overlay/OptionsOverlay/OptionsMenu" to="." method="_on_OptionsMenu_options_saved"]
+[connection signal="pressed" from="Overlay/OfflineOverlay/Container/Info/HMenu/Cancel" to="." method="cancel_offline_game"]
+[connection signal="pressed" from="Overlay/OfflineOverlay/Container/Info/HMenu/Create" to="." method="create_offline_game"]
+
+[editable path="Overlay/OfflineOverlay/Container/Info/HMenu/Cancel"]
