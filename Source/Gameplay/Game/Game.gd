@@ -148,5 +148,5 @@ func increment_occupied_countries(net_call=false):
 	occupied_countries += 1
 	if net_call:
 		return
-	if not GamePlay.online: return
-	Server.send_node_func_call(get_path(), "increment_occupied_countries")
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "increment_occupied_countries")

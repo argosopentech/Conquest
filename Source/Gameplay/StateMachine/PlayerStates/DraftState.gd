@@ -38,7 +38,9 @@ func add_reinforcement_amount(player: Player):
 func add_continental_bonus(player: Player):
 	for continent in bonus_troops.keys():
 		if player.countries_occupied_in_continents[continent] == GamePlay.total_countries_in_continents[continent]:
-			var activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(bonus_troops[continent]) + " for occupying " + continent
+			var activity = GamePlay.players_data[player.name].name + " gets " + str(bonus_troops[continent]) + " for occupying " + continent
+			if GamePlay.online:
+				activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(bonus_troops[continent]) + " for occupying " + continent
 			print(activity)
 			player.set_activity(activity)
 			player.increment_reinforcement(bonus_troops[continent])
@@ -48,7 +50,9 @@ func add_first_turn_bonus(player: Player):
 		var player_name = int(player.name) + 1
 		if player_name > 3:
 			var turn_bonus = player_name % 3
-			var activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(turn_bonus) + " for being at " + str(player_name) + " position"
+			var activity = GamePlay.players[player.name].name + " gets " + str(turn_bonus) + " for being at " + str(player_name) + " position"
+			if GamePlay.online:
+				activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(turn_bonus) + " for being at " + str(player_name) + " position"
 			print(activity)
 			player.set_activity(activity)
 			player.increment_reinforcement(turn_bonus)

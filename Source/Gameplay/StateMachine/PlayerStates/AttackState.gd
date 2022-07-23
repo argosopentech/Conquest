@@ -80,27 +80,37 @@ func player_attacked(player: Player, win_chance_percentage, troops: int, player_
 		troops_lost = 1
 	if random_number > win_chance_percentage:
 		successful = true
-	if troops_lost > 0:
+	if troops_lost > 1:
 		troops_lost -= 1
 	player_country.subtract_troops(troops_lost)
-	var activity = Server.my_lobby.players[int(player.name)].name + " lost " + str(troops_lost) + " troops"
+	var activity = GamePlay.players_data[player.name].name + " lost " + str(troops_lost) + " troops"
+	if GamePlay.online:
+		activity = Server.my_lobby.players[int(player.name)].name + " lost " + str(troops_lost) + " troops"
 	player.set_activity(activity)
-	activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " failed."
+	activity = GamePlay.players_data[player.name].name + "'s attack on " + GamePlay.players_data[opponent_country.occupier.name].name + " failed."
+	if GamePlay.online:
+		activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " failed."
 	if successful:
-		activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " succeeded!."
+		activity = GamePlay.players_data[player.name].name + "'s attack on " + GamePlay.players_data[opponent_country.occupier.name].name + " succeeded!."
+		if GamePlay.online:
+			activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " succeeded!."
 		if opponent_country.occupier.countries_occupied == 1:
-			var elimination = Server.my_lobby.players[int(opponent_country.occupier.name)].name + " has been eliminated."
+			var elimination = GamePlay.players_data[opponent_country.occupier.name].name + " has been eliminated."
+			if GamePlay.online:
+				elimination = Server.my_lobby.players[int(opponent_country.occupier.name)].name + " has been eliminated."
 			player.set_activity(elimination)
 			opponent_country.occupier.eliminate()
 			if GamePlay.game.all_eliminated():
 				player.overlay.show()
 				player.gameover_menu.show()
-				Server.send_node_func_call(player.get_path(), "game_over")
+				if GamePlay.online:
+					Server.send_node_func_call(player.get_path(), "game_over")
 		opponent_country.occupier.leave_country(opponent_country)
 		player.occupy_country(opponent_country)
 		opponent_country.set_troops(0)
-		Server.send_node_func_call(opponent_country.get_path(), "set_country_color")
-		Server.send_node_func_call(opponent_country.get_path(), "set_border_color")
+		if GamePlay.online:
+			Server.send_node_func_call(opponent_country.get_path(), "set_country_color")
+			Server.send_node_func_call(opponent_country.get_path(), "set_border_color")
 		if not GamePlay.game.all_eliminated():
 			player.move_menu.show()
 			player.move_menu.move_troops(player_country, opponent_country, "Attack")

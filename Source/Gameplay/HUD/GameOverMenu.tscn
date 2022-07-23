@@ -48,6 +48,13 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=11]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
 corner_radius_top_left = 30
@@ -82,13 +89,6 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
-
-[sub_resource type="DynamicFont" id=11]
-size = 32
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 2 )
 
 [node name="GameoverMenu" type="TextureRect"]
 anchor_left = 0.5
@@ -125,7 +125,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="Label" type="Label" parent="Info"]
 margin_top = 9.0
 margin_right = 467.0
-margin_bottom = 65.0
+margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 4 )
@@ -137,16 +137,16 @@ __meta__ = {
 }
 
 [node name="MarginMid1" type="ColorRect" parent="Info"]
-margin_top = 69.0
+margin_top = 66.0
 margin_right = 467.0
-margin_bottom = 74.0
+margin_bottom = 71.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Player" type="Label" parent="Info"]
-margin_top = 78.0
+margin_top = 75.0
 margin_right = 467.0
-margin_bottom = 134.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 5 )
@@ -158,49 +158,49 @@ __meta__ = {
 }
 
 [node name="MarginMid2" type="ColorRect" parent="Info"]
-margin_top = 138.0
+margin_top = 132.0
 margin_right = 467.0
-margin_bottom = 143.0
+margin_bottom = 137.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HMenu" parent="Info" instance=ExtResource( 1 )]
-margin_top = 147.0
+margin_top = 141.0
 margin_right = 467.0
-margin_bottom = 203.0
+margin_bottom = 194.0
 size_flags_vertical = 3
 custom_constants/separation = 15
 
 [node name="MarginLeft" type="Label" parent="Info/HMenu"]
-margin_top = 9.0
-margin_bottom = 46.0
+margin_top = 8.0
+margin_bottom = 45.0
 
 [node name="PlayAgain" parent="Info/HMenu" instance=ExtResource( 6 )]
 visible = false
 margin_left = 20.0
 margin_right = 213.0
+custom_fonts/font = SubResource( 11 )
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
-custom_fonts/font = SubResource( 11 )
 text = "Play Again"
 flat = true
 
 [node name="MarginMid" type="Label" parent="Info/HMenu"]
 margin_left = 15.0
-margin_top = 9.0
+margin_top = 8.0
 margin_right = 15.0
-margin_bottom = 46.0
+margin_bottom = 45.0
 align = 1
 valign = 1
 
 [node name="Back" type="Label" parent="Info/HMenu"]
 margin_left = 30.0
-margin_top = 9.0
+margin_top = 8.0
 margin_right = 437.0
-margin_bottom = 46.0
+margin_bottom = 45.0
 size_flags_horizontal = 3
 text = "Back to lobby in 5(s)"
 align = 1
@@ -208,9 +208,9 @@ valign = 1
 
 [node name="MarginMid5" type="Label" parent="Info/HMenu"]
 margin_left = 452.0
-margin_top = 9.0
+margin_top = 8.0
 margin_right = 452.0
-margin_bottom = 46.0
+margin_bottom = 45.0
 align = 1
 valign = 1
 
@@ -218,25 +218,25 @@ valign = 1
 visible = false
 margin_left = 40.0
 margin_right = 447.0
+custom_fonts/font = SubResource( 11 )
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
-custom_fonts/font = SubResource( 11 )
 text = "Main Menu"
 flat = true
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
 margin_left = 467.0
-margin_top = 9.0
+margin_top = 8.0
 margin_right = 467.0
-margin_bottom = 46.0
+margin_bottom = 45.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 207.0
+margin_top = 198.0
 margin_right = 467.0
-margin_bottom = 212.0
+margin_bottom = 203.0
 rect_min_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 

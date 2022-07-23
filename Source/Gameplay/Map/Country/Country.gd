@@ -72,8 +72,8 @@ func change_state(state, net_call=false):
 	if net_call:
 		return
 	state = state.get_state_name()
-	if not GamePlay.online: return
-	Server.send_node_func_call(get_path(), "change_country_state", state)
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "change_country_state", state)
 
 func get_name():
 	return space_pascal_case(name)
@@ -127,8 +127,8 @@ func increment_troops(net_call=false):
 	emit_signal("troops_updated")
 	if net_call:
 		return
-	if not GamePlay.online: return
-	Server.send_node_func_call(get_path(), "increment_troops")
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "increment_troops")
 
 func decrement_troops(net_call=false):
 	troops -= 1
@@ -137,28 +137,32 @@ func decrement_troops(net_call=false):
 	emit_signal("troops_updated")
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "decrement_troops")
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "decrement_troops")
 
 func add_troops(troops_amount, net_call=false):
 	troops += troops_amount
 	emit_signal("troops_updated")
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "add_troops", troops_amount)
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "add_troops", troops_amount)
 
 func subtract_troops(troops_amount, net_call=false):
 	troops -= troops_amount
 	emit_signal("troops_updated")
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "subtract_troops", troops_amount)
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "subtract_troops", troops_amount)
 
 func set_troops(troops_amount, net_call = false):
 	troops = troops_amount
 	emit_signal("troops_updated")
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "set_troops", troops_amount)
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "set_troops", troops_amount)
 
 func get_troops():
 	return troops
@@ -185,19 +189,22 @@ func set_occupier(new_occupier, net_call=false):
 		return
 	else:
 		occupier = new_occupier
-	Server.send_node_func_call(get_path(), "set_occupier", new_occupier.get_path())
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "set_occupier", new_occupier.get_path())
 
 func play_active_click(net_call=false):
 	active_click_audio.play()
 	if net_call or not GamePlay.online:
 		return
-	Server.send_node_func_call(get_path(), "play_active_click")
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "play_active_click")
 
 func play_selected_click(net_call=false):
 	selected_click_audio.play()
 	if net_call:
 		return
-	Server.send_node_func_call(get_path(), "play_selected_click")
+	if GamePlay.online:
+		Server.send_node_func_call(get_path(), "play_selected_click")
 
 func set_country_color(net_call=false):
 	country_state.set_country_color(self)
