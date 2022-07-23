@@ -17,6 +17,7 @@ func connect_signals():
 func setup():
 	setup_music()
 	setup_server()
+	setup_mode()
 
 func setup_music():
 	GamePlay.set_music_volume(GamePlay.main_menu_volume)
@@ -27,6 +28,9 @@ func setup_server():
 		server_connected()
 	else:
 		server_not_connected()
+
+func setup_mode():
+	GamePlay.online = true
 
 func options_saved():
 	setup_music()
