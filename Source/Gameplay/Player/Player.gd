@@ -124,8 +124,8 @@ func troops_moved(troops, source_country, destination_country):
 	if state:
 		change_state(state)
 
-func player_attacked(win_chance_percentage, troops: int, player_country: Country, opponent_country: Country):
-	var state = player_state.player_attacked(self, win_chance_percentage, troops, player_country, opponent_country)
+func player_attacked(player_troop_count: int, opponent_troop_count: int, player_country: Country, opponent_country: Country):
+	var state = player_state.player_attacked(self, player_troop_count, opponent_troop_count, player_country, opponent_country)
 	if state:
 		change_state(state)
 

@@ -48,41 +48,52 @@ func country_clicked(player: Player, country: Country):
 	else:
 		select_country(country)
 
-func player_attacked(player: Player, win_chance_percentage, troops: int, player_country: Country, opponent_country: Country):
+func roll_six():
+	return int(randf() * 6.0) + 1
+	
+func player_attacked(player: Player, player_troop_count: int, opponent_troop_count: int, player_country: Country, opponent_country: Country):
 	randomize()
 	player.overlay.hide()
-	var random_number = randi() % 4
+	
 	var successful = false
-	var troops_lost = 1
-	if troops - 1 > 1:
-		troops_lost = randi() % (troops - 1) + 1
-	if win_chance_percentage > 90:
-		troops_lost = randi() % 3 + 1
-		successful = true
-	elif win_chance_percentage > 75:
-		if troops - 5 > 1:
-			troops_lost = randi() % (troops - 4) + 1
+	var troops_lost = 0
+	var opponent_troops_lost = 0
+	
+	var ROLL_SIZE = 3
+	var playerRolls = []
+	for i in range(ROLL_SIZE):
+		if i < player_troop_count:
+			playerRolls.append(roll_six())
 		else:
-			troops_lost = 1
-		if random_number > 0:
-			successful = true
-	elif win_chance_percentage > 50:
-		if troops - 3 > 1:
-			troops_lost = randi() % (troops - 3) + 1
-		if random_number > 1:
-			successful = true
-	elif win_chance_percentage > 25:
-		if troops - 2 > 1:
-			troops_lost = randi() % (troops - 2) + 1
-		if random_number > 2:
-			successful = true
-	if troops <= 3:
-		troops_lost = 1
-	if random_number > win_chance_percentage:
+			playerRolls.append(0)
+	playerRolls.sort()
+	print("playerRolls ", playerRolls)
+	var opponentRolls = []
+	for i in range(ROLL_SIZE):
+		if i < opponent_troop_count:
+			opponentRolls.append(roll_six())
+		else:
+			opponentRolls.append(0)
+	opponentRolls.sort()
+	print("opponentRolls ", opponentRolls)
+	
+	for i in range(ROLL_SIZE):
+		var playerRoll = playerRolls[i]
+		var opponentRoll = opponentRolls[i]
+		
+		if playerRoll == 0 and opponentRoll == 0:
+			continue
+		
+		if playerRoll > opponentRoll:
+			opponent_troops_lost += 1
+		else:
+			troops_lost += 1
+	
+	if opponent_troops_lost == opponent_troop_count:
 		successful = true
-	if troops_lost > 1:
-		troops_lost -= 1
+	
 	player_country.subtract_troops(troops_lost)
+	opponent_country.subtract_troops(opponent_troops_lost)
 	var activity = GamePlay.players_data[player.name].name + " lost " + str(troops_lost) + " troops"
 	if GamePlay.online:
 		activity = Server.my_lobby.players[int(player.name)].name + " lost " + str(troops_lost) + " troops"

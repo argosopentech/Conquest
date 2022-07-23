@@ -13,11 +13,12 @@ onready var opponent_country_label = $Info/Players/Opponent/Country
 onready var opponent_troops_label = $Info/Players/Opponent/Troops
 
 onready var troops_range = $Info/TroopsRange
-onready var win_chance = $Info/WinChance
 
 var player_country: Country = null
 var opponent_country: Country = null
-var win_chance_percentage = 0.0
+
+var player_troop_count = 0
+var opponent_troop_count = 0
 
 signal attacked
 
@@ -55,20 +56,15 @@ func attack_details(pc: Country = null, oc: Country = null):
 			opponent_name_label.text = Server.my_lobby.players[int(opponent_country.occupier.name)].name
 			opponent_icon.color = Server.my_lobby.players[int(opponent_country.occupier.name)].color
 #		opponent_icon.color = GamePlay.colors[str(int(opponent_country.occupier.name) + 1)]
-	
-	if troops_range.value == 1:
-		troops_range.suffix = "troop"
-	else:
-		troops_range.suffix = "troops"
-	
-	calculate_win_chance(troops_range.value)
+
+	value_changed(troops_range.value)
 
 func cancel():
 	GamePlay.game.active_player.overlay.hide()
 	hide()
 
 func attack():
-	emit_signal("attacked", win_chance_percentage, troops_range.value, player_country, opponent_country)
+	emit_signal("attacked", player_troop_count, opponent_troop_count, player_country, opponent_country)
 	player_country = null
 	opponent_country = null
 	hide()
@@ -78,15 +74,10 @@ func value_changed(value):
 		troops_range.suffix = "troop"
 	else:
 		troops_range.suffix = "troops"
-	calculate_win_chance(value)
+	count_troops(value)
 
-func calculate_win_chance(troops):
-	win_chance_percentage = troops / 2.0
-	var opponent_troops = 3
+func count_troops(troops):
+	player_troop_count = troops
 	if opponent_country:
-		opponent_troops = opponent_country.troops
-	win_chance_percentage = float(win_chance_percentage / opponent_troops) * 100.0
-	if win_chance_percentage > 100:
-		win_chance_percentage = 100
-	win_chance.text = "Win Chance: " + str(stepify(win_chance_percentage, 0.1)) + "%"
-	
+		opponent_troop_count = opponent_country.troops
+
