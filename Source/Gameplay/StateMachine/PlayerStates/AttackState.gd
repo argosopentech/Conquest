@@ -81,7 +81,7 @@ func player_attacked(player: Player, player_troop_count: int, opponent_troop_cou
 		var playerRoll = playerRolls[i]
 		var opponentRoll = opponentRolls[i]
 		
-		if playerRoll == 0 and opponentRoll == 0:
+		if playerRoll == 0 or opponentRoll == 0:
 			continue
 		
 		if playerRoll > opponentRoll:
