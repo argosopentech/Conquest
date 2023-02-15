@@ -13,8 +13,8 @@ func _ready():
 func set_response_handler(new_handler):
     response_handler = new_handler
 
-func connect_to_server(server_address="ws://localhost:9080"):
-    if client.connect_to_url(server_address) == OK:
+func connect_to_server(server_address="ws://localhost", server_port=9080, max_players=2000):
+    if client.connect_to_url(server_address + ":" + str(server_port)) == OK:
         connect_server_signals()
         set_process(true)
     else:
@@ -34,11 +34,11 @@ func connected_to_server():
 
 func disconnected_from_server():
     print("Disconnected from the server.")
-    emit_signal(server_connected)
+    emit_signal(server_disconnected)
 
 func received_data_from_server():
     var method_info = client.get_peer(1).get_var()
-    print("Just received data from server %s" % [method_info])
+    print("Just received data from server: %s" % [method_info])
     process_method_info(method_info)
 
 func process_method_info(method_info):
