@@ -62,7 +62,7 @@ func save():
 	GamePlay.country_sound = country_sound_on
 	if Server.connected and Server.player_name != name_edit.text:
 		Server.player_name = name_edit.text
-		Server.send_saved_player_name()
+		Server.send_player_name()
 	emit_signal("options_saved")
 
 func _on_MainMenuVolume_value_changed(value):
