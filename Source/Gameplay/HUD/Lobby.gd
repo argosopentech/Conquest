@@ -49,7 +49,7 @@ func instance_player_list():
 	for child in players_list.get_children():
 		if child is PlayerListInstance:
 			child.queue_free()
-	for i in range(Server.my_lobby.current_players):
+	for i in Server.my_lobby.players:
 		var player_instance = player_instance_scene.instance()
 		player_instance.set_name(str(Server.my_lobby.players[i].id))
 		players_list.add_child(player_instance)
@@ -57,7 +57,7 @@ func instance_player_list():
 		player_instance.name_label.text = Server.my_lobby.players[i].name
 		if i == 0:
 			player_instance.kick_button.hide()
-		if Server.my_lobby.players[0].id != Server.player_id:
+		if !Server.my_lobby.players[i]["host"]:
 			player_instance.kick_button.hide()
 			start_button.hide()
 			start_margin.hide()

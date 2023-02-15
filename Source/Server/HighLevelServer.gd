@@ -4,7 +4,7 @@ class_name HighLevelServer
 var client = NetworkedMultiplayerENet.new()
 var response_handler = null
 
-signal server_connected
+signal server_connected(client_id)
 signal server_disconnected
 
 func set_response_handler(new_handler):
@@ -25,7 +25,7 @@ func connect_server_signals():
 
 func connected_to_server():
 	print("Connected to the server.")
-	emit_signal("server_connected")
+	emit_signal("server_connected", get_tree().get_network_unique_id())
 
 func disconnected_from_server():
 	print("Disconnected from server.")
@@ -37,9 +37,12 @@ remote func received_data_from_server(method_info):
 
 func process_method_info(method_info):
 	if !response_handler: return
-	if method_info is Dictionary & method_info.has("purpose") & method_info["purpose"] == "request":
+	if method_info is Dictionary and method_info.has("purpose") and method_info["purpose"] == "response":
 		if response_handler.has_method(method_info["method"]):
-			response_handler.call_deferred(method_info["method"], method_info["data"])
+			if method_info["data"]:
+				response_handler.call_deferred(method_info["method"], method_info["data"])
+			else:
+				response_handler.call_deferred(method_info["method"])
 
 func send_data_to_server(method, data=null):
 	var method_info = {"purpose": "request", "method": method, "data": data}

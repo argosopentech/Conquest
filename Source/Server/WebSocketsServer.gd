@@ -4,8 +4,8 @@ class_name WebSocketsServer
 var client = WebSocketClient.new()
 var response_handler = null
 
-signal server_connected
-signal server_disconnected
+signal server_connected(client_id)
+signal server_disconnected()
 
 func _ready():
 	set_process(false)
@@ -21,18 +21,18 @@ func connect_to_server(server_address="ws://localhost", server_port=9080, max_pl
 		set_process(false)
 
 func connect_server_signals():
-	if client.is_connect("connection_established", self, "connected_to_server"):
+	if client.is_connected("connection_established", self, "connected_to_server"):
 		return
 	client.connect("connection_established", self, "connected_to_server")
 	client.connect("connection_closed", self, "disconnected_from_server")
 	client.connect("connection_error", self, "disconnected_from_server")
 	client.connect("data_received", self, "received_data_from_server")
 
-func connected_to_server():
+func connected_to_server(protocol=""):
 	print("Connected to the server.")
-	emit_signal("server_connected")
+	emit_signal("server_connected", client.get_unique_id())
 
-func disconnected_from_server():
+func disconnected_from_server(was_clean=false):
 	print("Disconnected from the server.")
 	emit_signal("server_disconnected")
 
@@ -43,9 +43,12 @@ func received_data_from_server():
 
 func process_method_info(method_info):
 	if !response_handler: return
-	if method_info is Dictionary & method_info.has("purpose") & method_info["purpose"] == "request":
+	if method_info is Dictionary and method_info.has("purpose") and method_info["purpose"] == "response":
 		if response_handler.has_method(method_info["method"]):
-			response_handler.call_deferred(method_info["method"], method_info["data"])
+			if method_info["data"]:
+				response_handler.call_deferred(method_info["method"], method_info["data"])
+			else:
+				response_handler.call_deferred(method_info["method"])
 
 func _process(_delta):
 	client.poll()
@@ -59,7 +62,7 @@ func disconnect_from_server():
 	client.disconnect_from_host()
 
 func disconnect_server_signals():
-	if !client.is_connect("connection_closed", self, "_closed"):
+	if !client.is_connected("connection_closed", self, "_closed"):
 		return
 	client.disconnect("connection_closed", self, "disconnected_from_server")
 	client.disconnect("connection_error", self, "disconnected_from_server")

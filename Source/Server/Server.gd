@@ -1,7 +1,7 @@
 extends Node
 
-const SERVER_PORT = 1909
-const default_ip = "conquestgame.online"
+var SERVER_PORT = 1909
+var default_ip = "127.0.0.1" #"conquestgame.online"
 var SERVER_IP = default_ip
 var player_name = "player"
 var my_lobby = {}
@@ -42,10 +42,12 @@ func connect_to_server():
 	else:
 		server = high_level_server.instance()
 	connect_connection_signals()
+	server.set_response_handler(self)
 	add_child(server)
 	server.connect_to_server()
 
 func is_running_on_the_web():
+	return true
 	return OS.get_name() == "HTML5"
 
 func connect_connection_signals():
@@ -53,10 +55,10 @@ func connect_connection_signals():
 	server.connect("server_connected", self, "server_connected")
 	server.connect("server_disconnected", self, "server_disconnected")
 
-func connected_to_server():
+func server_connected(new_player_id):
 	if not GamePlay.online: return
 	print("Connected to the server: ", SERVER_IP)
-	player_id = get_tree().get_network_unique_id()
+	player_id = new_player_id
 	connected = true
 	emit_signal("server_connected")
 
@@ -67,18 +69,22 @@ func server_disconnected():
 	connected = false
 	emit_signal("server_disconnected")
 
+func set_player_id(new_player_id):
+	player_id = new_player_id
+
 func send_player_name():
 	if not GamePlay.online: return
-	server.send_data_to_server("set_player_name", player_name)
+	server.send_data_to_server("set_player_name", {"player_name": player_name})
 	print("Sent player name")
 
 func create_lobby(lobby_data):
 	if not GamePlay.online: return
 	server.send_data_to_server("create_game_lobby", lobby_data)
 
-func game_lobby_created(lobby_data):
+func game_lobby_created(data):
 	if not GamePlay.online: return
-	my_lobby = lobby_data
+	my_lobby = data["lobby_data"]
+	player_number = data["player_number"]
 	emit_signal("lobby_created_signal", lobby_data)
 
 func join_lobby(lobby_code, lobby_pass):
@@ -88,11 +94,13 @@ func join_lobby(lobby_code, lobby_pass):
 	server.send_data_to_server("join_game_lobby", lobby_auth_info)
 	join_lobby_request_sent = true
 
-func update_game_lobby(lobby_data):
+func update_game_lobby(data):
 	if not GamePlay.online: return
-	my_lobby = lobby_data["lobby"]
-	var reason = lobby_data["reason"]
+	my_lobby = data["lobby"]
+	var reason = data["reason"]
 	join_lobby_request_sent = false
+	if data.has("player_number"):
+		player_number = data["player_number"]
 	emit_signal("lobby_updated_signal", my_lobby, reason)
 	print(reason)
 
@@ -109,10 +117,11 @@ func ask_for_active_lobbies():
 	server.send_data_to_server("send_active_game_lobbies")
 	ask_for_lobbies_request_sent = true
 
-func get_active_lobbies(lobbies):
+func get_active_lobbies(lobbies=null):
 	if not GamePlay.online: return
 	ask_for_lobbies_request_sent = false
 	active_lobbies = lobbies
+	if !lobbies: return
 	emit_signal("got_active_lobbies_signal", lobbies)
 	print("Got active lobbies.")
 

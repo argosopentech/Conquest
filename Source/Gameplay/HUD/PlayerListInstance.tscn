@@ -86,12 +86,12 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 size_flags_horizontal = 1
 size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 1 )
 text = "X"
 
 [node name="Margin" type="Label" parent="Details"]
