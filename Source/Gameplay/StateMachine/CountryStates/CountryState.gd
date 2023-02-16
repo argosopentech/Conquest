@@ -43,7 +43,10 @@ func change_state(country: Country, state):
 
 func set_country_color(country: Country):
 	if country.occupier:
-		country.sprite.modulate = GamePlay.colors[str(int(country.occupier.name) + 1)]
+		if GamePlay.online:
+			country.sprite.modulate = Server.my_lobby.players[int(country.occupier.name)]["color"]
+		else:
+			country.sprite.modulate = GamePlay.colors[str(int(country.occupier.name) + 1)]
 	else:
 		country.sprite.modulate = colors.unoccupied
 

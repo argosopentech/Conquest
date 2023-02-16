@@ -34,8 +34,8 @@ func setup():
 func spawn_players():
 	var current_players = GamePlay.number_of_players
 	if GamePlay.online:
-		current_players = Server.my_lobby.current_players 
-	for i in range(current_players):
+		current_players = Server.my_lobby.players 
+	for i in current_players:
 		var p = player_scene.instance()
 		p.name = str(i)
 		players.add_child(p)

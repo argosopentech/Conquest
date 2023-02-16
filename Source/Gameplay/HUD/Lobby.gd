@@ -55,9 +55,11 @@ func instance_player_list():
 		players_list.add_child(player_instance)
 		player_instance.color_rect.color = Server.my_lobby.players[i].color
 		player_instance.name_label.text = Server.my_lobby.players[i].name
-		if i == 0:
+		if Server.my_lobby.players[i]["host"]:
 			player_instance.kick_button.hide()
-		if !Server.my_lobby.players[i]["host"]:
+			start_button.show()
+			start_margin.show()
+		if !Server.my_lobby.players[Server.player_id]["host"]:
 			player_instance.kick_button.hide()
 			start_button.hide()
 			start_margin.hide()

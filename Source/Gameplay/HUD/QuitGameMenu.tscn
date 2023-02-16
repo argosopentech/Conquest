@@ -6,17 +6,17 @@
 [ext_resource path="res://Source/Gameplay/HUD/QuitGameMenu.gd" type="Script" id=5]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=6]
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 800, 500 )
-modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
-
 [sub_resource type="DynamicFont" id=2]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 800, 500 )
+modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 
 [sub_resource type="Theme" id=3]
 default_font = SubResource( 2 )
@@ -28,7 +28,7 @@ LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
 LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
 LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
 LineEdit/constants/minimum_spaces = 12
-LineEdit/fonts/font = null
+LineEdit/fonts/font = SubResource( 2 )
 LineEdit/icons/clear = null
 LineEdit/styles/focus = SubResource( 1 )
 LineEdit/styles/normal = SubResource( 1 )
@@ -43,6 +43,13 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 36
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
@@ -82,13 +89,6 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
-
-[sub_resource type="DynamicFont" id=11]
-size = 32
-outline_size = 3
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 2 )
 
 [node name="QuitGameMenu" type="TextureRect"]
 self_modulate = Color( 1, 1, 1, 0.941176 )
@@ -176,12 +176,12 @@ margin_bottom = 49.0
 margin_left = 20.0
 margin_right = 217.0
 margin_bottom = 61.0
+custom_fonts/font = SubResource( 11 )
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
-custom_fonts/font = SubResource( 11 )
 text = "No"
 flat = true
 
@@ -195,12 +195,12 @@ margin_bottom = 49.0
 margin_left = 257.0
 margin_right = 455.0
 margin_bottom = 61.0
+custom_fonts/font = SubResource( 11 )
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
-custom_fonts/font = SubResource( 11 )
 text = "Yes"
 flat = true
 

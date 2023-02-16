@@ -28,6 +28,8 @@ var server = null
 var high_level_server = preload("res://Source/Server/HighLevelServer.tscn")
 var web_sockets_server = preload("res://Source/Server/WebSocketsServer.tscn")
 
+export var should_use_web_sockets_server = true
+
 signal server_connected
 signal server_disconnected
 
@@ -37,7 +39,7 @@ func _ready():
 	connect_signals()
 
 func connect_to_server():
-	if is_running_on_the_web():
+	if is_running_on_the_web() or should_use_web_sockets_server:
 		server = web_sockets_server.instance()
 	else:
 		server = high_level_server.instance()
@@ -47,7 +49,6 @@ func connect_to_server():
 	server.connect_to_server()
 
 func is_running_on_the_web():
-	return true
 	return OS.get_name() == "HTML5"
 
 func connect_connection_signals():
@@ -97,6 +98,7 @@ func join_lobby(lobby_code, lobby_pass):
 func update_game_lobby(data):
 	if not GamePlay.online: return
 	my_lobby = data["lobby"]
+	GamePlay.players_data = my_lobby.players
 	var reason = data["reason"]
 	join_lobby_request_sent = false
 	if data.has("player_number"):
@@ -190,6 +192,7 @@ func game_started():
 
 func disconnect_server():
 	if not GamePlay.online: return
+	GamePlay.players_data = GamePlay.players_data_template
 	server.disconnect_from_server()
 	disconnect_connection_signals()
 	server.queue_free

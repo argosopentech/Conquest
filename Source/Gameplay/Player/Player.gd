@@ -56,9 +56,11 @@ func setup_reinforcements(net_call=false):
 	#Server.send_node_func_call(get_path(), "setup_reinforcements")
 
 func setup_hud():
-	var player_data = GamePlay.players_data[name]
+	var player_data
 	if GamePlay.online:
 		player_data = Server.my_lobby.players[int(name)]
+	else:
+		player_data = GamePlay.players_data[name]
 	hud.set_player_name(player_data.name, int(name))
 	hud.set_icon_color(player_data.color)
 	hud.connect("go_pressed", self, "go_pressed")
