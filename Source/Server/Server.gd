@@ -1,7 +1,7 @@
 extends Node
 
-const SERVER_PORT = 1909
-const default_ip = "conquestgame.online"
+var SERVER_PORT = 1909
+var default_ip = "127.0.0.1" #"conquestgame.online"
 var SERVER_IP = default_ip
 var player_name = "player"
 var my_lobby = {}
@@ -24,82 +24,87 @@ signal game_started_signal()
 
 var connected = false
 
+var server = null
+var high_level_server = preload("res://Source/Server/HighLevelServer.tscn")
+var web_sockets_server = preload("res://Source/Server/WebSocketsServer.tscn")
+
+export var should_use_web_sockets_server = true
+
+signal server_connected
+signal server_disconnected
+
 func _ready():
-	connect_signals()
 	connect_to_server()
 
-func connect_signals():
-	get_tree().connect("connected_to_server", self, "_connected_to_server")
-	get_tree().connect("connection_failed", self, "_connection_failed")
-	get_tree().connect("server_disconnected", self, "_server_disconnected")
+func connect_to_server():
+	if is_running_on_the_web() or should_use_web_sockets_server:
+		server = web_sockets_server.instance()
+	else:
+		server = high_level_server.instance()
+	connect_connection_signals()
+	server.set_response_handler(self)
+	add_child(server)
+	server.connect_to_server()
 
-func disconnect_server():
-	if not GamePlay.online: return
-	if get_tree().network_peer:
-		get_tree().network_peer.close_connection()
-		get_tree().network_peer = null
-		connected = false
+func is_running_on_the_web():
+	return OS.get_name() == "HTML5"
 
-func _connected_to_server():
+func connect_connection_signals():
+	if server.is_connected("server_connected", self, "server_connected"): return
+	server.connect("server_connected", self, "server_connected")
+	server.connect("server_disconnected", self, "server_disconnected")
+
+func server_connected(new_player_id):
 	if not GamePlay.online: return
 	print("Connected to the server: ", SERVER_IP)
-	player_id = get_tree().get_network_unique_id()
+	player_id = new_player_id
 	connected = true
+	emit_signal("server_connected")
 
-func _connection_failed():
-	if not GamePlay.online: return
-	print("Failed to connect to the server.")
-	connected = false
-
-func _server_disconnected():
+func server_disconnected():
 	if not GamePlay.online: return
 	print("Server disconnected.")
 	player_id = null
 	connected = false
+	emit_signal("server_disconnected")
 
-func connect_to_server():
-	var peer = NetworkedMultiplayerENet.new()
-	var error = peer.create_client(SERVER_IP, SERVER_PORT)
-	if error == OK:
-		get_tree().network_peer = peer
-	else:
-		print("Error connecting to server: ", str(error))
+func set_player_id(new_player_id):
+	player_id = new_player_id
 
-remote func send_player_name():
+func send_player_name():
 	if not GamePlay.online: return
-	var sender_id = get_tree().get_rpc_sender_id()
-	rpc_id(sender_id, "get_player_name", player_name)
-	print("Sent player name")
-
-func send_saved_player_name():
-	if not GamePlay.online: return
-	rpc_id(1, "get_player_name", player_name)
+	server.send_data_to_server("set_player_name", {"player_name": player_name})
 	print("Sent player name")
 
 func create_lobby(lobby_data):
 	if not GamePlay.online: return
-	rpc_id(1, "create_lobby", lobby_data)
+	server.send_data_to_server("create_game_lobby", lobby_data)
 
-remote func lobby_created(lobby_data):
+func game_lobby_created(data):
 	if not GamePlay.online: return
-	my_lobby = lobby_data
+	my_lobby = data["lobby_data"]
+	player_number = data["player_number"]
 	emit_signal("lobby_created_signal", lobby_data)
 
 func join_lobby(lobby_code, lobby_pass):
 	if not GamePlay.online: return
-	if join_lobby_request_sent:
-		return
-	rpc_id(1, "join_lobby", lobby_code, lobby_pass)
+	if join_lobby_request_sent: return
+	var lobby_auth_info = {"lobby_code": lobby_code, "lobby_pass": lobby_pass}
+	server.send_data_to_server("join_game_lobby", lobby_auth_info)
 	join_lobby_request_sent = true
 
-remote func update_lobby(lobby_data, reason = ""):
+func update_game_lobby(data):
 	if not GamePlay.online: return
-	my_lobby = lobby_data
+	my_lobby = data["lobby"]
+	GamePlay.players_data = my_lobby.players
+	var reason = data["reason"]
 	join_lobby_request_sent = false
-	emit_signal("lobby_updated_signal", lobby_data, reason)
+	if data.has("player_number"):
+		player_number = data["player_number"]
+	emit_signal("lobby_updated_signal", my_lobby, reason)
 	print(reason)
 
-remote func failed_to_join_lobby(reason = ""):
+func failed_to_join_game_lobby(reason = ""):
 	if not GamePlay.online: return
 	join_lobby_request_sent = false
 	emit_signal("failed_to_join_lobby_signal", reason)
@@ -109,55 +114,89 @@ func ask_for_active_lobbies():
 	if not GamePlay.online: return
 	if ask_for_lobbies_request_sent:
 		return
-	rpc_id(1, "send_active_lobbies")
+	server.send_data_to_server("send_active_game_lobbies")
 	ask_for_lobbies_request_sent = true
 
-remote func get_active_lobbies(lobbies):
+func get_active_lobbies(lobbies=null):
 	if not GamePlay.online: return
 	ask_for_lobbies_request_sent = false
 	active_lobbies = lobbies
+	if !lobbies: return
 	emit_signal("got_active_lobbies_signal", lobbies)
 	print("Got active lobbies.")
 
 func leave_lobby():
 	if not GamePlay.online: return
-	rpc_id(1, "leave_lobby", my_lobby.code)
+	server.send_data_to_server("leave_game_lobby", {"lobby_code": my_lobby.code})
 
 func kick_player_from_lobby(lobby_code, player_id):
 	if not GamePlay.online: return
-	rpc_id(1, "kick_player_from_lobby", lobby_code, player_id)
+	var data = {
+		"kicked_player_id": player_id,
+		"lobby_code": lobby_code
+	}
+	server.send_data_to_server("kick_player_from_game_lobby", data)
 
-remote func kicked_from_lobby(reason = ""):
+func kicked_from_lobby(reason = ""):
 	if not GamePlay.online: return
 	print(reason)
 	emit_signal("kicked_from_lobby_signal")
 
 func send_message(lobby_code, message, sender):
 	if not GamePlay.online: return
-	rpc_id(1, "send_message", lobby_code, message, sender)
+	var data = {
+		"lobby_code": lobby_code,
+		"message": message,
+		"sender": sender
+	}
+	server.send_data_to_server("send_message_in_game_lobby", data)
 
-remote func get_message(message, sender):
+func get_message(message_info):
 	if not GamePlay.online: return
+	var sender = message_info["sender"]
+	var message = message_info["message"]
 	print("Got message:\n", message, "\nfrom\n", sender)
 	emit_signal("got_message", message, sender)
 
 func send_node_func_call(node_path, function, parameter=null):
 	if not GamePlay.online: return
-	rpc_id(1, "send_node_func_call", int(my_lobby.code), node_path, function, parameter)
+	var data = {
+		"lobby_code": int(my_lobby.code),
+		"parameter": parameter,
+		"method": function,
+		"node_path": node_path
+	}
+	server.send_data_to_server("send_node_method_call", data)
 
-remote func get_node_func_call(node_path, function, parameter=null):
+func get_node_method_call(data):
 	if not GamePlay.online: return
+	var parameter = data["parameter"]
+	var node_path = data["node_path"]
+	var method = data["method"]
 	if parameter != null:
-		get_node(node_path).call_deferred(function, parameter, true)
+		get_node(node_path).call_deferred(method, parameter, true)
 	else:
 		if has_node(node_path):
-			get_node(node_path).call(function, true)
+			get_node(node_path).call(method, true)
 
 func start_game(lobby_code):
 	if not GamePlay.online: return
-	rpc_id(1, "start_game", lobby_code)
+	server.send_data_to_server("start_the_game", {"lobby_code": lobby_code})
 
-remote func game_started():
+func game_started():
 	if not GamePlay.online: return
 	print("game started")
 	emit_signal("game_started_signal")
+
+func disconnect_server():
+	if not GamePlay.online: return
+	GamePlay.players_data = GamePlay.players_data_template
+	server.disconnect_from_server()
+	disconnect_connection_signals()
+	server.queue_free
+	connected = false
+
+func disconnect_connection_signals():
+	if !server.is_connected("server_connected", self, "server_connected"): return
+	server.disconnect("server_connected", self, "server_connected")
+	server.disconnect("server_disconnected", self, "server_disconnected")

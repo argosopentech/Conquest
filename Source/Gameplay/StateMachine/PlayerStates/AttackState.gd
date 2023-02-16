@@ -32,7 +32,6 @@ func update(player: Player):
 			yield(get_tree(), "idle_frame")
 			selected_country = null
 
-
 func exit(player: Player):
 	.exit(player)
 
@@ -94,21 +93,31 @@ func player_attacked(player: Player, player_troop_count: int, opponent_troop_cou
 	
 	player_country.subtract_troops(troops_lost)
 	opponent_country.subtract_troops(opponent_troops_lost)
-	var activity = GamePlay.players_data[player.name].name + " lost " + str(troops_lost) + " troops"
+	var activity
 	if GamePlay.online:
 		activity = Server.my_lobby.players[int(player.name)].name + " lost " + str(troops_lost) + " troops"
+	else:
+		activity = GamePlay.players_data[player.name].name + " lost " + str(troops_lost) + " troops"
 	player.set_activity(activity)
-	activity = GamePlay.players_data[player.name].name + "'s attack on " + GamePlay.players_data[opponent_country.occupier.name].name + " failed."
+	if GamePlay.online:
+		activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " failed."
+	else:
+		activity = GamePlay.players_data[player.name].name + "'s attack on " + GamePlay.players_data[opponent_country.occupier.name].name + " failed."
 	if GamePlay.online:
 		activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " failed."
 	if successful:
-		activity = GamePlay.players_data[player.name].name + "'s attack on " + GamePlay.players_data[opponent_country.occupier.name].name + " succeeded!."
 		if GamePlay.online:
 			activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " succeeded!."
+		else:
+			activity = GamePlay.players_data[player.name].name + "'s attack on " + GamePlay.players_data[opponent_country.occupier.name].name + " succeeded!."
+#		if GamePlay.online:
+#			activity = Server.my_lobby.players[int(player.name)].name + "'s attack on " + Server.my_lobby.players[int(opponent_country.occupier.name)].name + " succeeded!."
 		if opponent_country.occupier.countries_occupied == 1:
-			var elimination = GamePlay.players_data[opponent_country.occupier.name].name + " has been eliminated."
+			var elimination
 			if GamePlay.online:
 				elimination = Server.my_lobby.players[int(opponent_country.occupier.name)].name + " has been eliminated."
+			else:
+				elimination = GamePlay.players_data[opponent_country.occupier.name].name + " has been eliminated."
 			player.set_activity(elimination)
 			opponent_country.occupier.eliminate()
 			if GamePlay.game.all_eliminated():

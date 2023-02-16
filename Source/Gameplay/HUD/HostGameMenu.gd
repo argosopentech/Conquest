@@ -20,16 +20,17 @@ func _on_Host_pressed():
 	host_button.disabled = true
 	cancel_button.disabled = true
 	
-	var players_list = []
+	var players_list = {}
 	
 	var player_dictionary = {
 		"id": null,
 		"name": null,
-		"color": null
+		"color": null,
+		"host": true
 	}
 	
 	for i in range(lobby_players.value):
-		players_list.append(player_dictionary)
+		players_list[Server.player_id] = player_dictionary
 	
 	var lobby_data = {
 		"code": null,

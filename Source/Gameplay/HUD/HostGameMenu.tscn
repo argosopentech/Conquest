@@ -8,17 +8,17 @@
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=7]
 
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 800, 500 )
-modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
-
 [sub_resource type="DynamicFont" id=7]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 800, 500 )
+modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 
 [sub_resource type="Theme" id=3]
 default_font = SubResource( 7 )
@@ -30,7 +30,7 @@ LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
 LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
 LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
 LineEdit/constants/minimum_spaces = 12
-LineEdit/fonts/font = null
+LineEdit/fonts/font = SubResource( 7 )
 LineEdit/icons/clear = null
 LineEdit/styles/focus = SubResource( 6 )
 LineEdit/styles/normal = SubResource( 6 )

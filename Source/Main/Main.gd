@@ -11,6 +11,9 @@ func _ready():
 	setup()
 
 func connect_signals():
+	Server.connect("server_connected", self, "server_connected")
+	Server.connect("server_disconnected", self, "server_not_connected")
+	return
 	get_tree().connect("connected_to_server", self, "server_connected")
 	get_tree().connect("connection_failed", self, "server_not_connected")
 

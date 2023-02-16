@@ -56,9 +56,11 @@ func setup_reinforcements(net_call=false):
 	#Server.send_node_func_call(get_path(), "setup_reinforcements")
 
 func setup_hud():
-	var player_data = GamePlay.players_data[name]
+	var player_data
 	if GamePlay.online:
 		player_data = Server.my_lobby.players[int(name)]
+	else:
+		player_data = GamePlay.players_data[name]
 	hud.set_player_name(player_data.name, int(name))
 	hud.set_icon_color(player_data.color)
 	hud.connect("go_pressed", self, "go_pressed")
@@ -259,9 +261,11 @@ func _process(delta):
 func eliminate(net_call=false):
 	eliminated = true
 	if net_call:
-		var player_name = GamePlay.players_data[name].name
+		var player_name
 		if GamePlay.online:
 			player_name = Server.my_lobby.players[int(name)].name
+		else:
+			player_name = GamePlay.players_data[name].name
 		set_activity(player_name + " has been eliminated!")
 		return
 	if not GamePlay.online: return
