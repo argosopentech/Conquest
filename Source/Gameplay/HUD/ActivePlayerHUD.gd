@@ -18,9 +18,10 @@ func set_icon_color(color):
 
 func set_player_name(player_name, player_number):
 	name_label.text = player_name
-	var color
-	if GamePlay.online and Server.my_lobby.players[player_number].id == Server.player_id:
-		color = Server.my_lobby.players[player_number].color
+	var color = Color.white
+	if GamePlay.online:
+		if Server.my_lobby.players[player_number].id == Server.player_id:
+			color = Server.my_lobby.players[player_number].color
 	else:
 		color = GamePlay.players_data[str(player_number)].color
 	name_label.set("custom_colors/font_color", color)

@@ -261,9 +261,11 @@ func _process(delta):
 func eliminate(net_call=false):
 	eliminated = true
 	if net_call:
-		var player_name = GamePlay.players_data[name].name
+		var player_name
 		if GamePlay.online:
 			player_name = Server.my_lobby.players[int(name)].name
+		else:
+			player_name = GamePlay.players_data[name].name
 		set_activity(player_name + " has been eliminated!")
 		return
 	if not GamePlay.online: return
