@@ -193,7 +193,7 @@ func disconnect_server():
 	GamePlay.players_data = GamePlay.players_data_template
 	server.disconnect_from_server()
 	disconnect_connection_signals()
-	server.queue_free
+	server.queue_free()
 	connected = false
 
 func disconnect_connection_signals():
