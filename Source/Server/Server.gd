@@ -1,8 +1,9 @@
 extends Node
 
 var SERVER_PORT = 1909
-var default_ip = "127.0.0.1" #"conquestgame.online"
-var SERVER_IP = default_ip
+var local_ip = "127.0.0.1" #"conquestgame.online"
+var conquest_official_ws_address = "conquestgame.online"
+var SERVER_IP = conquest_official_ws_address
 var player_name = "player"
 var my_lobby = {}
 var active_lobbies = {}
@@ -30,10 +31,14 @@ var web_sockets_server = preload("res://Source/Server/WebSocketsServer.tscn")
 
 export var should_use_web_sockets_server = true
 
+var is_local = false
+
 signal server_connected
 signal server_disconnected
 
 func _ready():
+	if is_local:
+		SERVER_IP = local_ip
 	connect_to_server()
 
 func connect_to_server():
@@ -44,7 +49,7 @@ func connect_to_server():
 	connect_connection_signals()
 	server.set_response_handler(self)
 	add_child(server)
-	server.connect_to_server()
+	server.connect_to_server(SERVER_IP)
 
 func is_running_on_the_web():
 	return OS.get_name() == "HTML5"

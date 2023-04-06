@@ -13,8 +13,8 @@ func _ready():
 func set_response_handler(new_handler):
 	response_handler = new_handler
 
-func connect_to_server(server_address="ws://localhost", server_port=9080, max_players=2000):
-	if client.connect_to_url(server_address + ":" + str(server_port)) == OK:
+func connect_to_server(server_address="localhost", server_port=9080, max_players=2000):
+	if client.connect_to_url("ws://" + server_address + ":" + str(server_port)) == OK:
 		connect_server_signals()
 		set_process(true)
 	else:
