@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Countries/Iceland.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Borders/Iceland.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Countries/Iceland.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Borders/Iceland.png" type="Texture2D" id=3]
 
 [node name="Iceland" groups=[
 "Europe",
@@ -15,4 +15,4 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -3.582, 79.5046, 122.552, 8.46329, 121.278, -55.3289, 75.4113, -88.6747, 11.707, -66.9274, -7.40426, -74.1766, -20.1451, -48.0798, -35.4341, -71.2769, -81.3012, -58.2285, -123.346, 21.5117, -87.6716, 47.6085, -91.4939, 63.5565, -35.4341, 66.4561 )
+polygon = PackedVector2Array( -3.582, 79.5046, 122.552, 8.46329, 121.278, -55.3289, 75.4113, -88.6747, 11.707, -66.9274, -7.40426, -74.1766, -20.1451, -48.0798, -35.4341, -71.2769, -81.3012, -58.2285, -123.346, 21.5117, -87.6716, 47.6085, -91.4939, 63.5565, -35.4341, 66.4561 )

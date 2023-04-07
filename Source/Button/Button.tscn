@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="FontFile" id=1]
 [ext_resource path="res://Source/Button/Button.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Audio/glitch_002.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Audio/glitch_001.ogg" type="AudioStream" id=4]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="FontFile" id=6]
 size = 32
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -48,17 +48,17 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [node name="SmartButton" type="Button"]
-margin_right = 180.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 180, 60 )
+offset_right = 180.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 180, 60 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 6 )
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 10 )
-custom_styles/disabled = SubResource( 11 )
-custom_styles/normal = SubResource( 5 )
+theme_override_fonts/font = SubResource( 6 )
+theme_override_styles/hover = SubResource( 8 )
+theme_override_styles/pressed = SubResource( 9 )
+theme_override_styles/focus = SubResource( 10 )
+theme_override_styles/disabled = SubResource( 11 )
+theme_override_styles/normal = SubResource( 5 )
 text = "Button"
 script = ExtResource( 2 )
 

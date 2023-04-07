@@ -1,7 +1,7 @@
 extends ColorRect
 
-onready var code_edit = $Background/Info/HBoxContainer/LobbyCode
-onready var pass_edit = $Background/Info/HBoxContainer2/LobbyPass
+@onready var code_edit = $Background/Info/HBoxContainer/LobbyCode
+@onready var pass_edit = $Background/Info/HBoxContainer2/LobbyPass
 
 signal joining_lobby
 

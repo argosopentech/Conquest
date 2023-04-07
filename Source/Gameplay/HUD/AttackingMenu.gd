@@ -2,17 +2,17 @@ extends TextureRect
 
 class_name AttackingMenu
 
-onready var player_icon = $Info/Players/Player/IconBorder/Icon
-onready var player_name_label = $Info/Players/Player/Name
-onready var player_country_label = $Info/Players/Player/Country
-onready var player_troops_label = $Info/Players/Player/Troops
+@onready var player_icon = $Info/Players/Player/IconBorder/Icon
+@onready var player_name_label = $Info/Players/Player/Name
+@onready var player_country_label = $Info/Players/Player/Country
+@onready var player_troops_label = $Info/Players/Player/Troops
 
-onready var opponent_icon = $Info/Players/Opponent/IconBorder/Icon
-onready var opponent_name_label = $Info/Players/Opponent/Name
-onready var opponent_country_label = $Info/Players/Opponent/Country
-onready var opponent_troops_label = $Info/Players/Opponent/Troops
+@onready var opponent_icon = $Info/Players/Opponent/IconBorder/Icon
+@onready var opponent_name_label = $Info/Players/Opponent/Name
+@onready var opponent_country_label = $Info/Players/Opponent/Country
+@onready var opponent_troops_label = $Info/Players/Opponent/Troops
 
-onready var troops_range = $Info/TroopsRange
+@onready var troops_range = $Info/TroopsRange
 
 var player_country: Country = null
 var opponent_country: Country = null

@@ -29,7 +29,7 @@ var server = null
 var high_level_server = preload("res://Source/Server/HighLevelServer.tscn")
 var web_sockets_server = preload("res://Source/Server/WebSocketsServer.tscn")
 
-export var should_use_web_sockets_server = true
+@export var should_use_web_sockets_server = true
 
 var is_local = false
 
@@ -43,9 +43,9 @@ func _ready():
 
 func connect_to_server():
 	if is_running_on_the_web() or should_use_web_sockets_server:
-		server = web_sockets_server.instance()
+		server = web_sockets_server.instantiate()
 	else:
-		server = high_level_server.instance()
+		server = high_level_server.instantiate()
 	connect_connection_signals()
 	server.set_response_handler(self)
 	add_child(server)
@@ -55,9 +55,9 @@ func is_running_on_the_web():
 	return OS.get_name() == "HTML5"
 
 func connect_connection_signals():
-	if server.is_connected("server_connected", self, "server_connected"): return
-	server.connect("server_connected", self, "server_connected")
-	server.connect("server_disconnected", self, "server_disconnected")
+	if server.is_connected("server_connected", Callable(self, "server_connected")): return
+	server.connect("server_connected", Callable(self, "server_connected"))
+	server.connect("server_disconnected", Callable(self, "server_disconnected"))
 
 func server_connected(new_player_id):
 	if not GamePlay.online: return
@@ -202,6 +202,6 @@ func disconnect_server():
 	connected = false
 
 func disconnect_connection_signals():
-	if !server.is_connected("server_connected", self, "server_connected"): return
-	server.disconnect("server_connected", self, "server_connected")
-	server.disconnect("server_disconnected", self, "server_disconnected")
+	if !server.is_connected("server_connected", Callable(self, "server_connected")): return
+	server.disconnect("server_connected", Callable(self, "server_connected"))
+	server.disconnect("server_disconnected", Callable(self, "server_disconnected"))

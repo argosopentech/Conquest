@@ -1,10 +1,10 @@
 [gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Source/Background/Background.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture2D" id=2]
 [ext_resource path="res://Source/Gameplay/Game/Game.gd" type="Script" id=3]
 [ext_resource path="res://Source/Gameplay/PlayersQueue/PlayersQueue.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Graphics/Icons/exitLeft.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Icons/exitLeft.png" type="Texture2D" id=5]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Source/Gameplay/Map/Map.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/Scandinavia.tscn" type="PackedScene" id=8]
@@ -49,14 +49,14 @@
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/Brazil.tscn" type="PackedScene" id=47]
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/CentralAmerica.tscn" type="PackedScene" id=48]
 [ext_resource path="res://Source/Gameplay/Map/Country/Countries/China.tscn" type="PackedScene" id=49]
-[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=50]
+[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="FontFile" id=50]
 [ext_resource path="res://Source/Gameplay/HUD/QuitGameMenu.tscn" type="PackedScene" id=51]
 [ext_resource path="res://Assets/Audio/glitch_001.ogg" type="AudioStream" id=52]
 [ext_resource path="res://Assets/Audio/glitch_002.ogg" type="AudioStream" id=53]
-[ext_resource path="res://Assets/Graphics/Icons/gear.png" type="Texture" id=54]
+[ext_resource path="res://Assets/Graphics/Icons/gear.png" type="Texture2D" id=54]
 [ext_resource path="res://Source/Gameplay/HUD/OptionsMenu.tscn" type="PackedScene" id=55]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -68,7 +68,7 @@ texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 800, 500 )
 modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -108,10 +108,10 @@ mouse_filter = 2
 [node name="QuitBorder" type="TextureRect" parent="HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 32.0
-margin_top = -104.0
-margin_right = 128.0
-margin_bottom = -20.0
+offset_left = 32.0
+offset_top = -104.0
+offset_right = 128.0
+offset_bottom = -20.0
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {
@@ -138,10 +138,10 @@ stream = ExtResource( 53 )
 [node name="OptionsBorder" type="TextureRect" parent="HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 160.0
-margin_top = -104.0
-margin_right = 256.0
-margin_bottom = -20.0
+offset_left = 160.0
+offset_top = -104.0
+offset_right = 256.0
+offset_bottom = -20.0
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {
@@ -171,10 +171,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -234.0
-margin_top = -104.0
-margin_right = -14.0
-margin_bottom = -20.0
+offset_left = -234.0
+offset_top = -104.0
+offset_right = -14.0
+offset_bottom = -20.0
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {
@@ -186,11 +186,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -90.0
-margin_top = -30.0
-margin_right = 90.0
-margin_bottom = 30.0
-custom_fonts/font = SubResource( 1 )
+offset_left = -90.0
+offset_top = -30.0
+offset_right = 90.0
+offset_bottom = 30.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Auto Place"
 flat = true
 

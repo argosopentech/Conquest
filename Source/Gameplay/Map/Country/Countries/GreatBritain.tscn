@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Countries/GreatBritain.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Borders/GreatBritain.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Countries/GreatBritain.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Borders/GreatBritain.png" type="Texture2D" id=3]
 
 [node name="GreatBritain" groups=[
 "Europe",
@@ -15,4 +15,4 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -138.43, 43.4163, -139.779, -11.8809, -84.4357, -28.7772, -26.3923, 11.1596, -26.3923, -18.025, -73.6369, -91.7545, -19.6431, -134.763, 26.2517, -148.588, 53.2486, -99.4347, 38.4003, -59.4979, 72.1465, -47.2096, 58.648, -27.2412, 96.4437, -11.8809, 104.543, 9.62361, 153.137, 23.4479, 154.487, 48.0244, 120.741, 75.673, 103.193, 111.002, 35.7006, 117.146, 3.30431, 100.25, -29.092, 126.362, -93.8846, 143.258, -60.1385, 84.8892, -131.68, 101.786, -158.677, 72.6009 )
+polygon = PackedVector2Array( -138.43, 43.4163, -139.779, -11.8809, -84.4357, -28.7772, -26.3923, 11.1596, -26.3923, -18.025, -73.6369, -91.7545, -19.6431, -134.763, 26.2517, -148.588, 53.2486, -99.4347, 38.4003, -59.4979, 72.1465, -47.2096, 58.648, -27.2412, 96.4437, -11.8809, 104.543, 9.62361, 153.137, 23.4479, 154.487, 48.0244, 120.741, 75.673, 103.193, 111.002, 35.7006, 117.146, 3.30431, 100.25, -29.092, 126.362, -93.8846, 143.258, -60.1385, 84.8892, -131.68, 101.786, -158.677, 72.6009 )

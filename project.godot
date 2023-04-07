@@ -6,208 +6,13 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "HBoxContainer",
-"class": "ActivePlayerHUD",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/ActivePlayerHUD.gd"
-}, {
-"base": "CountryState",
-"class": "ActiveState",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/CountryStates/ActiveState.gd"
-}, {
-"base": "PlayerState",
-"class": "AttackState",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/PlayerStates/AttackState.gd"
-}, {
-"base": "TextureRect",
-"class": "AttackingMenu",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/AttackingMenu.gd"
-}, {
-"base": "Area2D",
-"class": "Country",
-"language": "GDScript",
-"path": "res://Source/Gameplay/Map/Country/Country.gd"
-}, {
-"base": "StateMachine",
-"class": "CountryState",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/CountryStates/CountryState.gd"
-}, {
-"base": "TextureRect",
-"class": "DeployMenu",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/DeployMenu.gd"
-}, {
-"base": "PlayerState",
-"class": "DraftState",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/PlayerStates/DraftState.gd"
-}, {
-"base": "PlayerState",
-"class": "FortifyState",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/PlayerStates/FortifyState.gd"
-}, {
-"base": "Node2D",
-"class": "Game",
-"language": "GDScript",
-"path": "res://Source/Gameplay/Game/Game.gd"
-}, {
-"base": "TextureRect",
-"class": "GameoverMenu",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/GameOverMenu.gd"
-}, {
-"base": "HBoxContainer",
-"class": "HMenu",
-"language": "GDScript",
-"path": "res://Source/Menu/HMenu.gd"
-}, {
-"base": "Node",
-"class": "HighLevelServer",
-"language": "GDScript",
-"path": "res://Source/Server/HighLevelServer.gd"
-}, {
-"base": "CountryState",
-"class": "InActiveState",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/CountryStates/InActiveState.gd"
-}, {
-"base": "VBoxContainer",
-"class": "LobbySearchInstance",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/LobbySearchInstance.gd"
-}, {
-"base": "Control",
-"class": "Main",
-"language": "GDScript",
-"path": "res://Source/Main/Main.gd"
-}, {
-"base": "VMenu",
-"class": "MainMenu",
-"language": "GDScript",
-"path": "res://Source/Main/Menu.gd"
-}, {
-"base": "TextureRect",
-"class": "MoveMenu",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/MoveMenu.gd"
-}, {
-"base": "TextureRect",
-"class": "OptionsMenu",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/OptionsMenu.gd"
-}, {
-"base": "PlayerState",
-"class": "PlacementState",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd"
-}, {
-"base": "Node2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://Source/Gameplay/Player/Player.gd"
-}, {
-"base": "TextureRect",
-"class": "PlayerActivity",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/PlayerActivity.gd"
-}, {
-"base": "VBoxContainer",
-"class": "PlayerListInstance",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/PlayerListInstance.gd"
-}, {
-"base": "StateMachine",
-"class": "PlayerState",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/PlayerStates/PlayerState.gd"
-}, {
-"base": "Node2D",
-"class": "PlayersQueue",
-"language": "GDScript",
-"path": "res://Source/Gameplay/PlayersQueue/PlayersQueue.gd"
-}, {
-"base": "TextureRect",
-"class": "QuitGameMenu",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/QuitGameMenu.gd"
-}, {
-"base": "CountryState",
-"class": "SelectedState",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/CountryStates/SelectedState.gd"
-}, {
-"base": "Button",
-"class": "SmartButton",
-"language": "GDScript",
-"path": "res://Source/Button/Button.gd"
-}, {
-"base": "TextureRect",
-"class": "StartGameMenu",
-"language": "GDScript",
-"path": "res://Source/Gameplay/HUD/StartGameMenu.gd"
-}, {
-"base": "Node",
-"class": "StateMachine",
-"language": "GDScript",
-"path": "res://Source/Gameplay/StateMachine/state_machine.gd"
-}, {
-"base": "VBoxContainer",
-"class": "VMenu",
-"language": "GDScript",
-"path": "res://Source/Menu/VMenu.gd"
-}, {
-"base": "Node",
-"class": "WebSocketsServer",
-"language": "GDScript",
-"path": "res://Source/Server/WebSocketsServer.gd"
-} ]
-_global_script_class_icons={
-"ActivePlayerHUD": "",
-"ActiveState": "",
-"AttackState": "",
-"AttackingMenu": "",
-"Country": "",
-"CountryState": "",
-"DeployMenu": "",
-"DraftState": "",
-"FortifyState": "",
-"Game": "",
-"GameoverMenu": "",
-"HMenu": "",
-"HighLevelServer": "",
-"InActiveState": "",
-"LobbySearchInstance": "",
-"Main": "",
-"MainMenu": "",
-"MoveMenu": "",
-"OptionsMenu": "",
-"PlacementState": "",
-"Player": "",
-"PlayerActivity": "",
-"PlayerListInstance": "",
-"PlayerState": "",
-"PlayersQueue": "",
-"QuitGameMenu": "",
-"SelectedState": "",
-"SmartButton": "",
-"StartGameMenu": "",
-"StateMachine": "",
-"VMenu": "",
-"WebSocketsServer": ""
-}
+config_version=5
 
 [application]
 
 config/name="Conquest"
 run/main_scene="res://Source/Main/Main.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [autoload]
@@ -217,59 +22,58 @@ Server="*res://Source/Server/Server.gd"
 
 [display]
 
-window/size/width=1280
-window/size/height=720
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
 
 [input]
 
 left={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 right={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 up={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 down={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 previous={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 next={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 quit={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 move={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":77,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 reveal_country_names={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 
 [physics]
@@ -278,4 +82,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 2d/snapping/use_gpu_pixel_snap=true

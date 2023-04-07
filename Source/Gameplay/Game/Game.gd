@@ -4,14 +4,14 @@ class_name Game
 
 var player_scene = preload("res://Source/Gameplay/Player/Player.tscn")
 
-onready var countries = find_node("Countries")
-onready var players: PlayersQueue = find_node("PlayersQueue")
-onready var auto_place_button = find_node("AutoPlaceBorder")
-onready var overlay = find_node("Overlay")
-onready var quit_game_menu = find_node("QuitGameMenu")
-onready var quit_pressed_audio = $HUD/QuitBorder/QuitButton/Pressed
-onready var options_pressed_audio = $HUD/OptionsBorder/OptionsButton/Pressed
-onready var options_overlay = find_node("OptionsOverlay")
+@onready var countries = find_child("Countries")
+@onready var players: PlayersQueue = find_child("PlayersQueue")
+@onready var auto_place_button = find_child("AutoPlaceBorder")
+@onready var overlay = find_child("Overlay")
+@onready var quit_game_menu = find_child("QuitGameMenu")
+@onready var quit_pressed_audio = $HUD/QuitBorder/QuitButton/Pressed
+@onready var options_pressed_audio = $HUD/OptionsBorder/OptionsButton/Pressed
+@onready var options_overlay = find_child("OptionsOverlay")
 
 var active_player: Player = null
 var active_player_index = -1
@@ -36,7 +36,7 @@ func spawn_players():
 	if GamePlay.online:
 		current_players = Server.my_lobby.players 
 	for i in current_players:
-		var p = player_scene.instance()
+		var p = player_scene.instantiate()
 		p.name = str(i)
 		players.add_child(p)
 	players.setup()
@@ -62,12 +62,12 @@ func setup_game():
 
 func connect_signals():
 	if GamePlay.online:
-		Server.connect("lobby_updated_signal", self, "back_to_lobby")
+		Server.connect("lobby_updated_signal", Callable(self, "back_to_lobby"))
 
 func back_to_lobby(lobby_data, reason):
 	Server.lobby_data = lobby_data
 	Server.reason = reason
-	get_tree().change_scene("res://Source/Gameplay/HUD/Lobby.tscn")
+	get_tree().change_scene_to_file("res://Source/Gameplay/HUD/Lobby.tscn")
 
 func number_of_players():
 	return players.get_child_count()

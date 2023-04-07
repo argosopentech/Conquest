@@ -1,35 +1,35 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Audio/glitch_001.ogg" type="AudioStream" id=1]
-[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Assets/Graphics/Icons/Draft.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="FontFile" id=2]
+[ext_resource path="res://Assets/Graphics/Icons/Draft.png" type="Texture2D" id=3]
 [ext_resource path="res://Source/Gameplay/HUD/ActivePlayerHUD.gd" type="Script" id=4]
-[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture2D" id=5]
 [ext_resource path="res://Assets/Audio/glitch_002.ogg" type="AudioStream" id=6]
-[ext_resource path="res://Assets/Graphics/Icons/fastForward.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Icons/fastForward.png" type="Texture2D" id=7]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 size = 42
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 size = 32
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -41,37 +41,37 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -240.0
-margin_top = -100.0
-margin_right = 240.0
-rect_min_size = Vector2( 320, 0 )
-custom_constants/separation = 10
+offset_left = -240.0
+offset_top = -100.0
+offset_right = 240.0
+custom_minimum_size = Vector2( 320, 0 )
+theme_override_constants/separation = 10
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="IconBorder" type="ColorRect" parent="."]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 0 )
+offset_right = 100.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 0 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Icon" type="ColorRect" parent="IconBorder"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="InfoBorder" type="TextureRect" parent="."]
-margin_left = 110.0
-margin_right = 370.0
-margin_bottom = 100.0
+offset_left = 110.0
+offset_right = 370.0
+offset_bottom = 100.0
 size_flags_horizontal = 3
 texture = ExtResource( 5 )
 expand = true
@@ -79,23 +79,23 @@ expand = true
 [node name="Info" type="VBoxContainer" parent="InfoBorder"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 260, 0 )
+custom_minimum_size = Vector2( 260, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginTop" type="ColorRect" parent="InfoBorder/Info"]
-margin_right = 260.0
-margin_bottom = 5.0
-rect_min_size = Vector2( 0, 5 )
+offset_right = 260.0
+offset_bottom = 5.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Name" type="Label" parent="InfoBorder/Info"]
-margin_top = 9.0
-margin_right = 260.0
-margin_bottom = 42.0
+offset_top = 9.0
+offset_right = 260.0
+offset_bottom = 42.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+theme_override_fonts/font = SubResource( 1 )
 text = "Player 1"
 align = 1
 valign = 1
@@ -104,18 +104,18 @@ __meta__ = {
 }
 
 [node name="MarginMid" type="ColorRect" parent="InfoBorder/Info"]
-margin_top = 46.0
-margin_right = 260.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 46.0
+offset_right = 260.0
+offset_bottom = 51.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="State" type="Label" parent="InfoBorder/Info"]
-margin_top = 55.0
-margin_right = 260.0
-margin_bottom = 92.0
+offset_top = 55.0
+offset_right = 260.0
+offset_bottom = 92.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "ATTACK"
 align = 1
 valign = 1
@@ -125,18 +125,18 @@ __meta__ = {
 }
 
 [node name="MarginBottom" type="ColorRect" parent="InfoBorder/Info"]
-margin_top = 96.0
-margin_right = 260.0
-margin_bottom = 101.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 96.0
+offset_right = 260.0
+offset_bottom = 101.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="DraftIcon" type="TextureRect" parent="."]
 visible = false
-margin_left = 380.0
-margin_right = 480.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 380.0
+offset_right = 480.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 3 )
 expand = true
 
@@ -145,10 +145,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = -43.0
+offset_left = -40.0
+offset_top = -43.0
 grow_horizontal = 0
-custom_fonts/font = SubResource( 3 )
+theme_override_fonts/font = SubResource( 3 )
 text = "0"
 align = 1
 valign = 1
@@ -157,10 +157,10 @@ __meta__ = {
 }
 
 [node name="GoButton" type="TextureRect" parent="."]
-margin_left = 380.0
-margin_right = 480.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+offset_left = 380.0
+offset_right = 480.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 100 )
 texture = ExtResource( 5 )
 expand = true
 
@@ -180,11 +180,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -16.5
-margin_right = 20.0
-margin_bottom = 16.5
-custom_fonts/font = SubResource( 4 )
+offset_left = -20.0
+offset_top = -16.5
+offset_right = 20.0
+offset_bottom = 16.5
+theme_override_fonts/font = SubResource( 4 )
 text = "GO"
 align = 1
 valign = 1

@@ -2,11 +2,11 @@ extends TextureRect
 
 class_name OptionsMenu
 
-onready var main_menu_slider = $Info/MainMenuVolume
-onready var in_game_slider = $Info/InGameVolume
-onready var interface_sound = $Info/InterfaceSFX/InterfaceCheckBox
-onready var country_sound = $Info/CountrySFX/CountryCheckBox
-onready var name_edit = $Info/NameEdit
+@onready var main_menu_slider = $Info/MainMenuVolume
+@onready var in_game_slider = $Info/InGameVolume
+@onready var interface_sound = $Info/InterfaceSFX/InterfaceCheckBox
+@onready var country_sound = $Info/CountrySFX/CountryCheckBox
+@onready var name_edit = $Info/NameEdit
 
 var main_menu_volume = 75
 var in_game_volume = 65
@@ -43,8 +43,8 @@ func setup_sound_values():
 	country_sound_on = GamePlay.country_sound
 
 func setup_sounds():
-	interface_sound.pressed = interface_sound_on
-	country_sound.pressed = country_sound_on
+	interface_sound.button_pressed = interface_sound_on
+	country_sound.button_pressed = country_sound_on
 
 func setup_player_name():
 	name_edit.text = Server.player_name

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Countries/SouthAfrica.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Borders/SouthAfrica.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Countries/SouthAfrica.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Borders/SouthAfrica.png" type="Texture2D" id=3]
 
 [node name="SouthAfrica" groups=[
 "Africa",
@@ -15,4 +15,4 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -226.028, -65.817, -193.923, -138.883, -203.555, -221.083, -179.476, -277.71, -60.688, -213.776, -41.425, -173.59, 21.1796, -166.283, 58.1003, -217.43, 111.073, -169.937, 164.047, -153.497, 212.204, -186.377, 223.441, -100.524, 85.3895, 155.209, -121.687, 275.769, -166.634, 228.275, -166.634, 105.889, -182.687, 9.07609 )
+polygon = PackedVector2Array( -226.028, -65.817, -193.923, -138.883, -203.555, -221.083, -179.476, -277.71, -60.688, -213.776, -41.425, -173.59, 21.1796, -166.283, 58.1003, -217.43, 111.073, -169.937, 164.047, -153.497, 212.204, -186.377, 223.441, -100.524, 85.3895, 155.209, -121.687, 275.769, -166.634, 228.275, -166.634, 105.889, -182.687, 9.07609 )

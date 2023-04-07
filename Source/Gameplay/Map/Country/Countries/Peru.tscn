@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Countries/Peru.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Borders/Peru.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Countries/Peru.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Borders/Peru.png" type="Texture2D" id=3]
 
 [node name="Peru" groups=[
 "SouthAmerica",
@@ -15,4 +15,4 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -183.333, -158.621, -139.394, -198.276, -39.3939, -165.517, -78.7879, -98.2759, -62.1212, -56.8966, 10.6061, -32.7586, 48.4848, -34.4828, 116.667, 5.17241, 175.758, 132.759, 183.333, 198.276, 137.879, 206.897, 53.0303, 139.655, -19.697, 112.069, -81.8182, 84.4828, -159.091, 1.72414, -192.424, -96.5517 )
+polygon = PackedVector2Array( -183.333, -158.621, -139.394, -198.276, -39.3939, -165.517, -78.7879, -98.2759, -62.1212, -56.8966, 10.6061, -32.7586, 48.4848, -34.4828, 116.667, 5.17241, 175.758, 132.759, 183.333, 198.276, 137.879, 206.897, 53.0303, 139.655, -19.697, 112.069, -81.8182, 84.4828, -159.091, 1.72414, -192.424, -96.5517 )

@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="FontFile" id=2]
+[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture2D" id=3]
 [ext_resource path="res://Source/Gameplay/HUD/GameOverMenu.gd" type="Script" id=5]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=6]
 
@@ -11,7 +11,7 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 800, 500 )
 modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -34,21 +34,21 @@ LineEdit/styles/focus = SubResource( 1 )
 LineEdit/styles/normal = SubResource( 1 )
 LineEdit/styles/read_only = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 size = 48
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="FontFile" id=5]
 size = 42
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="FontFile" id=11]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -95,11 +95,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -233.5
-margin_top = -101.5
-margin_right = 233.5
-margin_bottom = 101.5
-rect_min_size = Vector2( 467, 203 )
+offset_left = -233.5
+offset_top = -101.5
+offset_right = 233.5
+offset_bottom = 101.5
+custom_minimum_size = Vector2( 467, 203 )
 theme = SubResource( 3 )
 texture = ExtResource( 3 )
 expand = true
@@ -111,24 +111,24 @@ __meta__ = {
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 260, 0 )
+custom_minimum_size = Vector2( 260, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginTop" type="ColorRect" parent="Info"]
-margin_right = 467.0
-margin_bottom = 5.0
-rect_min_size = Vector2( 0, 5 )
+offset_right = 467.0
+offset_bottom = 5.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="Info"]
-margin_top = 9.0
-margin_right = 467.0
-margin_bottom = 62.0
+offset_top = 9.0
+offset_right = 467.0
+offset_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 4 )
+theme_override_fonts/font = SubResource( 4 )
 text = "Winner"
 align = 1
 valign = 1
@@ -137,19 +137,19 @@ __meta__ = {
 }
 
 [node name="MarginMid1" type="ColorRect" parent="Info"]
-margin_top = 66.0
-margin_right = 467.0
-margin_bottom = 71.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 66.0
+offset_right = 467.0
+offset_bottom = 71.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Player" type="Label" parent="Info"]
-margin_top = 75.0
-margin_right = 467.0
-margin_bottom = 128.0
+offset_top = 75.0
+offset_right = 467.0
+offset_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 5 )
+theme_override_fonts/font = SubResource( 5 )
 text = "Player 1"
 align = 1
 valign = 1
@@ -158,86 +158,86 @@ __meta__ = {
 }
 
 [node name="MarginMid2" type="ColorRect" parent="Info"]
-margin_top = 132.0
-margin_right = 467.0
-margin_bottom = 137.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 132.0
+offset_right = 467.0
+offset_bottom = 137.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HMenu" parent="Info" instance=ExtResource( 1 )]
-margin_top = 141.0
-margin_right = 467.0
-margin_bottom = 194.0
+offset_top = 141.0
+offset_right = 467.0
+offset_bottom = 194.0
 size_flags_vertical = 3
-custom_constants/separation = 15
+theme_override_constants/separation = 15
 
 [node name="MarginLeft" type="Label" parent="Info/HMenu"]
-margin_top = 8.0
-margin_bottom = 45.0
+offset_top = 8.0
+offset_bottom = 45.0
 
 [node name="PlayAgain" parent="Info/HMenu" instance=ExtResource( 6 )]
 visible = false
-margin_left = 20.0
-margin_right = 213.0
-custom_fonts/font = SubResource( 11 )
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+offset_left = 20.0
+offset_right = 213.0
+theme_override_fonts/font = SubResource( 11 )
+theme_override_styles/hover = SubResource( 6 )
+theme_override_styles/pressed = SubResource( 7 )
+theme_override_styles/focus = SubResource( 8 )
+theme_override_styles/disabled = SubResource( 9 )
+theme_override_styles/normal = SubResource( 10 )
 text = "Play Again"
 flat = true
 
 [node name="MarginMid" type="Label" parent="Info/HMenu"]
-margin_left = 15.0
-margin_top = 8.0
-margin_right = 15.0
-margin_bottom = 45.0
+offset_left = 15.0
+offset_top = 8.0
+offset_right = 15.0
+offset_bottom = 45.0
 align = 1
 valign = 1
 
 [node name="Back" type="Label" parent="Info/HMenu"]
-margin_left = 30.0
-margin_top = 8.0
-margin_right = 437.0
-margin_bottom = 45.0
+offset_left = 30.0
+offset_top = 8.0
+offset_right = 437.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 text = "Back to lobby in 5(s)"
 align = 1
 valign = 1
 
 [node name="MarginMid5" type="Label" parent="Info/HMenu"]
-margin_left = 452.0
-margin_top = 8.0
-margin_right = 452.0
-margin_bottom = 45.0
+offset_left = 452.0
+offset_top = 8.0
+offset_right = 452.0
+offset_bottom = 45.0
 align = 1
 valign = 1
 
 [node name="MainMenu" parent="Info/HMenu" instance=ExtResource( 6 )]
 visible = false
-margin_left = 40.0
-margin_right = 447.0
-custom_fonts/font = SubResource( 11 )
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+offset_left = 40.0
+offset_right = 447.0
+theme_override_fonts/font = SubResource( 11 )
+theme_override_styles/hover = SubResource( 6 )
+theme_override_styles/pressed = SubResource( 7 )
+theme_override_styles/focus = SubResource( 8 )
+theme_override_styles/disabled = SubResource( 9 )
+theme_override_styles/normal = SubResource( 10 )
 text = "Main Menu"
 flat = true
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
-margin_left = 467.0
-margin_top = 8.0
-margin_right = 467.0
-margin_bottom = 45.0
+offset_left = 467.0
+offset_top = 8.0
+offset_right = 467.0
+offset_bottom = 45.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 198.0
-margin_right = 467.0
-margin_bottom = 203.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 198.0
+offset_right = 467.0
+offset_bottom = 203.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Timer" type="Timer" parent="."]

@@ -5,7 +5,7 @@ class_name ActiveState
 func enter(country: Country):
 	country.active = true
 	color_multiplier = 1
-	.enter(country)
+	super.enter(country)
 
 func handle_input(country: Country, input: InputEvent):
 	return null
@@ -49,7 +49,7 @@ func change_country_state(country: Country, state_name = ""):
 		return country_states.in_active.new()
 
 func set_country_color(country: Country):
-	.set_country_color(country)
+	super.set_country_color(country)
 
 func set_border_color(country: Country):
-	.set_border_color(country)
+	super.set_border_color(country)

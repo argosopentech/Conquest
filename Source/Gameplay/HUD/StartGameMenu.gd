@@ -10,10 +10,10 @@ func cancel():
 
 func start_game():
 	#GamePlay.players = players.value
-	get_tree().change_scene("res://Source/Gameplay/Game/Game.tscn")
+	get_tree().change_scene_to_file("res://Source/Gameplay/Game/Game.tscn")
 
 func _on_Join_pressed():
-	get_tree().change_scene("res://Source/Gameplay/HUD/JoinGameMenu.tscn")
+	get_tree().change_scene_to_file("res://Source/Gameplay/HUD/JoinGameMenu.tscn")
 
 func _on_Create_pressed():
-	get_tree().change_scene("res://Source/Gameplay/HUD/HostGameMenu.tscn")
+	get_tree().change_scene_to_file("res://Source/Gameplay/HUD/HostGameMenu.tscn")

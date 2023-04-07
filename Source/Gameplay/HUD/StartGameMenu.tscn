@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="FontFile" id=2]
+[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture2D" id=4]
 [ext_resource path="res://Source/Gameplay/HUD/StartGameMenu.gd" type="Script" id=5]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=6]
 
@@ -11,7 +11,7 @@ texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 800, 500 )
 modulate_color = Color( 0.517647, 0.517647, 0.517647, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -34,14 +34,14 @@ LineEdit/styles/focus = SubResource( 1 )
 LineEdit/styles/normal = SubResource( 1 )
 LineEdit/styles/read_only = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 size = 48
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="FontFile" id=5]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -53,11 +53,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -240.0
-margin_top = -106.5
-margin_right = 240.0
-margin_bottom = 106.5
-rect_min_size = Vector2( 480, 213 )
+offset_left = -240.0
+offset_top = -106.5
+offset_right = 240.0
+offset_bottom = 106.5
+custom_minimum_size = Vector2( 480, 213 )
 theme = SubResource( 3 )
 texture = ExtResource( 4 )
 expand = true
@@ -66,21 +66,21 @@ script = ExtResource( 5 )
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -73.0
-rect_min_size = Vector2( 260, 213 )
+offset_bottom = -73.0
+custom_minimum_size = Vector2( 260, 213 )
 
 [node name="MarginTop" type="ColorRect" parent="Info"]
-margin_right = 480.0
-margin_bottom = 5.0
-rect_min_size = Vector2( 0, 5 )
+offset_right = 480.0
+offset_bottom = 5.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="Info"]
-margin_top = 9.0
-margin_right = 480.0
-margin_bottom = 58.0
+offset_top = 9.0
+offset_right = 480.0
+offset_bottom = 58.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
+theme_override_fonts/font = SubResource( 4 )
 text = "Start Game"
 align = 1
 valign = 1
@@ -89,85 +89,85 @@ __meta__ = {
 }
 
 [node name="MarginMid1" type="ColorRect" parent="Info"]
-margin_top = 62.0
-margin_right = 480.0
-margin_bottom = 67.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 62.0
+offset_right = 480.0
+offset_bottom = 67.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HostJoin" parent="Info" instance=ExtResource( 1 )]
-margin_top = 71.0
-margin_right = 480.0
-margin_bottom = 131.0
+offset_top = 71.0
+offset_right = 480.0
+offset_bottom = 131.0
 size_flags_vertical = 0
 
 [node name="MarginLeft" type="Label" parent="Info/HostJoin"]
-margin_top = 11.0
-margin_bottom = 48.0
+offset_top = 11.0
+offset_bottom = 48.0
 
 [node name="Join" parent="Info/HostJoin" instance=ExtResource( 6 )]
-margin_left = 20.0
-margin_right = 220.0
+offset_left = 20.0
+offset_right = 220.0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 5 )
+theme_override_fonts/font = SubResource( 5 )
 text = "Join Lobby"
 flat = true
 
 [node name="MarginMid" type="Label" parent="Info/HostJoin"]
-margin_left = 240.0
-margin_top = 11.0
-margin_right = 240.0
-margin_bottom = 48.0
+offset_left = 240.0
+offset_top = 11.0
+offset_right = 240.0
+offset_bottom = 48.0
 
 [node name="Create" parent="Info/HostJoin" instance=ExtResource( 6 )]
-margin_left = 260.0
-margin_right = 460.0
+offset_left = 260.0
+offset_right = 460.0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 5 )
+theme_override_fonts/font = SubResource( 5 )
 text = "Create Lobby"
 flat = true
 
 [node name="MarginRight" type="Label" parent="Info/HostJoin"]
-margin_left = 480.0
-margin_top = 11.0
-margin_right = 480.0
-margin_bottom = 48.0
+offset_left = 480.0
+offset_top = 11.0
+offset_right = 480.0
+offset_bottom = 48.0
 
 [node name="MarginMid4" type="ColorRect" parent="Info"]
-margin_top = 135.0
-margin_right = 480.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 135.0
+offset_right = 480.0
+offset_bottom = 140.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HMenu" parent="Info" instance=ExtResource( 1 )]
-margin_top = 144.0
-margin_right = 480.0
-margin_bottom = 204.0
+offset_top = 144.0
+offset_right = 480.0
+offset_bottom = 204.0
 size_flags_vertical = 0
 
 [node name="MarginLeft" type="Label" parent="Info/HMenu"]
-margin_top = 11.0
-margin_bottom = 48.0
+offset_top = 11.0
+offset_bottom = 48.0
 
 [node name="Cancel" parent="Info/HMenu" instance=ExtResource( 6 )]
-margin_left = 20.0
-margin_right = 460.0
-custom_fonts/font = SubResource( 5 )
+offset_left = 20.0
+offset_right = 460.0
+theme_override_fonts/font = SubResource( 5 )
 text = "Back"
 flat = true
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
-margin_left = 480.0
-margin_top = 11.0
-margin_right = 480.0
-margin_bottom = 48.0
+offset_left = 480.0
+offset_top = 11.0
+offset_right = 480.0
+offset_bottom = 48.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 208.0
-margin_right = 480.0
-margin_bottom = 213.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 208.0
+offset_right = 480.0
+offset_bottom = 213.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [connection signal="pressed" from="Info/HostJoin/Join" to="." method="_on_Join_pressed"]

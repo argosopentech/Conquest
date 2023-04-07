@@ -3,7 +3,7 @@ extends PlayerState
 class_name PlacementState
 
 func enter(player: Player):
-	.enter(player)
+	super.enter(player)
 	player.hud.set_player_state(get_class())
 	player.hud.hide_go_button()
 	player.hud.show_draft_icon()
@@ -15,7 +15,7 @@ func update(player: Player):
 	pass
 
 func exit(player: Player):
-	.exit(player)
+	super.exit(player)
 
 func country_clicked(player: Player, country: Country):
 	if not country.occupier or (country.occupier == player and GamePlay.game.occupied_countries == GamePlay.game.total_countries):

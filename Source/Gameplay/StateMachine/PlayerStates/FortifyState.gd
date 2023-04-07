@@ -6,7 +6,7 @@ class_name FortifyState
 var selected_country: Country = null
 
 func enter(player: Player):
-	.enter(player)
+	super.enter(player)
 	player.hud.set_player_state(get_class())
 	push_countries_in_fortify_state(player)
 
@@ -31,7 +31,7 @@ func update(player: Player):
 	pass
 
 func exit(player: Player):
-	.exit(player)
+	super.exit(player)
 
 func country_clicked(player: Player, country: Country):
 	if selected_country:

@@ -9,4 +9,4 @@ func cancel():
 func quit_game():
 	if get_owner().name == "Game" and GamePlay.online:
 		Server.leave_lobby()
-	get_tree().change_scene("res://Source/Main/Main.tscn")
+	get_tree().change_scene_to_file("res://Source/Main/Main.tscn")

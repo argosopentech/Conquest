@@ -2,8 +2,8 @@ extends TextureRect
 
 class_name DeployMenu
 
-onready var troops_range = $Info/TroopsRange
-onready var country_label = $Info/Country
+@onready var troops_range = $Info/TroopsRange
+@onready var country_label = $Info/Country
 
 var country: Country = null
 

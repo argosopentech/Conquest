@@ -5,7 +5,7 @@ class_name AttackState
 var selected_country: Country = null
 
 func enter(player: Player):
-	.enter(player)
+	super.enter(player)
 	player.hud.set_player_state(get_class())
 	push_countries_in_attack_state(player)
 
@@ -29,11 +29,11 @@ func update(player: Player):
 	if selected_country:
 		if selected_country.troops == 1:
 			selected_country.change_country_state("in_active")
-			yield(get_tree(), "idle_frame")
+			await get_tree().idle_frame
 			selected_country = null
 
 func exit(player: Player):
-	.exit(player)
+	super.exit(player)
 
 func country_clicked(player: Player, country: Country):
 	if selected_country:

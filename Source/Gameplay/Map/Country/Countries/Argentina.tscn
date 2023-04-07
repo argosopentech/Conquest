@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Countries/Argentina.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Borders/Argentina.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Countries/Argentina.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Borders/Argentina.png" type="Texture2D" id=3]
 
 [node name="Argentina" groups=[
 "SouthAmerica",
@@ -15,4 +15,4 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -210.195, 141.527, -161.655, -5.7653, -139.408, -58.6986, -127.273, -166.867, -94.913, -222.101, -100.98, -270.432, -72.6656, -362.49, -40.3059, -350.983, -5.92365, -316.461, 60.8183, -300.351, 123.515, -242.814, 184.19, -249.719, 155.875, -192.183, 172.055, -187.58, 174.077, -132.345, 206.437, -104.728, 137.673, -54.0957, 111.38, -10.3682, 32.5035, 14.9478, -30.1935, 130.02, -34.2385, 228.982, -9.96861, 275.011, 32.5035, 279.614, 30.481, 327.945, -50.4183, 353.261, -121.205, 304.93, -175.812, 245.093 )
+polygon = PackedVector2Array( -210.195, 141.527, -161.655, -5.7653, -139.408, -58.6986, -127.273, -166.867, -94.913, -222.101, -100.98, -270.432, -72.6656, -362.49, -40.3059, -350.983, -5.92365, -316.461, 60.8183, -300.351, 123.515, -242.814, 184.19, -249.719, 155.875, -192.183, 172.055, -187.58, 174.077, -132.345, 206.437, -104.728, 137.673, -54.0957, 111.38, -10.3682, 32.5035, 14.9478, -30.1935, 130.02, -34.2385, 228.982, -9.96861, 275.011, 32.5035, 279.614, 30.481, 327.945, -50.4183, 353.261, -121.205, 304.93, -175.812, 245.093 )

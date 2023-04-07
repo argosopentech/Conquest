@@ -3,10 +3,10 @@ extends StateMachine
 class_name CountryState
 
 var colors = {
-	"unoccupied": Color.white,
-	"hover": Color.white,
-	"not_hover": Color.black,
-	"unoccoupied_border": Color.silver
+	"unoccupied": Color.WHITE,
+	"hover": Color.WHITE,
+	"not_hover": Color.BLACK,
+	"unoccoupied_border": Color.SILVER
 }
 
 var country_states = {

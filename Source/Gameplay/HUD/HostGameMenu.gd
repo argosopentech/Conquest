@@ -1,20 +1,20 @@
 extends Control
 
-onready var host_button = $Host/Info/HMenu/Host
-onready var cancel_button = $Host/Info/HMenu/Cancel
+@onready var host_button = $Host/Info/HMenu/Host
+@onready var cancel_button = $Host/Info/HMenu/Cancel
 
-onready var lobby_name = $Host/Info/LobbyName
-onready var lobby_players = $Host/Info/PlayersRange
-onready var lobby_pass = $Host/Info/LobbyPassword
+@onready var lobby_name = $Host/Info/LobbyName
+@onready var lobby_players = $Host/Info/PlayersRange
+@onready var lobby_pass = $Host/Info/LobbyPassword
 
 func _ready():
-	Server.connect("lobby_created_signal", self, "lobby_created")
+	Server.connect("lobby_created_signal", Callable(self, "lobby_created"))
 
 func lobby_created(lobby_data):
-	get_tree().change_scene("res://Source/Gameplay/HUD/Lobby.tscn")
+	get_tree().change_scene_to_file("res://Source/Gameplay/HUD/Lobby.tscn")
 
 func _on_Cancel_pressed():
-	get_tree().change_scene("res://Source/Main/Main.tscn")
+	get_tree().change_scene_to_file("res://Source/Main/Main.tscn")
 
 func _on_Host_pressed():
 	host_button.disabled = true

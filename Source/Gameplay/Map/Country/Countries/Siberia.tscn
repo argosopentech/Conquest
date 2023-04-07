@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Countries/Siberia.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Borders/Siberia.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Countries/Siberia.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Borders/Siberia.png" type="Texture2D" id=3]
 
 [node name="Siberia" groups=[
 "Asia",
@@ -15,4 +15,4 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -189.622, -174.147, -77.2547, -267.307, 38.3231, -289.227, 110.559, -239.907, 181.19, -227.121, 190.822, -179.627, 145.875, -130.308, 134.638, -113.868, 197.243, -9.74795, 166.743, 66.9718, 94.5067, 101.678, 116.98, 182.051, 137.848, 260.598, 129.822, 284.344, 78.4543, 233.198, 20.6653, 207.625, -32.3078, 125.425, -66.018, 96.1984, -57.9917, 39.5719, -115.781, -75.5078, -139.859, -106.561 )
+polygon = PackedVector2Array( -189.622, -174.147, -77.2547, -267.307, 38.3231, -289.227, 110.559, -239.907, 181.19, -227.121, 190.822, -179.627, 145.875, -130.308, 134.638, -113.868, 197.243, -9.74795, 166.743, 66.9718, 94.5067, 101.678, 116.98, 182.051, 137.848, 260.598, 129.822, 284.344, 78.4543, 233.198, 20.6653, 207.625, -32.3078, 125.425, -66.018, 96.1984, -57.9917, 39.5719, -115.781, -75.5078, -139.859, -106.561 )

@@ -2,8 +2,8 @@ extends Button
 
 class_name SmartButton
 
-onready var pressed_audio = $Pressed
-onready var focused_audio = $Focused
+@onready var pressed_audio = $Pressed
+@onready var focused_audio = $Focused
 
 func button_pressed():
 	if GamePlay.interface_sound:

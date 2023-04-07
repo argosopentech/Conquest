@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Borders/Japan.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Countries/Japan.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Borders/Japan.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Countries/Japan.png" type="Texture2D" id=3]
 
 [node name="Japan" groups=[
 "Asia",
@@ -15,4 +15,4 @@ texture = ExtResource( 3 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -73.0983, 171.255, 39.1479, 97.7147, 28.9437, 76.4266, 103.774, 45.4621, 96.9716, 10.6271, 71.4612, -37.7549, 68.0597, -64.8488, 32.345, -91.9427, 79.9647, -136.454, 61.257, -175.16, -45.8872, -173.224, -40.785, -150.001, -56.0914, -109.36, -39.0844, -70.6547, -40.785, -37.7549, -33.9822, -20.3374, -69.697, -0.984613, -57.7921, 26.1093, -100.31, 86.103, -91.8061, 113.197, -100.31, 134.485 )
+polygon = PackedVector2Array( -73.0983, 171.255, 39.1479, 97.7147, 28.9437, 76.4266, 103.774, 45.4621, 96.9716, 10.6271, 71.4612, -37.7549, 68.0597, -64.8488, 32.345, -91.9427, 79.9647, -136.454, 61.257, -175.16, -45.8872, -173.224, -40.785, -150.001, -56.0914, -109.36, -39.0844, -70.6547, -40.785, -37.7549, -33.9822, -20.3374, -69.697, -0.984613, -57.7921, 26.1093, -100.31, 86.103, -91.8061, 113.197, -100.31, 134.485 )

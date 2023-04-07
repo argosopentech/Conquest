@@ -1,12 +1,12 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/no_virus/No Virus.ttf" type="FontFile" id=1]
+[ext_resource path="res://Assets/Graphics/Textures/old_paper.png" type="Texture2D" id=2]
 [ext_resource path="res://Source/Button/Button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Source/Menu/HMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Source/Gameplay/HUD/OptionsMenu.gd" type="Script" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -34,14 +34,14 @@ LineEdit/styles/focus = SubResource( 1 )
 LineEdit/styles/normal = SubResource( 1 )
 LineEdit/styles/read_only = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 size = 48
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="FontFile" id=5]
 size = 36
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -50,7 +50,7 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=6]
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="FontFile" id=12]
 size = 32
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -97,10 +97,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -226.0
-margin_top = -263.5
-margin_right = 226.0
-margin_bottom = 263.5
+offset_left = -226.0
+offset_top = -263.5
+offset_right = 226.0
+offset_bottom = 263.5
 theme = SubResource( 3 )
 texture = ExtResource( 2 )
 expand = true
@@ -112,23 +112,23 @@ __meta__ = {
 [node name="Info" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 260, 0 )
+custom_minimum_size = Vector2( 260, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginTop" type="ColorRect" parent="Info"]
-margin_right = 452.0
-margin_bottom = 5.0
-rect_min_size = Vector2( 0, 5 )
+offset_right = 452.0
+offset_bottom = 5.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="Info"]
-margin_top = 9.0
-margin_right = 452.0
-margin_bottom = 58.0
+offset_top = 9.0
+offset_right = 452.0
+offset_bottom = 58.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
+theme_override_fonts/font = SubResource( 4 )
 text = "Settings"
 align = 1
 valign = 1
@@ -137,18 +137,18 @@ __meta__ = {
 }
 
 [node name="MarginMid8" type="ColorRect" parent="Info"]
-margin_top = 62.0
-margin_right = 452.0
-margin_bottom = 67.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 62.0
+offset_right = 452.0
+offset_bottom = 67.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="NameLabel" type="Label" parent="Info"]
-margin_top = 71.0
-margin_right = 452.0
-margin_bottom = 108.0
+offset_top = 71.0
+offset_right = 452.0
+offset_bottom = 108.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+theme_override_fonts/font = SubResource( 5 )
 text = "Player Name"
 align = 1
 valign = 1
@@ -157,36 +157,36 @@ __meta__ = {
 }
 
 [node name="MarginMid9" type="ColorRect" parent="Info"]
-margin_top = 112.0
-margin_right = 452.0
-margin_bottom = 117.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 112.0
+offset_right = 452.0
+offset_bottom = 117.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="NameEdit" type="LineEdit" parent="Info"]
-margin_top = 121.0
-margin_right = 452.0
-margin_bottom = 171.0
-rect_min_size = Vector2( 0, 50 )
-custom_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
-custom_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
+offset_top = 121.0
+offset_right = 452.0
+offset_bottom = 171.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_colors/font_color_selected = Color( 0.588235, 0.588235, 0.588235, 1 )
+theme_override_colors/font_color_uneditable = Color( 0.588235, 0.588235, 0.588235, 1 )
 text = "player"
 align = 1
 max_length = 15
 
 [node name="MarginMid1" type="ColorRect" parent="Info"]
-margin_top = 175.0
-margin_right = 452.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 175.0
+offset_right = 452.0
+offset_bottom = 180.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="MainMenuLabel" type="Label" parent="Info"]
-margin_top = 184.0
-margin_right = 452.0
-margin_bottom = 221.0
+offset_top = 184.0
+offset_right = 452.0
+offset_bottom = 221.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+theme_override_fonts/font = SubResource( 5 )
 text = "Main Menu Volume"
 align = 1
 valign = 1
@@ -195,32 +195,32 @@ __meta__ = {
 }
 
 [node name="MarginMid2" type="ColorRect" parent="Info"]
-margin_top = 225.0
-margin_right = 452.0
-margin_bottom = 230.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 225.0
+offset_right = 452.0
+offset_bottom = 230.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="MainMenuVolume" type="HSlider" parent="Info"]
-margin_top = 234.0
-margin_right = 452.0
-margin_bottom = 250.0
-custom_styles/slider = SubResource( 6 )
+offset_top = 234.0
+offset_right = 452.0
+offset_bottom = 250.0
+theme_override_styles/slider = SubResource( 6 )
 max_value = 50.0
 
 [node name="MarginMid3" type="ColorRect" parent="Info"]
-margin_top = 254.0
-margin_right = 452.0
-margin_bottom = 259.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 254.0
+offset_right = 452.0
+offset_bottom = 259.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="InGameLabel" type="Label" parent="Info"]
-margin_top = 263.0
-margin_right = 452.0
-margin_bottom = 300.0
+offset_top = 263.0
+offset_right = 452.0
+offset_bottom = 300.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+theme_override_fonts/font = SubResource( 5 )
 text = "In Game Volume"
 align = 1
 valign = 1
@@ -229,44 +229,44 @@ __meta__ = {
 }
 
 [node name="MarginMid4" type="ColorRect" parent="Info"]
-margin_top = 304.0
-margin_right = 452.0
-margin_bottom = 309.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 304.0
+offset_right = 452.0
+offset_bottom = 309.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="InGameVolume" type="HSlider" parent="Info"]
-margin_top = 313.0
-margin_right = 452.0
-margin_bottom = 329.0
-custom_styles/slider = SubResource( 6 )
+offset_top = 313.0
+offset_right = 452.0
+offset_bottom = 329.0
+theme_override_styles/slider = SubResource( 6 )
 max_value = 50.0
 
 [node name="MarginMid5" type="ColorRect" parent="Info"]
-margin_top = 333.0
-margin_right = 452.0
-margin_bottom = 338.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 333.0
+offset_right = 452.0
+offset_bottom = 338.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="InterfaceSFX" type="HBoxContainer" parent="Info"]
-margin_top = 342.0
-margin_right = 452.0
-margin_bottom = 387.0
+offset_top = 342.0
+offset_right = 452.0
+offset_bottom = 387.0
 
 [node name="LeftMargin" type="Label" parent="Info/InterfaceSFX"]
-margin_top = 4.0
-margin_right = 85.0
-margin_bottom = 41.0
+offset_top = 4.0
+offset_right = 85.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
 
 [node name="InterfaceLabel" type="Label" parent="Info/InterfaceSFX"]
-margin_left = 89.0
-margin_top = 4.0
-margin_right = 335.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 246, 0 )
-custom_fonts/font = SubResource( 5 )
+offset_left = 89.0
+offset_top = 4.0
+offset_right = 335.0
+offset_bottom = 41.0
+custom_minimum_size = Vector2( 246, 0 )
+theme_override_fonts/font = SubResource( 5 )
 text = "Interface Sound"
 align = 1
 valign = 1
@@ -275,42 +275,42 @@ __meta__ = {
 }
 
 [node name="InterfaceCheckBox" type="CheckBox" parent="Info/InterfaceSFX"]
-margin_left = 339.0
-margin_right = 363.0
-margin_bottom = 45.0
+offset_left = 339.0
+offset_right = 363.0
+offset_bottom = 45.0
 
 [node name="RightMargin" type="Label" parent="Info/InterfaceSFX"]
-margin_left = 367.0
-margin_top = 4.0
-margin_right = 452.0
-margin_bottom = 41.0
+offset_left = 367.0
+offset_top = 4.0
+offset_right = 452.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
 
 [node name="MarginMid6" type="ColorRect" parent="Info"]
-margin_top = 391.0
-margin_right = 452.0
-margin_bottom = 396.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 391.0
+offset_right = 452.0
+offset_bottom = 396.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="CountrySFX" type="HBoxContainer" parent="Info"]
-margin_top = 400.0
-margin_right = 452.0
-margin_bottom = 445.0
+offset_top = 400.0
+offset_right = 452.0
+offset_bottom = 445.0
 
 [node name="LeftMargin" type="Label" parent="Info/CountrySFX"]
-margin_top = 4.0
-margin_right = 85.0
-margin_bottom = 41.0
+offset_top = 4.0
+offset_right = 85.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
 
 [node name="CountryLabel" type="Label" parent="Info/CountrySFX"]
-margin_left = 89.0
-margin_top = 4.0
-margin_right = 335.0
-margin_bottom = 41.0
-rect_min_size = Vector2( 246, 0 )
-custom_fonts/font = SubResource( 5 )
+offset_left = 89.0
+offset_top = 4.0
+offset_right = 335.0
+offset_bottom = 41.0
+custom_minimum_size = Vector2( 246, 0 )
+theme_override_fonts/font = SubResource( 5 )
 text = "Country Sound"
 align = 1
 valign = 1
@@ -319,75 +319,75 @@ __meta__ = {
 }
 
 [node name="CountryCheckBox" type="CheckBox" parent="Info/CountrySFX"]
-margin_left = 339.0
-margin_right = 363.0
-margin_bottom = 45.0
+offset_left = 339.0
+offset_right = 363.0
+offset_bottom = 45.0
 
 [node name="RightMargin" type="Label" parent="Info/CountrySFX"]
-margin_left = 367.0
-margin_top = 4.0
-margin_right = 452.0
-margin_bottom = 41.0
+offset_left = 367.0
+offset_top = 4.0
+offset_right = 452.0
+offset_bottom = 41.0
 size_flags_horizontal = 3
 
 [node name="MarginMid7" type="ColorRect" parent="Info"]
-margin_top = 449.0
-margin_right = 452.0
-margin_bottom = 454.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 449.0
+offset_right = 452.0
+offset_bottom = 454.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="HMenu" parent="Info" instance=ExtResource( 4 )]
-margin_top = 458.0
-margin_right = 452.0
-margin_bottom = 518.0
+offset_top = 458.0
+offset_right = 452.0
+offset_bottom = 518.0
 size_flags_vertical = 3
 
 [node name="MarginLeft" type="Label" parent="Info/HMenu"]
-margin_top = 11.0
-margin_bottom = 48.0
+offset_top = 11.0
+offset_bottom = 48.0
 
 [node name="Cancel" parent="Info/HMenu" instance=ExtResource( 3 )]
-margin_left = 20.0
-margin_right = 206.0
-custom_fonts/font = SubResource( 12 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+offset_left = 20.0
+offset_right = 206.0
+theme_override_fonts/font = SubResource( 12 )
+theme_override_styles/hover = SubResource( 7 )
+theme_override_styles/pressed = SubResource( 8 )
+theme_override_styles/focus = SubResource( 9 )
+theme_override_styles/disabled = SubResource( 10 )
+theme_override_styles/normal = SubResource( 11 )
 text = "Cancel"
 flat = true
 
 [node name="MarginMid" type="Label" parent="Info/HMenu"]
-margin_left = 226.0
-margin_top = 11.0
-margin_right = 226.0
-margin_bottom = 48.0
+offset_left = 226.0
+offset_top = 11.0
+offset_right = 226.0
+offset_bottom = 48.0
 
 [node name="Save" parent="Info/HMenu" instance=ExtResource( 3 )]
-margin_left = 246.0
-margin_right = 432.0
-custom_fonts/font = SubResource( 12 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+offset_left = 246.0
+offset_right = 432.0
+theme_override_fonts/font = SubResource( 12 )
+theme_override_styles/hover = SubResource( 7 )
+theme_override_styles/pressed = SubResource( 8 )
+theme_override_styles/focus = SubResource( 9 )
+theme_override_styles/disabled = SubResource( 10 )
+theme_override_styles/normal = SubResource( 11 )
 text = "Save"
 flat = true
 
 [node name="MarginRight" type="Label" parent="Info/HMenu"]
-margin_left = 452.0
-margin_top = 11.0
-margin_right = 452.0
-margin_bottom = 48.0
+offset_left = 452.0
+offset_top = 11.0
+offset_right = 452.0
+offset_bottom = 48.0
 
 [node name="MarginBottom" type="ColorRect" parent="Info"]
-margin_top = 522.0
-margin_right = 452.0
-margin_bottom = 527.0
-rect_min_size = Vector2( 0, 5 )
+offset_top = 522.0
+offset_right = 452.0
+offset_bottom = 527.0
+custom_minimum_size = Vector2( 0, 5 )
 color = Color( 0, 0, 0, 1 )
 
 [connection signal="value_changed" from="Info/MainMenuVolume" to="." method="_on_MainMenuVolume_value_changed"]

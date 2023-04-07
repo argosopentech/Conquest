@@ -17,7 +17,7 @@ func connect_child_signals():
 	for child in get_children():
 		var is_a_button = child is Button or child is TextureButton or child is SmartButton
 		if child.has_signal("focus_entered") and is_a_button:
-			child.connect("focus_entered", self, "move_index_on_focused_child", [i])
+			child.connect("focus_entered", Callable(self, "move_index_on_focused_child").bind(i))
 		i += 1
 
 func move_index_on_focused_child(new_index):

@@ -2,8 +2,8 @@ extends Area2D
 
 class_name Country
 
-onready var sprite = $Country
-onready var border = $Border
+@onready var sprite = $Country
+@onready var border = $Border
 
 var occupier = null
 var hovering = false
@@ -11,11 +11,11 @@ var selected = false
 var active = false
 var troops = 0
 
-onready var country_state = load("res://Source/Gameplay/StateMachine/CountryStates/ActiveState.gd").new()
-onready var name_label = $Name
-onready var troops_label = $Troops
-onready var active_click_audio = $ActiveClick
-onready var selected_click_audio = $SelectedClick
+@onready var country_state = load("res://Source/Gameplay/StateMachine/CountryStates/ActiveState.gd").new()
+@onready var name_label = $Name
+@onready var troops_label = $Troops
+@onready var active_click_audio = $ActiveClick
+@onready var selected_click_audio = $SelectedClick
 
 signal troops_updated
 
@@ -37,7 +37,7 @@ func setup_bordering_countries():
 
 func setup_troops():
 	troops = 0
-	connect("troops_updated", self, "update_troops_label")
+	connect("troops_updated", Callable(self, "update_troops_label"))
 
 func setup_name():
 	name_label.text = get_name()
@@ -109,7 +109,7 @@ func _on_input_event(viewport, event, shape_idx):
 		if Server.my_lobby.players[int(GamePlay.game.active_player.name)].id != Server.player_id:
 			return
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
 				country_clicked()
 

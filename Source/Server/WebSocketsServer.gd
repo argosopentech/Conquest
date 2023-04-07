@@ -21,12 +21,12 @@ func connect_to_server(server_address="localhost", server_port=9080, max_players
 		set_process(false)
 
 func connect_server_signals():
-	if client.is_connected("connection_established", self, "connected_to_server"):
+	if client.is_connected("connection_established", Callable(self, "connected_to_server")):
 		return
-	client.connect("connection_established", self, "connected_to_server")
-	client.connect("connection_closed", self, "disconnected_from_server")
-	client.connect("connection_error", self, "disconnected_from_server")
-	client.connect("data_received", self, "received_data_from_server")
+	client.connect("connection_established", Callable(self, "connected_to_server"))
+	client.connect("connection_closed", Callable(self, "disconnected_from_server"))
+	client.connect("connection_error", Callable(self, "disconnected_from_server"))
+	client.connect("data_received", Callable(self, "received_data_from_server"))
 
 func connected_to_server(protocol=""):
 	print("Connected to the server.")
@@ -62,9 +62,9 @@ func disconnect_from_server():
 	client.disconnect_from_host()
 
 func disconnect_server_signals():
-	if !client.is_connected("connection_closed", self, "_closed"):
+	if !client.is_connected("connection_closed", Callable(self, "_closed")):
 		return
-	client.disconnect("connection_closed", self, "disconnected_from_server")
-	client.disconnect("connection_error", self, "disconnected_from_server")
-	client.disconnect("connection_established", self, "connected_to_server")
-	client.disconnect("data_received", self, "received_data_from_server")
+	client.disconnect("connection_closed", Callable(self, "disconnected_from_server"))
+	client.disconnect("connection_error", Callable(self, "disconnected_from_server"))
+	client.disconnect("connection_established", Callable(self, "connected_to_server"))
+	client.disconnect("data_received", Callable(self, "received_data_from_server"))

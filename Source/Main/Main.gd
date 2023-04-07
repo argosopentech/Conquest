@@ -2,20 +2,20 @@ extends Control
 
 class_name Main
 
-onready var ip_edit = $Server/IP
-onready var error_label = $Error
-onready var success_label = $Success
+@onready var ip_edit = $Server/IP
+@onready var error_label = $Error
+@onready var success_label = $Success
 
 func _ready():
 	connect_signals()
 	setup()
 
 func connect_signals():
-	Server.connect("server_connected", self, "server_connected")
-	Server.connect("server_disconnected", self, "server_not_connected")
+	Server.connect("server_connected", Callable(self, "server_connected"))
+	Server.connect("server_disconnected", Callable(self, "server_not_connected"))
 	return
-	get_tree().connect("connected_to_server", self, "server_connected")
-	get_tree().connect("connection_failed", self, "server_not_connected")
+	get_tree().connect("connected_to_server", Callable(self, "server_connected"))
+	get_tree().connect("connection_failed", Callable(self, "server_not_connected"))
 
 func setup():
 	setup_music()

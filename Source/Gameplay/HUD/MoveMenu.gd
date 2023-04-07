@@ -2,11 +2,11 @@ extends TextureRect
 
 class_name MoveMenu
 
-onready var troops_range = $Info/TroopsRange
-onready var source_country_label = $Info/SourceCountry
-onready var destination_country_label = $Info/DestinationCountry
-onready var left_margin = $Info/HMenu/MarginLeft
-onready var cancel_button = $Info/HMenu/Cancel
+@onready var troops_range = $Info/TroopsRange
+@onready var source_country_label = $Info/SourceCountry
+@onready var destination_country_label = $Info/DestinationCountry
+@onready var left_margin = $Info/HMenu/MarginLeft
+@onready var cancel_button = $Info/HMenu/Cancel
 
 var source_country: Country = null
 var destination_country: Country = null

@@ -18,14 +18,14 @@ var first_turn = true
 var initial_troops = 9
 var eliminated = false
 
-onready var player_state = load("res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd").new()
-onready var hud: ActivePlayerHUD = find_node("ActivePlayerHUD")
-onready var deploy_menu: DeployMenu = find_node("DeployMenu")
-onready var attacking_menu: AttackingMenu = find_node("AttackingMenu")
-onready var move_menu: MoveMenu = find_node("MoveMenu")
-onready var gameover_menu: GameoverMenu = find_node("GameoverMenu")
-onready var activities = find_node("Activities")
-onready var overlay = find_node("Overlay")
+@onready var player_state = load("res://Source/Gameplay/StateMachine/PlayerStates/PlacementState.gd").new()
+@onready var hud: ActivePlayerHUD = find_child("ActivePlayerHUD")
+@onready var deploy_menu: DeployMenu = find_child("DeployMenu")
+@onready var attacking_menu: AttackingMenu = find_child("AttackingMenu")
+@onready var move_menu: MoveMenu = find_child("MoveMenu")
+@onready var gameover_menu: GameoverMenu = find_child("GameoverMenu")
+@onready var activities = find_child("Activities")
+@onready var overlay = find_child("Overlay")
 
 var Activity = preload("res://Source/Gameplay/HUD/PlayerActivity.tscn")
 
@@ -63,25 +63,25 @@ func setup_hud():
 		player_data = GamePlay.players_data[name]
 	hud.set_player_name(player_data.name, int(name))
 	hud.set_icon_color(player_data.color)
-	hud.connect("go_pressed", self, "go_pressed")
+	hud.connect("go_pressed", Callable(self, "go_pressed"))
 	deploy_menu.hide()
 	attacking_menu.hide()
 	move_menu.hide()
 	overlay.hide()
 	gameover_menu.set_player_name(player_data.name)
 	gameover_menu.hide()
-	deploy_menu.connect("deployed", self, "troops_deployed")
-	attacking_menu.connect("attacked", self, "player_attacked")
-	move_menu.connect("moved", self, "troops_moved")
+	deploy_menu.connect("deployed", Callable(self, "troops_deployed"))
+	attacking_menu.connect("attacked", Callable(self, "player_attacked"))
+	move_menu.connect("moved", Callable(self, "troops_moved"))
 
 func setup_state():
 	player_state.enter(self)
 
 func connect_signals():
-	connect("turn_completed", self, "turn_complete")
+	connect("turn_completed", Callable(self, "turn_complete"))
 
 func set_activity(activity, net_call=false):
-	var player_activity = Activity.instance()
+	var player_activity = Activity.instantiate()
 	activities.add_child(player_activity)
 	player_activity.set_activity(activity)
 	if net_call:

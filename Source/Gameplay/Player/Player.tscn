@@ -25,8 +25,8 @@ __meta__ = {
 visible = false
 
 [node name="ActivePlayerHUD" parent="HUD" instance=ExtResource( 2 )]
-margin_top = -116.0
-margin_bottom = -16.0
+offset_top = -116.0
+offset_bottom = -16.0
 mouse_filter = 2
 
 [node name="AttackingMenu" parent="HUD" instance=ExtResource( 4 )]
@@ -38,27 +38,27 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 352.5
-margin_top = 217.0
-margin_right = 927.5
-margin_bottom = 503.0
+offset_left = 352.5
+offset_top = 217.0
+offset_right = 927.5
+offset_bottom = 503.0
 
 [node name="GameoverMenu" parent="HUD" instance=ExtResource( 6 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 406.5
-margin_top = 258.5
-margin_right = 873.5
-margin_bottom = 461.5
+offset_left = 406.5
+offset_top = 258.5
+offset_right = 873.5
+offset_bottom = 461.5
 
 [node name="Activities" type="VBoxContainer" parent="HUD"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -40.0
-margin_top = 72.0
-margin_bottom = 112.0
+offset_left = -40.0
+offset_top = 72.0
+offset_bottom = 112.0
 grow_horizontal = 0
 mouse_filter = 2
 __meta__ = {

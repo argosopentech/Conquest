@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Countries/Greenland.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Borders/Greenland.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Countries/Greenland.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Borders/Greenland.png" type="Texture2D" id=3]
 
 [node name="Greenland" groups=[
 "NorthAmerica",
@@ -15,4 +15,4 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -195.989, -96.4504, -78.6853, -158.59, 40.6413, -186.207, 137.721, -183.905, 155.923, -153.987, 223.887, -115.71, 200.077, -81.8429, 212.833, -52.8137, 172.016, 22.6622, 13.8507, 94.2675, 13.0004, 145.552, -46.5241, 183.29, -89.0416, 137.811, -108.6, 65.2383, -92.443, 42.9826, -112.851, 26.5327, -114.552, -15.0757, -229.349, -49.9107 )
+polygon = PackedVector2Array( -195.989, -96.4504, -78.6853, -158.59, 40.6413, -186.207, 137.721, -183.905, 155.923, -153.987, 223.887, -115.71, 200.077, -81.8429, 212.833, -52.8137, 172.016, 22.6622, 13.8507, 94.2675, 13.0004, 145.552, -46.5241, 183.29, -89.0416, 137.811, -108.6, 65.2383, -92.443, 42.9826, -112.851, 26.5327, -114.552, -15.0757, -229.349, -49.9107 )

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Borders/WesternEurope.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Countries/WesternEurope.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Borders/WesternEurope.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Countries/WesternEurope.png" type="Texture2D" id=3]
 
 [node name="WesternEurope" groups=[
 "Europe",
@@ -15,4 +15,4 @@ texture = ExtResource( 3 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -49.0523, 173.502, 54.3693, 117.396, 85.6363, 12.0252, 120.511, 17.499, 144.563, -64.608, 131.334, -149.452, 91.6492, -187.768, 49.559, -143.978, 9.87396, -145.346, -0.949235, -116.609, -44.242, -122.083, -75.5089, -102.925, -12.975, -60.5026, -38.2291, -16.7123, -116.397, -16.7123, -127.22, 14.7621, -116.397, 55.8155, -151.271, 118.764, -103.168, 173.502 )
+polygon = PackedVector2Array( -49.0523, 173.502, 54.3693, 117.396, 85.6363, 12.0252, 120.511, 17.499, 144.563, -64.608, 131.334, -149.452, 91.6492, -187.768, 49.559, -143.978, 9.87396, -145.346, -0.949235, -116.609, -44.242, -122.083, -75.5089, -102.925, -12.975, -60.5026, -38.2291, -16.7123, -116.397, -16.7123, -127.22, 14.7621, -116.397, 55.8155, -151.271, 118.764, -103.168, 173.502 )

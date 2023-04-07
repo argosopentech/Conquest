@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Source/Gameplay/Map/Country/Country.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Graphics/Map/Countries/Congo.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/Map/Borders/Congo.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Map/Countries/Congo.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/Graphics/Map/Borders/Congo.png" type="Texture2D" id=3]
 
 [node name="Congo" groups=[
 "Africa",
@@ -15,4 +15,4 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -143.048, 73.4644, -177.923, 15.9895, -162.29, -49.696, -85.3248, -45.5907, -57.6655, -63.3805, -49.2475, -112.645, 20.5019, -170.12, 74.6179, -155.067, 121.518, -88.0126, 176.837, -57.9067, 156.393, -8.64255, 119.113, 52.9377, 114.303, 121.36, 93.8591, 137.781, 93.8591, 163.782, 62.5921, 182.94, 13.2865, 169.256, -3.54956, 114.518, -109.376, 65.2537 )
+polygon = PackedVector2Array( -143.048, 73.4644, -177.923, 15.9895, -162.29, -49.696, -85.3248, -45.5907, -57.6655, -63.3805, -49.2475, -112.645, 20.5019, -170.12, 74.6179, -155.067, 121.518, -88.0126, 176.837, -57.9067, 156.393, -8.64255, 119.113, 52.9377, 114.303, 121.36, 93.8591, 137.781, 93.8591, 163.782, 62.5921, 182.94, 13.2865, 169.256, -3.54956, 114.518, -109.376, 65.2537 )
