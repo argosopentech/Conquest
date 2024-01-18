@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5mvtqg6qqm7f"]
+
+[ext_resource type="PackedScene" uid="uid://bceqtsdrapbbf" path="res://Resource/Window/window.tscn" id="1_vqrjh"]
+
+[node name="SettingsWindow" instance=ExtResource("1_vqrjh")]
+
+[node name="Label" parent="MarginContainer/VBoxContainer" index="0"]
+text = "SETTINGS"

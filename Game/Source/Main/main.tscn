@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ua8ss5lq54eh"]
+[gd_scene load_steps=11 format=3 uid="uid://ua8ss5lq54eh"]
 
 [ext_resource type="Theme" uid="uid://txenq7kperef" path="res://Resource/Theme/user_interface.tres" id="1_kif6x"]
 [ext_resource type="PackedScene" uid="uid://dc5jhcekucpoc" path="res://Source/Window/PlayWindow/play_window.tscn" id="2_lloje"]
+[ext_resource type="Script" path="res://Source/Main/main.gd" id="2_sha2p"]
+[ext_resource type="PackedScene" uid="uid://c5mvtqg6qqm7f" path="res://Source/Window/SettingsWindow/settings_window.tscn" id="3_5r861"]
+[ext_resource type="PackedScene" uid="uid://cssj0oebvd6pm" path="res://Source/Window/TutorialWindow/tutorial_window.tscn" id="4_ewejv"]
+[ext_resource type="PackedScene" uid="uid://c8q7nch8d2jsy" path="res://Source/Window/HelpWindow/help_window.tscn" id="6_rpe8n"]
+[ext_resource type="PackedScene" uid="uid://dqetflla5t8es" path="res://Source/Window/ContributionWindow/contribution_window.tscn" id="7_eqeke"]
+[ext_resource type="PackedScene" uid="uid://cx48tvev3083c" path="res://Source/Window/CreditsWindow/credits_window.tscn" id="8_4rqqn"]
+[ext_resource type="PackedScene" uid="uid://bgf4vhq3eu3st" path="res://Source/Window/ExitWindow/exit_window.tscn" id="9_52nim"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_ofvi4"]
 allow_unpress = true
@@ -14,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_kif6x")
+script = ExtResource("2_sha2p")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -35,30 +43,29 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="Menu" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Headers" type="VBoxContainer" parent="MarginContainer/Menu"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 64
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/Menu/Headers"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 48
 text = "Conquest"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/Menu/Headers"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="Play" type="Button" parent="MarginContainer/Menu/Headers/Buttons"]
 custom_minimum_size = Vector2(192, 36)
 layout_mode = 2
 toggle_mode = true
@@ -66,44 +73,82 @@ button_pressed = true
 button_group = SubResource("ButtonGroup_ofvi4")
 text = "PLAY"
 
-[node name="Settings" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="Tutorial" type="Button" parent="MarginContainer/Menu/Headers/Buttons"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ofvi4")
+text = "TUTORIAL"
+
+[node name="Settings" type="Button" parent="MarginContainer/Menu/Headers/Buttons"]
 custom_minimum_size = Vector2(192, 36)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ofvi4")
 text = "SETTINGS"
 
-[node name="Help" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="Help" type="Button" parent="MarginContainer/Menu/Headers/Buttons"]
 custom_minimum_size = Vector2(192, 36)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ofvi4")
 text = "HELP"
 
-[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="Contribution" type="Button" parent="MarginContainer/Menu/Headers/Buttons"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ofvi4")
+text = "CONTRIBUTE"
+
+[node name="Credits" type="Button" parent="MarginContainer/Menu/Headers/Buttons"]
 custom_minimum_size = Vector2(192, 36)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ofvi4")
 text = "CREDITS"
 
-[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="Exit" type="Button" parent="MarginContainer/Menu/Headers/Buttons"]
 custom_minimum_size = Vector2(192, 36)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ofvi4")
 text = "EXIT"
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Windows" type="PanelContainer" parent="MarginContainer/Menu"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Menu/Windows"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="PlayWindow" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("2_lloje")]
+[node name="PlayWindow" parent="MarginContainer/Menu/Windows/MarginContainer" instance=ExtResource("2_lloje")]
+layout_mode = 2
+
+[node name="TutorialWindow" parent="MarginContainer/Menu/Windows/MarginContainer" instance=ExtResource("4_ewejv")]
+visible = false
+layout_mode = 2
+
+[node name="SettingsWindow" parent="MarginContainer/Menu/Windows/MarginContainer" instance=ExtResource("3_5r861")]
+visible = false
+layout_mode = 2
+
+[node name="HelpWindow" parent="MarginContainer/Menu/Windows/MarginContainer" instance=ExtResource("6_rpe8n")]
+visible = false
+layout_mode = 2
+
+[node name="ContributionWindow" parent="MarginContainer/Menu/Windows/MarginContainer" instance=ExtResource("7_eqeke")]
+visible = false
+layout_mode = 2
+
+[node name="CreditsWindow" parent="MarginContainer/Menu/Windows/MarginContainer" instance=ExtResource("8_4rqqn")]
+visible = false
+layout_mode = 2
+
+[node name="ExitWindow" parent="MarginContainer/Menu/Windows/MarginContainer" instance=ExtResource("9_52nim")]
+visible = false
 layout_mode = 2

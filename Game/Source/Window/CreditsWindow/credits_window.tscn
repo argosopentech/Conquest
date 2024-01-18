@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx48tvev3083c"]
+
+[ext_resource type="PackedScene" uid="uid://bceqtsdrapbbf" path="res://Resource/Window/window.tscn" id="1_vesgh"]
+
+[node name="CreditsWindow" instance=ExtResource("1_vesgh")]
+
+[node name="Label" parent="MarginContainer/VBoxContainer" index="0"]
+text = "CREDITS"

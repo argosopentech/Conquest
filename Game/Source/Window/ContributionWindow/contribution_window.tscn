@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqetflla5t8es"]
+
+[ext_resource type="PackedScene" uid="uid://bceqtsdrapbbf" path="res://Resource/Window/window.tscn" id="1_idcsq"]
+
+[node name="ContributionWindow" instance=ExtResource("1_idcsq")]
+
+[node name="Label" parent="MarginContainer/VBoxContainer" index="0"]
+text = "CONTRIBUTION"

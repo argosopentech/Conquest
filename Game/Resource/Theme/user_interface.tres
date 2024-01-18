@@ -13,7 +13,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhcd6"]
-bg_color = Color(0.61, 0.500403, 0.3111, 1)
+bg_color = Color(0.51, 0.41837, 0.2601, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -49,7 +49,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fi8c"]
-bg_color = Color(0.51, 0.41837, 0.2601, 1)
+bg_color = Color(0.509804, 0.419608, 0.258824, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -89,7 +89,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_yx8t4")
 Button/styles/pressed = SubResource("StyleBoxFlat_7fi8c")
 Label/colors/font_color = Color(0.411765, 0.337255, 0.207843, 1)
 Label/colors/font_outline_color = Color(0.411765, 0.337255, 0.207843, 1)
-Label/constants/outline_size = 4
+Label/constants/outline_size = 2
 Label/font_sizes/font_size = 36
 Panel/styles/panel = SubResource("StyleBoxFlat_ln7tp")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_8ulir")

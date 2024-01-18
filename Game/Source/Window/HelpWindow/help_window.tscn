@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8q7nch8d2jsy"]
+
+[ext_resource type="PackedScene" uid="uid://bceqtsdrapbbf" path="res://Resource/Window/window.tscn" id="1_hu8kq"]
+
+[node name="HelpWindow" instance=ExtResource("1_hu8kq")]
+
+[node name="Label" parent="MarginContainer/VBoxContainer" index="0"]
+text = "HELP"
