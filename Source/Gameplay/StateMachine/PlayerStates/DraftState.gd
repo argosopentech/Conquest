@@ -58,7 +58,7 @@ func add_first_turn_bonus(player: Player):
 			if GamePlay.online:
 				activity = Server.my_lobby.players[int(player.name)].name + " gets " + str(turn_bonus) + " for being at " + str(player_name) + " position"
 			else:
-				activity = GamePlay.players[player.name].name + " gets " + str(turn_bonus) + " for being at " + str(player_name) + " position"
+				activity = GamePlay.players_data[player.name].name + " gets " + str(turn_bonus) + " for being at " + str(player_name) + " position"
 			print(activity)
 			player.set_activity(activity)
 			player.increment_reinforcement(turn_bonus)
