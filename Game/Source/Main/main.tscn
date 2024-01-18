@@ -1,0 +1,99 @@
+[gd_scene load_steps=3 format=3 uid="uid://ua8ss5lq54eh"]
+
+[ext_resource type="Theme" uid="uid://txenq7kperef" path="res://Resource/Themes/user_interface.tres" id="1_kif6x"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ofvi4"]
+allow_unpress = true
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kif6x")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.392157, 0.705882, 0.862745, 1)
+theme_override_colors/font_outline_color = Color(0.279, 0.506333, 0.62, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+text = "Conquest"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_ofvi4")
+text = "PLAY"
+
+[node name="Settings" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ofvi4")
+text = "SETTINGS"
+
+[node name="Help" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ofvi4")
+text = "HELP"
+
+[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ofvi4")
+text = "CREDITS"
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ofvi4")
+text = "EXIT"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
