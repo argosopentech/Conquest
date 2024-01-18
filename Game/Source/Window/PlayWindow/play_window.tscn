@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc5jhcekucpoc"]
+
+[ext_resource type="PackedScene" uid="uid://bceqtsdrapbbf" path="res://Resource/Window/window.tscn" id="1_lsjug"]
+
+[node name="PlayWindow" instance=ExtResource("1_lsjug")]
+
+[node name="Label" parent="MarginContainer/VBoxContainer" index="0"]
+text = "PLAY"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+text = "BACK"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Confirm" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" index="2"]
+custom_minimum_size = Vector2(192, 36)
+layout_mode = 2
+text = "CONFIRM"
