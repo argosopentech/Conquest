@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc5jhcekucpoc"]
+[gd_scene load_steps=7 format=3 uid="uid://dc5jhcekucpoc"]
 
 [ext_resource type="PackedScene" uid="uid://bceqtsdrapbbf" path="res://Resource/Window/window.tscn" id="1_lsjug"]
+[ext_resource type="Script" path="res://Source/Window/PlayWindow/play_window.gd" id="2_5koo4"]
 [ext_resource type="Texture2D" uid="uid://b8wnhsicnw6qw" path="res://Assets/Graphics/Icons/Offline/Offline.png" id="2_eeaym"]
 [ext_resource type="Texture2D" uid="uid://c6yo1aldy8s0y" path="res://Assets/Graphics/Icons/LAN/LAN.png" id="3_jmgfo"]
 [ext_resource type="Texture2D" uid="uid://u8beoqx867vn" path="res://Assets/Graphics/Icons/Online/Online.png" id="3_on0b0"]
@@ -8,28 +9,38 @@
 [sub_resource type="ButtonGroup" id="ButtonGroup_ud062"]
 
 [node name="PlayWindow" instance=ExtResource("1_lsjug")]
+script = ExtResource("2_5koo4")
 
 [node name="Label" parent="MarginContainer/VBoxContainer" index="0"]
-text = "PLAY"
+text = "GAME MODE"
 
-[node name="Content" type="HBoxContainer" parent="MarginContainer/VBoxContainer" index="1"]
+[node name="Content" type="Control" parent="MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="OfflineMode" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content" index="0"]
+[node name="GameModes" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="OfflineMode" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/GameModes" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Content/OfflineMode" index="0"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Content/GameModes/OfflineMode" index="0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "OFFLINE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/OfflineMode" index="1"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/GameModes/OfflineMode" index="1"]
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -37,7 +48,7 @@ texture = ExtResource("2_eeaym")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Select" type="Button" parent="MarginContainer/VBoxContainer/Content/OfflineMode" index="2"]
+[node name="Select" type="Button" parent="MarginContainer/VBoxContainer/Content/GameModes/OfflineMode" index="2"]
 custom_minimum_size = Vector2(192, 36)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -46,20 +57,20 @@ button_pressed = true
 button_group = SubResource("ButtonGroup_ud062")
 text = "SELECTED"
 
-[node name="LANMode" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content" index="1"]
+[node name="LANMode" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/GameModes" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Content/LANMode" index="0"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Content/GameModes/LANMode" index="0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "LAN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/LANMode" index="1"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/GameModes/LANMode" index="1"]
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -67,7 +78,7 @@ texture = ExtResource("3_jmgfo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Select" type="Button" parent="MarginContainer/VBoxContainer/Content/LANMode" index="2"]
+[node name="Select" type="Button" parent="MarginContainer/VBoxContainer/Content/GameModes/LANMode" index="2"]
 custom_minimum_size = Vector2(192, 36)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -75,20 +86,20 @@ toggle_mode = true
 button_group = SubResource("ButtonGroup_ud062")
 text = "SELECT"
 
-[node name="OnlineMode" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content" index="2"]
+[node name="OnlineMode" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/GameModes" index="2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Content/OnlineMode" index="0"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Content/GameModes/OnlineMode" index="0"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "ONLINE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/OnlineMode" index="1"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/GameModes/OnlineMode" index="1"]
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -96,7 +107,7 @@ texture = ExtResource("3_on0b0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Select" type="Button" parent="MarginContainer/VBoxContainer/Content/OnlineMode" index="2"]
+[node name="Select" type="Button" parent="MarginContainer/VBoxContainer/Content/GameModes/OnlineMode" index="2"]
 custom_minimum_size = Vector2(192, 36)
 layout_mode = 2
 size_flags_horizontal = 4
