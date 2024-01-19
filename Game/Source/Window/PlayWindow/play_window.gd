@@ -1,6 +1,6 @@
 class_name PlayWindow extends Panel
 
-@onready var game_modes: HBoxContainer = $MarginContainer/VBoxContainer/GameModes
+@onready var game_modes: HBoxContainer = $MarginContainer/VBoxContainer/Content/GameModes
 
 var selected_game_mode: String = "OfflineMode"
 
