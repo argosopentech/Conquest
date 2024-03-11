@@ -22,5 +22,7 @@ There is a public multiplayer server running at `conquestgame.online`.
 # About
 Produced by [Argos Open Technologies, LLC](https://www.argosopentech.com) and developed by [Wamiq Ur Rehman](https://wamiqurrehman.wordpress.com/).
 
+### [Video Intro](https://www.youtube.com/watch?v=fHXHZIT2gQU)
+
 # License
 Licensed under either the MIT license or CC0, [donations](https://github.com/sponsors/argosopentech) appreciated.
