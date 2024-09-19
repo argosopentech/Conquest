@@ -2,10 +2,10 @@
 
 ### [Live Demo](http://conquestgame.online)
 
-Conquest is an open source strategy game similar to Risk and written in Godot.
+Conquest is an open source strategy game similar to Risk and written in Godot 3.
 
 # Install
-To play: install and run [Godot](https://godotengine.org/download), download the project code from GitHub, and import and run from Godot. 
+To play: install and run [Godot 3](https://godotengine.org/download/archive/3.0-stable/), download the project code from GitHub, and import and run from Godot. 
 
 # Online Multiplayer
 There is a public multiplayer server running at `conquestgame.online`.
