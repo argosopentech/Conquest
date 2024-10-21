@@ -1,6 +1,6 @@
 # Conquest
 
-### [Live Demo](http://conquestgame.online)
+### [Live Demo http://conquestgame.online/](http://conquestgame.online)
 
 Conquest is an open source strategy game similar to Risk and written in Godot 3.
 
